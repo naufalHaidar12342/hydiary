@@ -5,7 +5,7 @@ import NavigationBar from "./NavigationBar";
 
 export default function Layout({ children, pageTitle = "naufalHaidar12342" }) {
 	return (
-		<>
+		<div>
 			<Head>
 				<title>{pageTitle}</title>
 				<meta
@@ -16,9 +16,8 @@ export default function Layout({ children, pageTitle = "naufalHaidar12342" }) {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<NavigationBar />
-			<main className="relative"></main>
 			{children}
 			<Footer />
-		</>
+		</div>
 	);
 }

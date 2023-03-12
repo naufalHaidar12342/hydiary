@@ -1,16 +1,13 @@
 import ArticleCard from "@/components/ArticleCard";
 import Layout from "@/components/Layout";
 import { GraphQLClient } from "graphql-request";
-
-export default function Home({ posts }) {
+export default function AllPosts({ posts }) {
 	return (
-		<Layout pageTitle="Home">
-			<div className="flex flex-col justify-center items-center px-4 py-4">
-				<h2 className="text-3xl font-bold my-3">Latest posts</h2>
-				{posts.map((blogPosts, key) => (
-					<div key={key}>
-						<ArticleCard allPost={blogPosts} />
-					</div>
+		<Layout pageTitle="All Posts">
+			<div className="flex flex-col justify-center items-center">
+				<h2 className="text-3xl my-4 p-4">All Posts</h2>
+				{posts.map((blogposts, key) => (
+					<ArticleCard allPost={blogposts} key={key} />
 				))}
 			</div>
 		</Layout>
@@ -18,11 +15,11 @@ export default function Home({ posts }) {
 }
 export async function getStaticProps() {
 	const API =
-		"https://api-ap-southeast-2.hygraph.com/v2/cl7gawkjl7suf01uhdrd42szp/master";
+		"https://ap-southeast-2.cdn.hygraph.com/content/cl7gawkjl7suf01uhdrd42szp/master";
 	const client = new GraphQLClient(API);
 	const { posts } = await client.request(`
 	{
-		posts(orderBy: publishedAt_DESC, first:3) {
+		posts(orderBy: publishedAt_DESC) {
 			id
 			title
 			publishedAt
