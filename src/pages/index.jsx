@@ -17,7 +17,8 @@ export default function Home({ posts }) {
 	);
 }
 export async function getStaticProps() {
-	const client = new GraphQLClient(process.env.HYGRAPH_HIGH_PERFORMANCE_API);
+	const API = process.env.HYGRAPH_HIGH_PERFORMANCE_API;
+	const client = new GraphQLClient(API);
 	console.log(process.env.HYGRAPH_HIGH_PERFORMANCE_API);
 	const { posts } = await client.request(`
 	{
