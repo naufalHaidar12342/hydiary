@@ -136,9 +136,9 @@ export default function About({ authors, certificates, techStacks }) {
 }
 
 export async function getStaticProps() {
-	const API =
-		"https://ap-southeast-2.cdn.hygraph.com/content/cl7gawkjl7suf01uhdrd42szp/master";
-	const client = new GraphQLClient(API);
+	const client = new GraphQLClient(
+		"https://ap-southeast-2.cdn.hygraph.com/content/cl7gawkjl7suf01uhdrd42szp/master"
+	);
 	const { authors } = await client.request(`
 		{
 			authors(where: {name: "Naufal Haidar Rauf"}) {
