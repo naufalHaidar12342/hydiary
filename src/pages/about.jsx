@@ -101,30 +101,31 @@ export default function About({ authors, certificates, techStacks }) {
 			<div className="flex flex-col justify-center items-center pb-6">
 				<div className="grid lg:grid-cols-2 col-1 gap-3">
 					{techStacks.map((techs, key) => (
-						<div key={key} className="">
-							<div className="card w-80 max-w-screen bg-columbia-blue shadow-xl ">
-								<figure className="px-10 pt-10">
-									<Image
-										src={techs.technologyLogo.url}
-										alt={`Logo of ${techs.technologyName}`}
-										className="rounded-xl w-auto h-auto"
-										width={250}
-										height={140}
-									/>
-								</figure>
-								<div className="card-body items-center text-center text-black">
-									<h2 className="card-title">{techs.technologyName}</h2>
-									<p>{techs.technologySummary}</p>
-									<div className="card-actions">
-										<a
-											className="btn border-none bg-viridian text-white hover:bg-middle-blue-green hover:text-black"
-											href={techs.technologyWebsite}
-											target="_blank"
-											rel="noreferrer"
-										>
-											Visit
-										</a>
-									</div>
+						<div
+							className="card w-80 max-w-screen bg-columbia-blue shadow-xl"
+							key={key}
+						>
+							<figure className="px-10 pt-10">
+								<Image
+									src={techs.technologyLogo.url}
+									alt={`Logo of ${techs.technologyName}`}
+									className="rounded-xl w-auto h-auto"
+									width={250}
+									height={140}
+								/>
+							</figure>
+							<div className="card-body items-center text-center text-black">
+								<h2 className="card-title">{techs.technologyName}</h2>
+								<p>{techs.technologySummary}</p>
+								<div className="card-actions">
+									<a
+										className="btn border-none bg-viridian text-white hover:bg-middle-blue-green hover:text-black"
+										href={techs.technologyWebsite}
+										target="_blank"
+										rel="noreferrer"
+									>
+										Visit
+									</a>
 								</div>
 							</div>
 						</div>
