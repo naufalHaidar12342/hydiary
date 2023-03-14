@@ -68,10 +68,9 @@ export default function Posts({ post }) {
 			<div className="min-h-screen max-w-screen-lg mx-auto">
 				<div className="flex flex-col justify-center items-center">
 					<h2 className="font-bold text-4xl p-5 text-center">{post.title}</h2>
-					<ReactMarkdown
-						className="markdown-hygraph p-4"
-						children={post.content.markdown}
-					/>
+					<ReactMarkdown className="markdown-hygraph p-4">
+						{post.content.markdown}
+					</ReactMarkdown>
 					<div className="flex flex-col justify-center items-center py-4">
 						<div
 							className="w-36 h-36 relative"
