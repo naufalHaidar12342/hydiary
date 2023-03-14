@@ -56,7 +56,7 @@ export default function NavigationBar() {
 				</Link>
 			</div>
 			<div className="navbar-center hidden lg:flex">
-				<ul className="menu menu-horizontal px-1 text-3xl ">
+				<ul className="menu menu-horizontal px-1 text-2xl ">
 					<li>
 						<Link
 							href={"/blogposts/all-post"}

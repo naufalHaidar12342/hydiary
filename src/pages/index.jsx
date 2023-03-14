@@ -26,7 +26,6 @@ export async function getStaticProps() {
 			id
 			title
 			publishedAt
-			createdAt
 			slug
 			tags
 			excerpt
