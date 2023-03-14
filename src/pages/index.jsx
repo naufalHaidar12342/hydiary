@@ -8,9 +8,7 @@ export default function Home({ posts }) {
 			<div className="flex flex-col justify-center items-center px-4 py-4">
 				<h2 className="text-3xl font-bold my-3">Latest posts</h2>
 				{posts.map((blogPosts, key) => (
-					<div key={key}>
-						<ArticleCard allPost={blogPosts} />
-					</div>
+					<ArticleCard allPost={blogPosts} key={key} />
 				))}
 			</div>
 		</Layout>

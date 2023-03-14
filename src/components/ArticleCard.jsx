@@ -11,6 +11,7 @@ export default function ArticleCard({ allPost }) {
 					alt="Cover image of post"
 					height={400}
 					width={400}
+					priority
 				/>
 			</figure>
 			<div className="card-body">
