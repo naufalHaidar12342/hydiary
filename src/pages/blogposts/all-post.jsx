@@ -14,9 +14,7 @@ export default function AllPosts({ posts }) {
 	);
 }
 export async function getStaticProps() {
-	const API =
-		"https://ap-southeast-2.cdn.hygraph.com/content/cl7gawkjl7suf01uhdrd42szp/master";
-	const client = new GraphQLClient(API);
+	const client = new GraphQLClient(process.env.HYGRAPH_HIGH_PERFORMANCE_API);
 	const { posts } = await client.request(`
 	{
 		posts(orderBy: publishedAt_DESC) {
