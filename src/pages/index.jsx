@@ -17,9 +17,9 @@ export default function Home({ posts }) {
 	);
 }
 export async function getStaticProps() {
+	console.log("env variable=", process.env.HYGRAPH_HIGH_PERFORMANCE_API);
 	const API = process.env.HYGRAPH_HIGH_PERFORMANCE_API;
 	const client = new GraphQLClient(API);
-	console.log(process.env.HYGRAPH_HIGH_PERFORMANCE_API);
 	const { posts } = await client.request(`
 	{
 		posts(orderBy: publishedAt_DESC, first:3) {
