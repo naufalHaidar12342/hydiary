@@ -34,6 +34,7 @@ export default function About({ authors, certificates, techStacks }) {
 										className="font-medium text-xl link text-uranian-blue flex items-center"
 										href="mailto:naufalhaidar12342@gmail.com"
 										target={"_blank"}
+										rel={"noreferrer"}
 									>
 										<SiGmail className="mx-2 text-2xl" />
 										naufalhaidar12342
