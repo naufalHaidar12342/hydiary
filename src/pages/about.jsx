@@ -4,7 +4,6 @@ import Image from "next/image";
 import { FaTelegramPlane } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 export default function About({ authors, certificates, techStacks }) {
-	let slideID = [""];
 	return (
 		<Layout pageTitle="About">
 			<div className="hero min-h-screen dark:bg-base-200 ">
@@ -25,7 +24,7 @@ export default function About({ authors, certificates, techStacks }) {
 						{authors.map((authorInfo, key) => (
 							<div key={key}>
 								<h1 className="text-5xl font-bold">
-									Hi, I'm {authorInfo.name}!👋
+									Hi, I&apos;m {authorInfo.name}!👋
 								</h1>
 								<p className="py-6 font-medium text-2xl">
 									{authorInfo.biography}
@@ -43,6 +42,7 @@ export default function About({ authors, certificates, techStacks }) {
 										className="text-xl font-medium link text-uranian-blue flex items-center"
 										href="https://t.me/heydar12342"
 										target={"_blank"}
+										rel={"noreferrer"}
 									>
 										<FaTelegramPlane className="mx-2 text-2xl" />
 										Telegram
@@ -57,7 +57,6 @@ export default function About({ authors, certificates, techStacks }) {
 			<div className="p-4 lg:max-w-6xl mx-auto">
 				<div className="carousel w-full">
 					{certificates.map((certificate, index) => {
-						// slideID.push(`certificate-${certificate.id}`);
 						return (
 							<div
 								id={`slide-${certificate.id}`}
@@ -68,6 +67,7 @@ export default function About({ authors, certificates, techStacks }) {
 									src={certificate.certificateImage.url}
 									className="w-full"
 									alt={certificate.certificateName}
+									loading="lazy"
 								/>
 								<div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
 									<a
@@ -119,6 +119,7 @@ export default function About({ authors, certificates, techStacks }) {
 											className="btn border-none bg-viridian text-white hover:bg-middle-blue-green hover:text-black"
 											href={techs.technologyWebsite}
 											target="_blank"
+											rel="noreferrer"
 										>
 											Visit
 										</a>

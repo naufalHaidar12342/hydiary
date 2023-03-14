@@ -29,7 +29,7 @@ export default function Posts({ post }) {
 				}
 
 				.markdown-hygraph img {
-					height: 25rem;
+					height: 20rem;
 					margin-left: auto;
 					margin-right: auto;
 					max-width: 100%;
@@ -82,6 +82,7 @@ export default function Posts({ post }) {
 								className={"rounded-full"}
 								fill
 								style={{ objectFit: "cover" }}
+								alt="Photo of article writer"
 							/>
 						</div>
 						<div className="flex flex-col justify-center items-center p-3">
