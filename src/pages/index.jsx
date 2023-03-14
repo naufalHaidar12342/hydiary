@@ -17,9 +17,11 @@ export default function Home({ posts }) {
 	);
 }
 export async function getStaticProps() {
-	console.log("env variable=", process.env.HYGRAPH_HIGH_PERFORMANCE_API);
-	const API = process.env.HYGRAPH_HIGH_PERFORMANCE_API;
-	const client = new GraphQLClient(API);
+	// console.log("env variable=", process.env.HYGRAPH_HIGH_PERFORMANCE_API);
+	// const API = process.env.HYGRAPH_HIGH_PERFORMANCE_API;
+	const client = new GraphQLClient(
+		"https://ap-southeast-2.cdn.hygraph.com/content/cl7gawkjl7suf01uhdrd42szp/master"
+	);
 	const { posts } = await client.request(`
 	{
 		posts(orderBy: publishedAt_DESC, first:3) {

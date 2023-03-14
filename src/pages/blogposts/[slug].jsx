@@ -124,7 +124,9 @@ export async function getStaticPaths() {
 	};
 }
 export async function getStaticProps({ params: { slug } }) {
-	const client = new GraphQLClient(process.env.HYGRAPH_HIGH_PERFORMANCE_API);
+	const client = new GraphQLClient(
+		"https://ap-southeast-2.cdn.hygraph.com/content/cl7gawkjl7suf01uhdrd42szp/master"
+	);
 	const { post } = await client.request(`{
 		post(where: { slug: "${slug}" }) {
 			title
