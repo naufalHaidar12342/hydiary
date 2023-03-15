@@ -99,7 +99,7 @@ export default function About({ authors, certificates, techStacks }) {
 			</div>
 			<div className="divider text-3xl py-4">Tech stack</div>
 			<div className="flex flex-col justify-center items-center pb-6">
-				<div className="grid lg:grid-cols-2 col-1 gap-3">
+				<div className="grid lg:grid-cols-2 grid-cols-1 gap-3">
 					{techStacks.map((techs, key) => (
 						<div
 							className="card w-80 max-w-screen bg-columbia-blue shadow-xl"
