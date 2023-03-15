@@ -58,17 +58,20 @@ export default function About({ authors, certificates, techStacks }) {
 			<div className="p-4 lg:max-w-6xl mx-auto">
 				<div className="carousel w-full">
 					{certificates.map((certificate, index) => {
+						//lg: h-800px, w-1200px
+						//smaller than lg: h-250px, w-360px
 						return (
 							<div
 								id={`slide-${certificate.id}`}
 								key={certificate.id}
-								className="carousel-item relative w-full"
+								className="carousel-item relative w-full lg:h-[800px] h-[250px]"
 							>
-								<img
+								<Image
+									fill
+									style={{ objectFit: "contain" }}
 									src={certificate.certificateImage.url}
 									className="w-full"
 									alt={certificate.certificateName}
-									loading="lazy"
 								/>
 								<div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
 									<a
