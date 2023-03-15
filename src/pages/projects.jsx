@@ -14,9 +14,12 @@ export default function Projects() {
 							section of this website. Thank you!
 						</p>
 
-						<button className="btn btn-primary bg-viridian border-none hover:bg-uranian-blue hover:text-black">
+						<Link
+							href={"/"}
+							className="btn btn-primary bg-viridian border-none hover:bg-uranian-blue hover:text-black"
+						>
 							Homepage
-						</button>
+						</Link>
 					</div>
 				</div>
 			</div>

@@ -4,11 +4,13 @@ import { GraphQLClient } from "graphql-request";
 export default function AllPosts({ posts }) {
 	return (
 		<Layout pageTitle="All Posts">
-			<div className="flex flex-col justify-center items-center">
+			<div className="flex flex-col justify-center items-center p-6">
 				<h2 className="text-3xl my-4 p-4">All Posts</h2>
-				{posts.map((blogposts, key) => (
-					<ArticleCard allPost={blogposts} key={key} />
-				))}
+				<div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+					{posts.map((blogposts, key) => (
+						<ArticleCard allPost={blogposts} key={key} />
+					))}
+				</div>
 			</div>
 		</Layout>
 	);
