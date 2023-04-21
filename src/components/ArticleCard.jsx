@@ -12,6 +12,7 @@ export default function ArticleCard({ allPost }) {
 					height={400}
 					width={400}
 					priority
+					style={{ maxWidth: "400px" }}
 				/>
 			</figure>
 			<div className="card-body">

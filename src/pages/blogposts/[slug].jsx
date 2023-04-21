@@ -1,6 +1,5 @@
 import Layout from "@/components/Layout";
 import { format } from "date-fns";
-import { DiscussionEmbed } from "disqus-react";
 import { GraphQLClient } from "graphql-request";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,13 +14,13 @@ export default function Posts({ post }) {
 				.markdown-hygraph h3 {
 					font-weight: 600;
 					font-size: 1.5rem;
-					line-heigh: 2rem;
+					line-height: 2rem;
 					margin-bottom: 20px;
 				}
 				.markdown-hygraph h4 {
 					font-weight: 600;
 					font-size: 1.4rem;
-					line-heigh: 2rem;
+					line-height: 2rem;
 					margin-bottom: 20px;
 				}
 
@@ -36,6 +35,7 @@ export default function Posts({ post }) {
 					margin-left: auto;
 					margin-right: auto;
 					max-width: 100%;
+					border-radius: 1rem;
 				}
 
 				.markdown-hygraph a {
@@ -73,19 +73,20 @@ export default function Posts({ post }) {
 			<div className="min-h-screen max-w-screen-lg mx-auto">
 				<div className="flex flex-col justify-center items-center">
 					<h2 className="font-bold text-4xl p-5 text-center">{post.title}</h2>
+					<div className="w-full h-96 relative">
+						<Image
+							src={post.coverImage.url}
+							fill
+							priority
+							className="lg:rounded-2xl"
+							alt="Cover image of post"
+							style={{ objectFit: "cover" }}
+						/>
+					</div>
 					<ReactMarkdown className="markdown-hygraph p-4">
 						{post.content.markdown}
 					</ReactMarkdown>
-					<div className="flex flex-col w-full">
-						<DiscussionEmbed
-							shortname={disqusWebsiteShortname}
-							config={{
-								url: "/blogposts/${slug}",
-								identifier: post.id,
-								title: post.title,
-							}}
-						/>
-					</div>
+
 					<div className="flex flex-col justify-center items-center py-4">
 						<div
 							className="w-36 h-36 relative"
