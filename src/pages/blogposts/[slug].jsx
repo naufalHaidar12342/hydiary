@@ -104,7 +104,7 @@ export default function Posts({ post }) {
 }
 export async function getStaticPaths() {
 	const client = new GraphQLClient(
-		"https://ap-southeast-2.cdn.hygraph.com/content/cl7gawkjl7suf01uhdrd42szp/master"
+		"https://api-ap-southeast-2.hygraph.com/v2/cl7gawkjl7suf01uhdrd42szp/master"
 	);
 	const { posts } = await client.request(`{
 		posts(orderBy: id_ASC) {
@@ -127,7 +127,7 @@ export async function getStaticPaths() {
 }
 export async function getStaticProps({ params: { slug } }) {
 	const client = new GraphQLClient(
-		"https://ap-southeast-2.cdn.hygraph.com/content/cl7gawkjl7suf01uhdrd42szp/master"
+		"https://api-ap-southeast-2.hygraph.com/v2/cl7gawkjl7suf01uhdrd42szp/master"
 	);
 	const { post } = await client.request(`{
 		post(where: { slug: "${slug}" }) {
