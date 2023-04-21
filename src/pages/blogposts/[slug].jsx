@@ -1,11 +1,14 @@
 import Layout from "@/components/Layout";
-import { format, parseISO } from "date-fns";
+import { format } from "date-fns";
+import { DiscussionEmbed } from "disqus-react";
 import { GraphQLClient } from "graphql-request";
 import Image from "next/image";
 import Link from "next/link";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 export default function Posts({ post }) {
+	const disqusWebsiteShortname = "naufalhaidar12342-cyou";
+
 	return (
 		<Layout pageTitle={post.title}>
 			<style global jsx>{`
@@ -64,6 +67,8 @@ export default function Posts({ post }) {
 					margin-inline-end: 0px;
 					padding-inline-start: 40px;
 				}
+				#thread__container > * {
+				}
 			`}</style>
 			<div className="min-h-screen max-w-screen-lg mx-auto">
 				<div className="flex flex-col justify-center items-center">
@@ -71,6 +76,16 @@ export default function Posts({ post }) {
 					<ReactMarkdown className="markdown-hygraph p-4">
 						{post.content.markdown}
 					</ReactMarkdown>
+					<div className="flex flex-col w-full">
+						<DiscussionEmbed
+							shortname={disqusWebsiteShortname}
+							config={{
+								url: "/blogposts/${slug}",
+								identifier: post.id,
+								title: post.title,
+							}}
+						/>
+					</div>
 					<div className="flex flex-col justify-center items-center py-4">
 						<div
 							className="w-36 h-36 relative"
@@ -131,6 +146,7 @@ export async function getStaticProps({ params: { slug } }) {
 	);
 	const { post } = await client.request(`{
 		post(where: { slug: "${slug}" }) {
+			id
 			title
 			createdAt
 			publishedAt
