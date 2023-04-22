@@ -31,7 +31,7 @@ export default function About({ authors, certificates, techStacks }) {
 								</p>
 								<div className="flex flex-col">
 									<a
-										className="font-medium text-xl link text-uranian-blue flex items-center"
+										className="font-medium text-xl link text-black dark:text-middle-blue-green flex items-center"
 										href="mailto:naufalhaidar12342@gmail.com"
 										target={"_blank"}
 										rel={"noreferrer"}
@@ -40,7 +40,7 @@ export default function About({ authors, certificates, techStacks }) {
 										naufalhaidar12342
 									</a>
 									<a
-										className="text-xl font-medium link text-uranian-blue flex items-center"
+										className="text-xl font-medium link text-black dark:text-middle-blue-green flex items-center"
 										href="https://t.me/heydar12342"
 										target={"_blank"}
 										rel={"noreferrer"}

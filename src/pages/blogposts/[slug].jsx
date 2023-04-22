@@ -17,11 +17,20 @@ export default function Posts({ post }) {
 					line-height: 2rem;
 					margin-bottom: 20px;
 				}
+
 				.markdown-hygraph h4 {
 					font-weight: 600;
 					font-size: 1.4rem;
 					line-height: 2rem;
 					margin-bottom: 20px;
+				}
+
+				.markdown-hygraph h5 {
+					font-weight: 500;
+					font-size: 1.2rem;
+					line-height: 0.5rem;
+					margin-bottom: 20px;
+					text-align: center;
 				}
 
 				.markdown-hygraph p {
@@ -83,6 +92,9 @@ export default function Posts({ post }) {
 							style={{ objectFit: "cover" }}
 						/>
 					</div>
+					<span className="text-xl text-center p-2">
+						{post.coverImageCredits}
+					</span>
 					<ReactMarkdown className="markdown-hygraph p-4">
 						{post.content.markdown}
 					</ReactMarkdown>
@@ -103,11 +115,11 @@ export default function Posts({ post }) {
 						<div className="flex flex-col justify-center items-center p-3">
 							<h4 className="font-light">Author: {post.author.name}</h4>
 							<h4 className="font-light">
-								Post updated: {format(new Date(post.updatedAt), "dd MMMM yyyy")}
+								Posted at {format(new Date(post.createdAt), "dd MMMM yyyy")}
 							</h4>
 						</div>
 						<Link
-							href={"/"}
+							href={"/blogposts/all-post"}
 							className="btn bg-viridian border-none w-full text-white hover:bg-uranian-blue hover:text-black"
 						>
 							All post
@@ -158,6 +170,7 @@ export async function getStaticProps({ params: { slug } }) {
 			coverImage {
 				url
 			}
+			coverImageCredits
 			content {
 				markdown
 			}

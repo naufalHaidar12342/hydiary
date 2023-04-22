@@ -21,7 +21,7 @@ export async function getStaticProps() {
 	);
 	const { posts } = await client.request(`
 	{
-		posts(orderBy: publishedAt_DESC) {
+		posts(orderBy: createdAt_DESC) {
 			id
 			title
 			publishedAt

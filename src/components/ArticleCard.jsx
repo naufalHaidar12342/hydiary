@@ -18,7 +18,7 @@ export default function ArticleCard({ allPost }) {
 			<div className="card-body">
 				<h2 className="card-title">{allPost.title}</h2>
 				<p className="font-medium italic">
-					Updated at {format(new Date(allPost.publishedAt), "dd MMMM yyyy")}
+					Posted at {format(new Date(allPost.createdAt), "dd MMMM yyyy")}
 				</p>
 				<p className="font-medium text-base">{allPost.excerpt}</p>
 				{allPost.tags.map((postGenre, key) => (
