@@ -20,9 +20,10 @@ export async function getStaticProps() {
 	);
 	const { posts } = await client.request(`
 	{
-		posts(orderBy: publishedAt_DESC, first:3) {
+		posts(orderBy: createdAt_DESC, first:3) {
 			id
 			title
+			createdAt
 			publishedAt
 			slug
 			tags
