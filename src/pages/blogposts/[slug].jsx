@@ -43,8 +43,10 @@ export default function Posts({ post }) {
 					height: 20rem;
 					margin-left: auto;
 					margin-right: auto;
+					min-width: 100%;
 					max-width: 100%;
 					border-radius: 1rem;
+					object-fit: cover;
 				}
 
 				.markdown-hygraph a {
