@@ -28,8 +28,8 @@ export default function Posts({ post }) {
 				.markdown-hygraph h5 {
 					font-weight: 500;
 					font-size: 1.2rem;
-					line-height: 0.5rem;
-					margin-bottom: 20px;
+					line-height: 2rem;
+					margin-bottom: 10px;
 					text-align: center;
 				}
 
@@ -40,7 +40,7 @@ export default function Posts({ post }) {
 				}
 
 				.markdown-hygraph img {
-					height: 20rem;
+					height: 24rem;
 					margin-left: auto;
 					margin-right: auto;
 					min-width: 100%;
@@ -94,7 +94,7 @@ export default function Posts({ post }) {
 							style={{ objectFit: "cover" }}
 						/>
 					</div>
-					<span className="text-xl text-center p-2">
+					<span className="text-xl text-center p-2 italic">
 						{post.coverImageCredits}
 					</span>
 					<ReactMarkdown className="markdown-hygraph p-4">
