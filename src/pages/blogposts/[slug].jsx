@@ -117,7 +117,8 @@ export default function Posts({ post }) {
 						<div className="flex flex-col justify-center items-center p-3">
 							<h4 className="font-light">Author: {post.author.name}</h4>
 							<h4 className="font-light">
-								Posted at {format(new Date(post.createdAt), "dd MMMM yyyy")}
+								Posted at {""}
+								{format(new Date(post.createdAt), "MMMM dd, yyyy hh:mm")}
 							</h4>
 						</div>
 						<Link
