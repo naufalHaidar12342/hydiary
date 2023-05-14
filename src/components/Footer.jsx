@@ -27,7 +27,7 @@ export default function Footer() {
 				<a
 					className="link link-hover"
 					href="https://naufalhaidarr-qit1952.slack.com/team/U055EA48N6A"
-					rel={"noopener"}
+					rel={"noreferrer"}
 					target="_blank"
 				>
 					Slack
@@ -35,7 +35,7 @@ export default function Footer() {
 				<a
 					className="link link-hover opacity-100"
 					href="https://t.me/heydar12342"
-					rel="noopener"
+					rel="noreferrer"
 					target="_blank"
 				>
 					Telegram

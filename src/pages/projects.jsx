@@ -44,7 +44,7 @@ export default function Projects({ projects }) {
 												: "btn-info")
 										}
 										href={project.projectsRepositoryLink}
-										rel="noopener"
+										rel="noreferrer"
 										target="_blank"
 									>
 										Repository
