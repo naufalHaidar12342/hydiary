@@ -9,6 +9,8 @@ module.exports = {
 				"uranian-blue": "#ACD7EC",
 				"columbia-blue": "#D6EDFF",
 				"middle-blue-green": "#84DCC6",
+				"github-dark": "#30363D",
+				"brave-dark": "#303443",
 			},
 		},
 	},
