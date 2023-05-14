@@ -24,30 +24,37 @@ export default function About({ authors, certificates, techStacks }) {
 						{authors.map((authorInfo, key) => (
 							<div key={key}>
 								<h1 className="text-5xl font-bold">
-									Hi, I&apos;m {authorInfo.name}!👋
+									Hi, I&apos;m {authorInfo.name} !👋
 								</h1>
 								<p className="py-6 font-medium text-2xl">
 									{authorInfo.biography}
 								</p>
-								<div className="flex flex-col">
-									<a
-										className="font-medium text-xl link text-black dark:text-middle-blue-green flex items-center"
-										href="mailto:naufalhaidar12342@gmail.com"
-										target={"_blank"}
-										rel={"noreferrer"}
-									>
-										<SiGmail className="mx-2 text-2xl" />
-										naufalhaidar12342
-									</a>
-									<a
-										className="text-xl font-medium link text-black dark:text-middle-blue-green flex items-center"
-										href="https://t.me/heydar12342"
-										target={"_blank"}
-										rel={"noreferrer"}
-									>
-										<FaTelegramPlane className="mx-2 text-2xl" />
-										Telegram
-									</a>
+								<p className="font-medium text-xl">Contact:</p>
+								<div className="">
+									<ul>
+										<li>
+											<a
+												className="font-medium text-xl link link-hover text-black dark:text-middle-blue-green "
+												href="mailto:naufalhaidar12342@gmail.com"
+												target={"_blank"}
+												rel={"noreferrer"}
+											>
+												<SiGmail className="mx-2 text-2xl inline-block" />
+												naufalhaidar12342
+											</a>
+										</li>
+										<li>
+											<a
+												className="text-xl font-medium link link-hover text-black dark:text-middle-blue-green "
+												href="https://t.me/heydar12342"
+												target={"_blank"}
+												rel={"noreferrer"}
+											>
+												<FaTelegramPlane className="mx-2 text-2xl inline-block" />
+												Telegram
+											</a>
+										</li>
+									</ul>
 								</div>
 							</div>
 						))}
