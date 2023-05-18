@@ -29,7 +29,7 @@ export default function Footer() {
 						target="_blank"
 						className="link link-hover"
 					>
-						devardha
+						{""}devardha
 					</a>
 				</p>
 			</div>
