@@ -21,6 +21,17 @@ export default function Footer() {
 					naufalhaidar12342
 					<br />A blog by Naufal Haidar ©2023
 				</p>
+				<p>
+					Special thanks to
+					<a
+						href="https://github.com/devardha"
+						rel="noreferrer"
+						target="_blank"
+						className="link link-hover"
+					>
+						devardha
+					</a>{" "}
+				</p>
 			</div>
 			<div>
 				<span className="footer-title opacity-100">Socials</span>
