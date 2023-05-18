@@ -1,7 +1,14 @@
 import ArticleCard from "@/components/ArticleCard";
 import Layout from "@/components/Layout";
+import Pagination from "@/components/Pagination";
 import { GraphQLClient } from "graphql-request";
+import { useEffect, useState } from "react";
+
 export default function AllPosts({ posts }) {
+	const [blogposts, setBlogposts] = useState([]);
+	const [currentPage, setCurrentPage] = useState(1);
+	const [totalPosts, setTotalPosts] = useState();
+	const [postsPerPage] = useState(4);
 	return (
 		<Layout pageTitle="All Posts">
 			<div className="flex flex-col justify-center items-center p-6">
@@ -33,6 +40,7 @@ export async function getStaticProps() {
 				url
 			}
 		}
+		
 	}`);
 
 	return {
@@ -41,3 +49,15 @@ export async function getStaticProps() {
 		},
 	};
 }
+
+const paginate = (pageNumber) => setCurrentPage(pageNumber);
+const previousPage = () => {
+	if (currentPage !== 1) {
+		setCurrentPage(currentPage - 1);
+	}
+};
+const nextPage = () => {
+	if (currentPage !== Math.ceil(totalPosts / postsPerPage)) {
+		setCurrentPage(currentPage + 1);
+	}
+};
