@@ -40,7 +40,7 @@ export default function Posts({ post }) {
 				}
 
 				.markdown-hygraph img {
-					height: 24rem;
+					height: 100%;
 					margin-left: auto;
 					margin-right: auto;
 					min-width: 100%;
@@ -97,7 +97,7 @@ export default function Posts({ post }) {
 					<span className="text-xl text-center p-2 italic">
 						{post.coverImageCredits}
 					</span>
-					<ReactMarkdown className="markdown-hygraph p-4">
+					<ReactMarkdown className="markdown-hygraph p-4 ">
 						{post.content.markdown}
 					</ReactMarkdown>
 
