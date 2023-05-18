@@ -22,10 +22,10 @@ export default function Footer() {
 					<br />A blog by Naufal Haidar ©2023
 				</p>
 				<p>
-					Special thanks to{" "}
+					Special thanks to
 					<a
 						href="https://github.com/devardha"
-						rel="noopener"
+						rel="noreferrer"
 						target="_blank"
 						className="link link-hover"
 					>
