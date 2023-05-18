@@ -22,7 +22,7 @@ export default function Footer() {
 					<br />A blog by Naufal Haidar ©2023
 				</p>
 				<p>
-					Special thanks to
+					Special thanks to{" "}
 					<a
 						href="https://github.com/devardha"
 						rel="noreferrer"
@@ -30,7 +30,7 @@ export default function Footer() {
 						className="link link-hover"
 					>
 						devardha
-					</a>{" "}
+					</a>
 				</p>
 			</div>
 			<div>
