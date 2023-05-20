@@ -84,7 +84,7 @@ export default function Posts({ post }) {
 			<div className="min-h-screen max-w-screen-lg mx-auto">
 				<div className="flex flex-col justify-center items-center">
 					<h2 className="font-bold text-4xl p-5 text-center">{post.title}</h2>
-					<div className="w-full h-96 lg:h-[500px] relative">
+					<div className="h-96 lg:h-[800px] min-w-full max-w-full relative">
 						<Image
 							src={post.coverImage.url}
 							fill
