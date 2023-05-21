@@ -11,6 +11,7 @@
   "dependencies": {
     "@next/font": "13.1.6",
     "@vercel/analytics": "^1.0.0",
+    "axios": "^1.4.0",
     "daisyui": "^2.50.0",
     "date-fns": "^2.29.3",
     "disqus-react": "^1.1.5",
@@ -21,7 +22,8 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.8.0",
-    "react-markdown": "^8.0.5"
+    "react-markdown": "^8.0.5",
+    "swr": "^2.1.5"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",
