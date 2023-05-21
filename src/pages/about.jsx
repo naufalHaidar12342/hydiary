@@ -107,34 +107,20 @@ export default function About({ authors, certificates, techStacks }) {
 					})}
 				</div>
 			</div>
-			<div className="divider text-3xl py-4">Tech stack</div>
+			<div className="divider text-3xl py-4">Website's tech stacks</div>
 			<div className="flex flex-col justify-center items-center pb-6">
 				<div className="grid lg:grid-cols-2 grid-cols-1 gap-3">
 					{techStacks.map((techs, key) => (
 						<div
-							className="card w-80 max-w-screen bg-columbia-blue shadow-xl"
+							className="card w-96 dark:bg-columbia-blue dark:text-black bg-github-dark text-white shadow-xl"
 							key={key}
 						>
-							<figure className="px-10 pt-10">
-								<Image
-									src={techs.technologyLogo.url}
-									alt={`Logo of ${techs.technologyName}`}
-									className="rounded-xl w-auto h-auto"
-									width={250}
-									height={140}
-								/>
-							</figure>
-							<div className="card-body items-center text-center text-black">
-								<h2 className="card-title">{techs.technologyName}</h2>
-								<p>{techs.technologySummary}</p>
-								<div className="card-actions">
-									<a
-										className="btn border-none bg-viridian text-white hover:bg-middle-blue-green hover:text-black"
-										href={techs.technologyWebsite}
-										target="_blank"
-										rel="noreferrer"
-									>
-										Visit
+							<div className="card-body">
+								<h2 className="card-title font-mono">{techs.technologyName}</h2>
+								<p className="font-mono">{techs.technologySummary}</p>
+								<div className="card-actions justify-end">
+									<a className="btn btn-accent" href={techs.technologyWebsite}>
+										More
 									</a>
 								</div>
 							</div>
@@ -176,9 +162,6 @@ export async function getStaticProps() {
 			technologyName
 			technologySummary
 			technologyWebsite
-			technologyLogo {
-				url
-			}
 		}
 	}`);
 

@@ -6,8 +6,6 @@ import Link from "next/link";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 export default function Posts({ post }) {
-	const disqusWebsiteShortname = "naufalhaidar12342-cyou";
-
 	return (
 		<Layout pageTitle={post.title}>
 			<style global jsx>{`
@@ -78,10 +76,8 @@ export default function Posts({ post }) {
 					margin-inline-end: 0px;
 					padding-inline-start: 40px;
 				}
-				#thread__container > * {
-				}
 			`}</style>
-			<div className="min-h-screen max-w-screen-lg mx-auto">
+			<div className="min-h-screen max-w-screen-lg mx-auto px-8">
 				<div className="flex flex-col justify-center items-center">
 					<h2 className="font-bold text-4xl p-5 text-center">{post.title}</h2>
 					<div className="h-96 lg:h-[800px] min-w-full max-w-full relative">
@@ -102,6 +98,7 @@ export default function Posts({ post }) {
 					</ReactMarkdown>
 
 					<div className="flex flex-col justify-center items-center py-4">
+						<h3 className="my-5 text-2xl font-semibold">Author of the post:</h3>
 						<div
 							className="w-36 h-36 relative"
 							aria-label="Photo of article writer"
@@ -115,8 +112,8 @@ export default function Posts({ post }) {
 							/>
 						</div>
 						<div className="flex flex-col justify-center items-center p-3">
-							<h4 className="font-light">Author: {post.author.name}</h4>
-							<h4 className="font-light">
+							<h4 className="font-light text-lg">{post.author.name}</h4>
+							<h4 className="font-light text-lg">
 								Posted at {""}
 								{format(new Date(post.createdAt), "MMMM dd, yyyy hh:mm")}
 							</h4>
