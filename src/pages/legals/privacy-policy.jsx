@@ -52,7 +52,7 @@ export default function PrivacyPolicy() {
 							</div>
 						</div>
 						<div className="mb-10">
-							<h2 className="font-bold text-lg">Log Files</h2>
+							<h2 className="font-bold text-lg">📃 Log Files</h2>
 
 							<p className="mt-4">
 								naufalHaidar12342 follows a standard procedure of using log
@@ -77,7 +77,7 @@ export default function PrivacyPolicy() {
 							</p>
 						</div>
 						<div className="mb-10">
-							<h2 className="font-bold text-lg">Cookies and Web Beacons</h2>
+							<h2 className="font-bold text-lg">🍪 Cookies and Web Beacons</h2>
 
 							<p className="mt-4">
 								Like any other website, naufalHaidar12342 uses
@@ -134,7 +134,9 @@ export default function PrivacyPolicy() {
 							</p>
 						</div>
 						<div className="mb-10">
-							<h2 className="font-bold text-lg">Children&apos;s Information</h2>
+							<h2 className="font-bold text-lg">
+								🚸 Children&apos;s Information
+							</h2>
 
 							<p className="mt-4">
 								Another part of our priority is adding protection for children
@@ -153,7 +155,9 @@ export default function PrivacyPolicy() {
 							</p>
 						</div>
 						<div className="mb-10">
-							<h2 className="font-bold text-lg">Online Privacy Policy Only</h2>
+							<h2 className="font-bold text-lg">
+								🌐 Online Privacy Policy Only
+							</h2>
 
 							<p>
 								This Privacy Policy applies only to our online activities and is
@@ -165,7 +169,7 @@ export default function PrivacyPolicy() {
 							</p>
 						</div>
 						<div className="mb-10">
-							<h2>Consent</h2>
+							<h2 className="font-bold text-lg">🤝 Consent</h2>
 
 							<p className="mt-4">
 								By using our website, you hereby consent to our Privacy Policy

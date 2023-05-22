@@ -1,6 +1,4 @@
 import Link from "next/link";
-import { FaTelegramPlane } from "react-icons/fa";
-import { SiGmail } from "react-icons/si";
 
 export default function Footer() {
 	return (
@@ -54,7 +52,7 @@ export default function Footer() {
 			</div>
 			<div>
 				<span className="footer-title opacity-100">Legal</span>
-				<Link href={"/privacy-policy"} className="link link-hover">
+				<Link href={"/legals/privacy-policy"} className="link link-hover">
 					Privacy policy
 				</Link>
 			</div>

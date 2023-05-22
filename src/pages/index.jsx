@@ -68,36 +68,6 @@ export default function Home({ posts, fact }) {
 						<ArticleCard allPost={blogPosts} key={key} />
 					))}
 				</div>
-				<div className="alert lg:w-1/2">
-					<div>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							viewBox="0 0 24 24"
-							className="stroke-info flex-shrink-0 w-6 h-6"
-						>
-							<path
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								strokeWidth="2"
-								d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-							></path>
-						</svg>
-						{!data ? (
-							<div>
-								<h3 className="font-bold">Did you know ?</h3>
-								<div className="text-xs">
-									Sea otter holding hand to prevent them drifting away
-								</div>
-							</div>
-						) : (
-							<div>
-								<h3 className="font-bold">Did you know ?</h3>
-								<div className="text-xs">{data.fact}</div>
-							</div>
-						)}
-					</div>
-				</div>
 			</div>
 		</Layout>
 	);
@@ -108,7 +78,7 @@ export async function getStaticProps() {
 	);
 	const { posts } = await client.request(`
 	{
-		posts(orderBy: createdAt_DESC, first:3) {
+		posts(orderBy: createdAt_DESC, first:2) {
 			id
 			title
 			createdAt

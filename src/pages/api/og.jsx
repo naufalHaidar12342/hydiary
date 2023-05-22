@@ -40,7 +40,7 @@ export default function handler(request) {
 					>
 						<img
 							src="https://media.graphassets.com/gOl4JN4qQX62y0LPUGRR"
-							alt="Vercel logo"
+							alt="Next.js logo"
 							style={{ margin: "0 30px" }}
 							width={400}
 							height={400}
