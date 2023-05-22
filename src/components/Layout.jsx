@@ -17,7 +17,22 @@ export default function Layout({ children, pageTitle = "naufalHaidar12342" }) {
 				<meta
 					property="og:image"
 					content="*.naufalhaidar12342.cyou/api/og?title=naufalHaidar12342"
-				></meta>
+				/>
+				<meta property="og:title" content="naufalHaidar12342 blog" />
+				<meta
+					property="og:description"
+					content="Personal blog of Naufal Haidar (naufalHaidar12342)"
+				/>
+				<meta
+					property="twitter:image"
+					content="/nextjs-logotype-dark-background.png"
+				/>
+				<meta property="twitter:card" content="summary_large_image" />
+				<meta property="twitter:title" content="Twitter link preview title" />
+				<meta
+					property="twitter:description"
+					content="Twitter link preview description"
+				/>
 			</Head>
 			<NavigationBar />
 			{children}
