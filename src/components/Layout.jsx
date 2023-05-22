@@ -14,6 +14,10 @@ export default function Layout({ children, pageTitle = "naufalHaidar12342" }) {
 				/>
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
+				<meta
+					property="og:image"
+					content="*.naufalhaidar12342.cyou/api/og?title=naufalHaidar12342"
+				></meta>
 			</Head>
 			<NavigationBar />
 			{children}
