@@ -14,7 +14,10 @@ export default function Layout({ children, pageTitle = "naufalHaidar12342" }) {
 				/>
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
-				<meta property="og:image" content="naufalhaidar12342.cyou/api/og" />
+				<meta
+					property="og:image"
+					content="https://media.graphassets.com/FPEW9sqbRGG6DLT5NLih"
+				/>
 				<meta property="og:title" content="naufalHaidar12342 blog" />
 				<meta
 					property="og:description"
@@ -22,7 +25,7 @@ export default function Layout({ children, pageTitle = "naufalHaidar12342" }) {
 				/>
 				<meta
 					property="twitter:image"
-					content="/nextjs-logotype-dark-background.png"
+					content="https://media.graphassets.com/FPEW9sqbRGG6DLT5NLih"
 				/>
 				<meta property="twitter:card" content="summary_large_image" />
 				<meta property="twitter:title" content="Twitter link preview title" />

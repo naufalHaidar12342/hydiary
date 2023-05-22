@@ -12,7 +12,7 @@ export default function handler(request) {
 		const hasTitle = searchParams.has("pageTitle");
 		const title = hasTitle
 			? searchParams.get("pageTitle")?.slice(0, 100)
-			: "naufalHaidar12342";
+			: "Naufal Haidar's blog";
 
 		return new ImageResponse(
 			(
@@ -39,11 +39,11 @@ export default function handler(request) {
 						}}
 					>
 						<img
-							src="/nextjs-logotype-dark-background.png"
+							src="https://media.graphassets.com/gOl4JN4qQX62y0LPUGRR"
 							alt="Vercel logo"
 							style={{ margin: "0 30px" }}
-							width={232}
-							height={200}
+							width={400}
+							height={400}
 						/>
 					</div>
 					<div
