@@ -7,7 +7,7 @@ import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 export default function Posts({ post }) {
 	return (
-		<Layout pageTitle={post.title}>
+		<Layout pageTitle={post.title} thumbnail={post.coverImage.url}>
 			<style global jsx>{`
 				.markdown-hygraph h3 {
 					font-weight: 600;

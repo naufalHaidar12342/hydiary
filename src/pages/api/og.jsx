@@ -13,7 +13,10 @@ export default function handler(request) {
 		const title = hasTitle
 			? searchParams.get("pageTitle")?.slice(0, 100)
 			: "Naufal Haidar's blog";
-
+		const hasThumbnail = searchParams.has("thumbnail");
+		const thumbnail = hasThumbnail
+			? searchParams.get("thumbnail")
+			: "https://media.graphassets.com/gOl4JN4qQX62y0LPUGRR";
 		return new ImageResponse(
 			(
 				<div
@@ -39,11 +42,11 @@ export default function handler(request) {
 						}}
 					>
 						<img
-							src="https://media.graphassets.com/gOl4JN4qQX62y0LPUGRR"
-							alt="Next.js logo"
+							src={thumbnail}
+							alt="Logo of article"
 							style={{ margin: "0 30px" }}
-							width={400}
-							height={400}
+							width={600}
+							height={320}
 						/>
 					</div>
 					<div
@@ -62,7 +65,7 @@ export default function handler(request) {
 					</div>
 				</div>
 			),
-			{ width: 1200, height: 630 }
+			{ width: 1200, height: 640 }
 		);
 	} catch (error) {
 		console.error(`error open graph image generation= ${error.message}`);
