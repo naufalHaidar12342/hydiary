@@ -44,9 +44,8 @@ export default async function handler(request) {
 						<img
 							src={thumbnail}
 							alt="Logo of article"
-							style={{ margin: "0 30px" }}
-							width="100%"
-							height="100%"
+							width={600}
+							height={500}
 						/>
 					</div>
 					<div
