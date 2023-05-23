@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { NextRequest } from "next/server";
 const { ImageResponse } = require("@vercel/og");
 
@@ -41,7 +42,7 @@ export default async function handler(request) {
 							justifyItems: "center",
 						}}
 					>
-						<img
+						<Image
 							src={thumbnail}
 							alt="Logo of article"
 							width={600}
