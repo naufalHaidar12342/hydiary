@@ -7,14 +7,3 @@
 		color-scheme: dark;
 	}
 }
-
-@layer utilities {
-	.markdown-hygraph-lg-img {
-		height: 100%;
-		margin-left: auto;
-		margin-right: auto;
-		max-width: 100%;
-		border-radius: 1rem;
-		object-fit: cover;
-	}
-}

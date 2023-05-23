@@ -11,6 +11,10 @@ export default function ArticleCard({ allPost }) {
 					alt="Cover image of post"
 					fill
 					style={{ objectFit: "cover" }}
+					priority={true}
+					sizes="(max-width: 768px) 100vw"
+					placeholder="blur"
+					blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPsnnqyHgAGBgJq/yXBZAAAAABJRU5ErkJggg=="
 				/>
 			</figure>
 			<div className="card-body xl:w-1/2">
