@@ -7,7 +7,11 @@ import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 export default function Posts({ post }) {
 	return (
-		<Layout pageTitle={post.title} thumbnail={post.coverImage.url}>
+		<Layout
+			pageTitle={post.title}
+			thumbnail={post.coverImage.url}
+			articleDesc={post.excerpt}
+		>
 			<style global jsx>{`
 				.markdown-hygraph h3 {
 					font-weight: 600;
@@ -88,6 +92,9 @@ export default function Posts({ post }) {
 							className="lg:rounded-2xl"
 							alt="Cover image of post"
 							style={{ objectFit: "cover" }}
+							sizes="(max-width: 768px) 100vw"
+							placeholder="blur"
+							blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPUMmCrBwABzQDh9QSszwAAAABJRU5ErkJggg=="
 						/>
 					</div>
 					<span className="text-xl text-center p-2 italic">
