@@ -5,9 +5,9 @@ export const config = {
 	runtime: "edge",
 };
 
-export default function handler(request) {
+export default async function handler(request) {
 	try {
-		const { searchParams } = new URL(request.url);
+		const { searchParams } = request.nextUrl;
 
 		const hasTitle = searchParams.has("pageTitle");
 		const title = hasTitle
@@ -21,8 +21,8 @@ export default function handler(request) {
 			(
 				<div
 					style={{
-						backgroundColor: "black",
-						backgroundSize: "150px 150px",
+						color: "black",
+						background: "#F6F6F6",
 						height: "100%",
 						width: "100%",
 						display: "flex",
@@ -45,16 +45,17 @@ export default function handler(request) {
 							src={thumbnail}
 							alt="Logo of article"
 							style={{ margin: "0 30px" }}
-							width={600}
-							height={320}
+							width="100%"
+							height="100%"
 						/>
 					</div>
 					<div
 						style={{
 							fontSize: 60,
-							fontStyle: "normal",
+							fontFamily:
+								"ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;",
 							letterSpacing: "-0.025em",
-							color: "white",
+							color: "black",
 							marginTop: 30,
 							padding: "0 120px",
 							lineHeight: 1.4,
