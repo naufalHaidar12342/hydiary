@@ -33,7 +33,7 @@ export default function ArticleCard({ allPost }) {
 						href={`/blogposts/${allPost.slug}`}
 						className="btn bg-viridian border-none text-white hover:bg-middle-blue-green hover:text-slate-800 w-full text-base font-medium normal-case"
 					>
-						Read More
+						Read full article
 					</Link>
 				</div>
 			</div>
