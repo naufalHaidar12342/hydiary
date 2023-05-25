@@ -52,7 +52,12 @@ export default function Footer() {
 			</div>
 			<div>
 				<span className="footer-title opacity-100">Legal</span>
-				<Link href={"/legals/privacy-policy"} className="link link-hover">
+				<Link
+					href={"/legals/privacy-policy"}
+					className="link link-hover"
+					target="_blank"
+					rel="noreferrer"
+				>
 					Privacy policy
 				</Link>
 			</div>
