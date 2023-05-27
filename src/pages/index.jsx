@@ -14,7 +14,7 @@ export default function Home({ posts, fact }) {
 		},
 		fetcher
 	);
-	console.log("data of facts=", data);
+	// console.log("data of facts=", data);
 	if (error) {
 		console.log("error fetching facts=", error);
 		return (
@@ -61,7 +61,7 @@ export default function Home({ posts, fact }) {
 	}
 	return (
 		<Layout pageTitle="Home">
-			<div className="flex flex-col justify-center items-center px-4 py-4">
+			<div className="flex flex-col justify-center items-center px-6 py-4">
 				<h2 className="text-3xl font-bold my-3">Latest posts</h2>
 				<div className="mx-auto">
 					{posts.map((blogPosts, key) => (

@@ -34,7 +34,7 @@ export default function Footer() {
 			<div>
 				<span className="footer-title opacity-100">Socials</span>
 				<a
-					className="link link-hover"
+					className="link link-hover py-7 lg:py-0"
 					href="https://naufalhaidarr-qit1952.slack.com/team/U055EA48N6A"
 					rel={"noreferrer"}
 					target="_blank"
@@ -42,7 +42,7 @@ export default function Footer() {
 					Slack
 				</a>
 				<a
-					className="link link-hover opacity-100"
+					className="link link-hover opacity-100 py-7 lg:py-0"
 					href="https://t.me/heydar12342"
 					rel="noreferrer"
 					target="_blank"
@@ -51,7 +51,7 @@ export default function Footer() {
 				</a>
 			</div>
 			<div>
-				<span className="footer-title opacity-100">Legal</span>
+				<span className="footer-title opacity-100 py-7 lg:py-0">Legal</span>
 				<Link
 					href={"/legals/privacy-policy"}
 					className="link link-hover"

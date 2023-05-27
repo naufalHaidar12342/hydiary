@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function ArticleCard({ allPost }) {
 	return (
-		<div className="card lg:card-side bg-blue-bell text-white shadow-xl m-5 ">
+		<div className="card lg:card-side shadow-xl m-5 dark:bg-columbia-blue dark:text-black bg-github-dark text-white">
 			<figure className="w-full xl:w-1/2 h-96 relative">
 				<Image
 					src={allPost.coverImage.url}
@@ -31,7 +31,7 @@ export default function ArticleCard({ allPost }) {
 				<div className="card-actions justify-end mt-3">
 					<Link
 						href={`/blogposts/${allPost.slug}`}
-						className="btn bg-viridian border-none text-white hover:bg-middle-blue-green hover:text-slate-800 w-full text-base font-medium normal-case"
+						className="btn text-white w-full text-base font-medium normal-case"
 					>
 						Read full article
 					</Link>
