@@ -4,6 +4,7 @@ import { GraphQLClient } from "graphql-request";
 import Image from "next/image";
 import Link from "next/link";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import parse from "html-react-parser";
 
 export default function Posts({ post }) {
 	return (
@@ -97,9 +98,10 @@ export default function Posts({ post }) {
 							blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPUMmCrBwABzQDh9QSszwAAAABJRU5ErkJggg=="
 						/>
 					</div>
-					<span className="text-xl text-center p-2 italic">
-						{post.coverImageCredits}
+					<span className="markdown-hygraph text-xl text-center p-2 italic">
+						{parse(post.coverImageCredits)}
 					</span>
+
 					<ReactMarkdown className="markdown-hygraph p-4 ">
 						{post.content.markdown}
 					</ReactMarkdown>

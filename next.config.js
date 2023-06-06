@@ -12,5 +12,5 @@ const nextConfig = {
 		],
 	},
 };
-
+const ContentSecurityPolicy = ``;
 module.exports = nextConfig;
