@@ -15,8 +15,8 @@ export default function Projects({ projects }) {
 							<div className="w-full max-w-3xl mx-auto">
 								<div className="-my-6">
 									{/*item each of timeline, start from bottom*/}
-									{projects.map((project) => (
-										<div class="relative pl-8 sm:pl-32 py-6 group">
+									{projects.map((project, key) => (
+										<div class="relative pl-8 sm:pl-32 py-6 group" key={key}>
 											{/*purple label*/}
 											<div class="font-caveat font-medium text-2xl dark:text-columbia-blue text-black mb-1 sm:mb-0">
 												{project.projectTitle}

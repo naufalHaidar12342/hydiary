@@ -1,3 +1,6 @@
+import { MdOutlineAndroid } from "react-icons/md";
+import { BsGlobe } from "react-icons/bs";
+import { GoRepo } from "react-icons/go";
 <div className="flex flex-col justify-center items-center p-6">
 	<h1 className="text-3xl my-4">Projects</h1>
 	<div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
