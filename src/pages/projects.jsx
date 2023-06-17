@@ -1,58 +1,58 @@
 import Layout from "@/components/Layout";
 import { GraphQLClient } from "graphql-request";
-import { GoRepo } from "react-icons/go";
 import { MdOutlineAndroid } from "react-icons/md";
 import { BsGlobe } from "react-icons/bs";
+import { format } from "date-fns";
+
 export default function Projects({ projects }) {
 	return (
 		<Layout pageTitle="Projects">
-			<div className="flex flex-col justify-center items-center p-6">
-				<h1 className="text-3xl my-4">Projects</h1>
-				<div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
-					{projects.map((project, key) => (
-						<div
-							className="card lg:w-96 dark:bg-columbia-blue dark:text-black bg-github-dark text-white shadow-xl"
-							key={key}
-						>
-							<div className="card-body">
-								<h2 className="card-title">
-									<GoRepo className="inline-block" />
-									{project.projectTitle}
-								</h2>
-								<div
-									className={
-										"badge p-4  " +
-										(project.projectPlatform == "Android"
-											? "badge-accent"
-											: "badge-info")
-									}
-								>
-									Platform: {project.projectPlatform}{" "}
-									{project.projectPlatform == "Android" ? (
-										<MdOutlineAndroid className="ml-2 inline-block text-xl" />
-									) : (
-										<BsGlobe className="ml-2 inline-block text-xl" />
-									)}
-								</div>
-								<p>{project.projectShortDescription}</p>
-								<div className="card-actions justify-end">
-									<a
-										className={
-											"btn " +
-											(project.projectPlatform == "Android"
-												? "btn-accent"
-												: "btn-info")
-										}
-										href={project.projectsRepositoryLink}
-										rel="noreferrer"
-										target="_blank"
-									>
-										Repository
-									</a>
+			<div className="relative antialiased">
+				<div className="relative min-h-screen flex flex-col justify-start overflow-hidden">
+					<div className="w-full max-w-6xl mx-auto px-4 md:px-6 py-24">
+						<h2 className="text-center text-3xl">History of my projects</h2>
+						<div className="flex flex-col justify-center divide-y divide-slate-200 [&>*]:py-16">
+							<div className="w-full max-w-3xl mx-auto">
+								<div className="-my-6">
+									{/*item each of timeline, start from bottom*/}
+									{projects.map((project) => (
+										<div class="relative pl-8 sm:pl-32 py-6 group">
+											{/*purple label*/}
+											<div class="font-caveat font-medium text-2xl dark:text-columbia-blue text-black mb-1 sm:mb-0">
+												{project.projectTitle}
+											</div>
+											{/*<!-- Vertical line (::before) ~ Date ~ Title ~ Circle marker (::after)*/}
+											<div class="flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden before:absolute before:left-2 sm:before:left-0 before:h-full before:px-px before:bg-slate-400 sm:before:ml-[6.5rem] before:self-start before:-translate-x-1/2 before:translate-y-3 after:absolute after:left-2 sm:after:left-0 after:w-2 after:h-2 after:bg-viridian after:border-4 after:box-content after:border-slate-50 after:rounded-full sm:after:ml-[6.5rem] after:-translate-x-1/2 after:translate-y-1.5">
+												<time class="sm:absolute -left-14 translate-y-0.5 inline-flex items-center justify-center text-xs font-semibold uppercase w-36 h-6 mb-3 sm:mb-0 text-emerald-600 bg-emerald-100 rounded-full">
+													{format(
+														new Date(project.repositoryCreatedDate),
+														"MMMM dd, yyyy"
+													)}
+												</time>
+												{project.projectPlatform === "Web" ? (
+													<div class="text-xl font-bold text-slate-900 dark:text-middle-blue-green">
+														Platform:{" "}
+														<BsGlobe className="inline-block w-6 h-6" />
+														{project.projectPlatform}{" "}
+													</div>
+												) : (
+													<div class="text-xl font-bold text-slate-900 dark:text-middle-blue-green">
+														Platform:{" "}
+														<MdOutlineAndroid className="inline-block w-6 h-6" />{" "}
+														{project.projectPlatform}{" "}
+													</div>
+												)}
+											</div>
+											{/*<!-- Content -->*/}
+											<div class="text-slate-600 dark:text-columbia-blue">
+												{project.projectShortDescription}
+											</div>
+										</div>
+									))}
 								</div>
 							</div>
 						</div>
-					))}
+					</div>
 				</div>
 			</div>
 		</Layout>
@@ -65,11 +65,12 @@ export async function getStaticProps() {
 	);
 	const { projects } = await client.request(`
 	{
-		projects(orderBy: publishedAt_DESC) {
+		projects(orderBy: repositoryCreatedDate_ASC) {
 			projectTitle
 			projectPlatform
 			projectShortDescription
 			projectsRepositoryLink
+			repositoryCreatedDate
 		}
 	}`);
 

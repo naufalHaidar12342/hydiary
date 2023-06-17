@@ -6,7 +6,7 @@ export default function Layout({
 	children,
 	pageTitle = "🌏 naufalHaidar12342 blog",
 	thumbnail = "https://media.graphassets.com/gOl4JN4qQX62y0LPUGRR",
-	articleDesc = "Personal blog of Naufal Haidar (naufalHaidar12342)",
+	articleDesc = "Feel free to read my blog posts 🙏",
 }) {
 	return (
 		<div>
