@@ -2,9 +2,7 @@ import Layout from "@/components/Layout";
 import { format } from "date-fns";
 import { GraphQLClient } from "graphql-request";
 import Image from "next/image";
-import Link from "next/link";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import parse from "html-react-parser";
 import Giscus from "@giscus/react";
 
 export default function Posts({ post }) {
@@ -99,9 +97,9 @@ export default function Posts({ post }) {
 							blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPUMmCrBwABzQDh9QSszwAAAABJRU5ErkJggg=="
 						/>
 					</div>
-					<span className="markdown-hygraph text-xl text-center p-2 italic">
-						{parse(post.coverImageCredits)}
-					</span>
+					<ReactMarkdown className="markdown-hygraph text-xl text-center p-2 italic">
+						{post.coverImageCredits}
+					</ReactMarkdown>
 					<div className="flex gap-4 py-4">
 						<div className="">
 							<div
