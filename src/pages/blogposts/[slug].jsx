@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import parse from "html-react-parser";
+import Giscus from "@giscus/react";
 
 export default function Posts({ post }) {
 	return (
@@ -101,39 +102,89 @@ export default function Posts({ post }) {
 					<span className="markdown-hygraph text-xl text-center p-2 italic">
 						{parse(post.coverImageCredits)}
 					</span>
-
-					<ReactMarkdown className="markdown-hygraph p-4 ">
+					<div className="flex gap-4 py-4">
+						<div className="">
+							<div
+								className="w-24 h-24 relative"
+								aria-label="Photo of article writer"
+							>
+								<Image
+									src={post.author.picture.url}
+									className={"rounded-full"}
+									fill
+									style={{ objectFit: "cover" }}
+									alt="Photo of article writer"
+								/>
+							</div>
+						</div>
+						<div className="flex flex-col justify-center content-center">
+							<h3 className="font-light text-xl">{post.author.name}</h3>
+							<h3 className="font-light text-xl">
+								{format(new Date(post.createdAt), "MMMM dd, yyyy hh:mm")}
+							</h3>
+						</div>
+					</div>
+					<ReactMarkdown className="markdown-hygraph p-4">
 						{post.content.markdown}
 					</ReactMarkdown>
-
-					<div className="flex flex-col justify-center items-center py-4">
-						<h3 className="my-5 text-2xl font-semibold">Author of the post:</h3>
-						<div
-							className="w-36 h-36 relative"
-							aria-label="Photo of article writer"
-						>
-							<Image
-								src={post.author.picture.url}
-								className={"rounded-full"}
-								fill
-								style={{ objectFit: "cover" }}
-								alt="Photo of article writer"
-							/>
+					<div className="flex flex-col justify-start content-center pt-5 px-4">
+						<p className="text-xl">
+							Thanks for reading this post! Feel free to comment below using
+							<a
+								href="https://github.com/giscus/giscus"
+								target="_blank"
+								rel="noreferrer"
+								className="link link-hover text-viridian"
+							>
+								{""} giscus
+							</a>
+							, an open-source comment system that use GitHub Discussion API
+							that is ads-free and do not track you. Keep in mind, you still
+							required to log in to GitHub to comment.
+						</p>
+						<div className="pt-4">
+							<p className="text-lg">
+								Just heard about GitHub? Hope these guides below could help you!
+							</p>
+							<ul
+								className="block list-disc"
+								style={{
+									marginInlineStart: "0px",
+									marginInlineEnd: "0px",
+									marginBlockStart: "1em",
+									marginBlockEnd: "1em",
+									paddingInlineStart: "40px",
+								}}
+							>
+								<li>
+									What is GitHub?:{" "}
+									<a
+										href="https://www.youtube.com/watch?v=tRZGeaHPoaw&t=2006s"
+										target="_blank"
+										rel="noreferrer"
+										className="text-viridian link link-hover"
+									>
+										Git and GitHub for Beginners Tutorial - Kevin Stratvert
+									</a>
+									{""} (P.S: the explanation start at minute 32:42)
+								</li>
+							</ul>
 						</div>
-						<div className="flex flex-col justify-center items-center p-3">
-							<h4 className="font-light text-lg">{post.author.name}</h4>
-							<h4 className="font-light text-lg">
-								Posted at {""}
-								{format(new Date(post.createdAt), "MMMM dd, yyyy hh:mm")}
-							</h4>
-						</div>
-						<Link
-							href={"/blogposts/all-post"}
-							className="btn bg-viridian border-none w-full text-white hover:bg-uranian-blue hover:text-black"
-						>
-							All post
-						</Link>
 					</div>
+				</div>
+				<div className="py-5">
+					<Giscus
+						term="Hello! Please keep the comment section civil and respectful."
+						category="General"
+						mapping="title"
+						repo="naufalHaidar12342/my-personal-blog-nextjs"
+						repoId="R_kgDOI6RB1w"
+						categoryId="DIC_kwDOI6RB184CXSMO"
+						inputPosition="top"
+						reactionsEnabled="1"
+						theme={"preferred_color_scheme"}
+						loading="lazy"
+					/>
 				</div>
 			</div>
 		</Layout>
