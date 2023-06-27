@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Footer() {
 	return (
-		<footer className="footer p-10 bg-middle-blue-green text-black">
+		<footer className="footer p-10 bg-dark-slate-gray text-white">
 			<div>
 				<svg
 					width="50"

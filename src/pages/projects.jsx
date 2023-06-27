@@ -18,25 +18,25 @@ export default function Projects({ projects }) {
 									{projects.map((project, key) => (
 										<div class="relative pl-8 sm:pl-32 py-6 group" key={key}>
 											{/*purple label*/}
-											<div class="font-caveat font-medium text-2xl dark:text-columbia-blue text-black mb-1 sm:mb-0">
+											<div class="font-caveat font-medium text-2xl dark:text-slate-200 text-black mb-1 sm:mb-0">
 												{project.projectTitle}
 											</div>
 											{/*<!-- Vertical line (::before) ~ Date ~ Title ~ Circle marker (::after)*/}
-											<div class="flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden before:absolute before:left-2 sm:before:left-0 before:h-full before:px-px before:bg-slate-400 sm:before:ml-[6.5rem] before:self-start before:-translate-x-1/2 before:translate-y-3 after:absolute after:left-2 sm:after:left-0 after:w-2 after:h-2 after:bg-viridian after:border-4 after:box-content after:border-slate-50 after:rounded-full sm:after:ml-[6.5rem] after:-translate-x-1/2 after:translate-y-1.5">
-												<time class="sm:absolute -left-14 translate-y-0.5 inline-flex items-center justify-center text-xs font-semibold uppercase w-36 h-6 mb-3 sm:mb-0 text-emerald-600 bg-emerald-100 rounded-full">
+											<div class="flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden before:absolute before:left-2 sm:before:left-0 before:h-full before:px-px before:bg-slate-400 sm:before:ml-[6.5rem] before:self-start before:-translate-x-1/2 before:translate-y-3 after:absolute after:left-2 sm:after:left-0 after:w-2 after:h-2 after:bg-deep-aquamarine after:border-4 after:box-content after:border-slate-50 after:rounded-full sm:after:ml-[6.5rem] after:-translate-x-1/2 after:translate-y-1.5">
+												<time class="sm:absolute -left-14 translate-y-0.5 inline-flex items-center justify-center text-xs font-semibold uppercase w-36 h-6 mb-3 sm:mb-0 text-dark-slate-gray bg-emerald-100 rounded-full">
 													{format(
 														new Date(project.repositoryCreatedDate),
 														"MMMM dd, yyyy"
 													)}
 												</time>
 												{project.projectPlatform === "Web" ? (
-													<div class="text-xl font-bold text-slate-900 dark:text-middle-blue-green">
+													<div class="text-xl font-bold text-black dark:text-slate-200">
 														Platform:{" "}
 														<BsGlobe className="inline-block w-6 h-6" />
 														{project.projectPlatform}{" "}
 													</div>
 												) : (
-													<div class="text-xl font-bold text-slate-900 dark:text-middle-blue-green">
+													<div class="text-xl font-bold text-black dark:text-slate-200">
 														Platform:{" "}
 														<MdOutlineAndroid className="inline-block w-6 h-6" />{" "}
 														{project.projectPlatform}{" "}
