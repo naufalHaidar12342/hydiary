@@ -75,13 +75,13 @@ export default function About({ authors, certificates, techStacks }) {
 							<a href="" className="link link-hover">
 								devardha
 							</a>{" "}
-							, this website is kind of a diary for me to tell you what's in my
-							mind. Be it about games, personal experience, programming
+							, this website acts as a diary for me to tell you what&apos;s in
+							my mind. Be it about games, personal experience, programming
 							tutorial, it will be catalogued here.
 						</p>
 						<p className="pt-2">
-							I hope you will find something useful here. Don't worry, this site
-							doesn't contain any ads, so you can read it without any
+							I hope you will find something useful here. Don&apos;t worry, this
+							site doesn&apos;t contain any ads, so you can read it without any
 							distraction.
 						</p>
 					</div>

@@ -44,7 +44,7 @@ export default function AllPosts({ posts }) {
 								</span>
 								<div className="flex flex-col">
 									{allPost.tags.map((postGenre, key) => (
-										<div className="py-1">
+										<div className="py-1" key={key}>
 											<div className="badge badge-outline badge-lg" key={key}>
 												{postGenre}
 											</div>
