@@ -53,7 +53,7 @@ export default function Posts({ post }) {
 
 				.markdown-hygraph a {
 					cursor: pointer;
-					color: #478978;
+					color: #367564;
 					text-decoration: underline;
 				}
 				.markdown-hygraph blockquote {
@@ -122,17 +122,17 @@ export default function Posts({ post }) {
 							</h3>
 						</div>
 					</div>
-					<ReactMarkdown className="markdown-hygraph p-4">
+					<ReactMarkdown className="markdown-hygraph p-4 ">
 						{post.content.markdown}
 					</ReactMarkdown>
-					<div className="flex flex-col justify-start content-center pt-5 px-4">
+					<div className="flex flex-col justify-start content-center pt-5 px-4 dark:text-slate-200 text-black">
 						<p className="text-xl">
 							Thanks for reading this post! Feel free to comment below using
 							<a
 								href="https://github.com/giscus/giscus"
 								target="_blank"
 								rel="noreferrer"
-								className="link link-hover text-viridian"
+								className="link link-hover text-amazon-green"
 							>
 								{""} giscus
 							</a>
@@ -160,7 +160,7 @@ export default function Posts({ post }) {
 										href="https://www.youtube.com/watch?v=tRZGeaHPoaw&t=2006s"
 										target="_blank"
 										rel="noreferrer"
-										className="text-viridian link link-hover"
+										className="dark:text-white text-black font-bold link link-hover"
 									>
 										Git and GitHub for Beginners Tutorial - Kevin Stratvert
 									</a>

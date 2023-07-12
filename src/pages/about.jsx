@@ -23,18 +23,20 @@ export default function About({ authors, certificates, techStacks }) {
 					<div>
 						{authors.map((authorInfo, key) => (
 							<div key={key}>
-								<h1 className="text-5xl font-bold">
+								<h2 className="text-4xl font-semibold dark:text-slate-200 text-black">
 									Hi, I&apos;m {authorInfo.name} !👋
-								</h1>
-								<p className="py-6 font-medium text-2xl">
+								</h2>
+								<p className="py-6 font-normal text-2xl dark:text-slate-200 text-black">
 									{authorInfo.biography}
 								</p>
-								<p className="font-medium text-xl">Contact:</p>
+								<p className="font-normal text-xl dark:text-slate-200 text-black">
+									Contact:
+								</p>
 								<div className="">
 									<ul>
 										<li>
 											<a
-												className="font-medium text-xl link link-hover text-black dark:text-middle-blue-green "
+												className="font-semibold text-xl link link-hover text-black dark:text-jet-stream "
 												href="mailto:naufalhaidar12342@gmail.com"
 												target={"_blank"}
 												rel={"noreferrer"}
@@ -45,7 +47,7 @@ export default function About({ authors, certificates, techStacks }) {
 										</li>
 										<li>
 											<a
-												className="text-xl font-medium link link-hover text-black dark:text-middle-blue-green "
+												className="text-xl font-semibold link link-hover text-black dark:text-jet-stream "
 												href="https://t.me/heydar12342"
 												target={"_blank"}
 												rel={"noreferrer"}
@@ -61,71 +63,28 @@ export default function About({ authors, certificates, techStacks }) {
 					</div>
 				</div>
 			</div>
-			<div className="divider text-3xl">Certificates</div>
-			<div className="p-4 lg:max-w-6xl mx-auto">
-				<div className="carousel w-full">
-					{certificates.map((certificate, index) => {
-						//lg: h-800px, w-1200px
-						//smaller than lg: h-250px, w-360px
-						return (
-							<div
-								id={`slide-${certificate.id}`}
-								key={certificate.id}
-								className="carousel-item relative w-full lg:h-[800px] h-[250px]"
-							>
-								<Image
-									fill
-									style={{ objectFit: "contain" }}
-									src={certificate.certificateImage.url}
-									className="w-full"
-									alt={certificate.certificateName}
-								/>
-								<div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-									<a
-										href={`#slide-${
-											certificates[
-												index === 0 ? certificates.length - 1 : index - 1
-											].id
-										}`}
-										className="btn btn-circle lg:btn-lg"
-									>
-										❮
-									</a>
-									<a
-										href={`#slide-${
-											certificates[
-												index === certificates.length - 1 ? 0 : index + 1
-											].id
-										}`}
-										className="btn btn-circle lg:btn-lg"
-									>
-										❯
-									</a>
-								</div>
-							</div>
-						);
-					})}
-				</div>
-			</div>
-			<div className="divider text-3xl py-4">Website&apos;s tech stacks</div>
-			<div className="flex flex-col justify-center items-center pb-6">
-				<div className="grid lg:grid-cols-2 grid-cols-1 gap-3">
-					{techStacks.map((techs, key) => (
-						<div
-							className="card w-96 dark:bg-columbia-blue dark:text-black bg-github-dark text-white shadow-xl"
-							key={key}
-						>
-							<div className="card-body">
-								<h2 className="card-title font-mono">{techs.technologyName}</h2>
-								<p className="font-mono">{techs.technologySummary}</p>
-								<div className="card-actions justify-end">
-									<a className="btn btn-accent" href={techs.technologyWebsite}>
-										More
-									</a>
-								</div>
-							</div>
-						</div>
-					))}
+			{/* section below talks about website */}
+			<div className="hero h-96 w-full">
+				<div className="flex flex-col hero-content max-w-7xl lg:flex-row-reverse">
+					<h2 className="text-4xl font-semibold dark:text-slate-200 text-black">
+						About Website
+					</h2>
+					<div className="text-2xl">
+						<p>
+							Co-authored by the good friend of author,
+							<a href="" className="link link-hover">
+								devardha
+							</a>{" "}
+							, this website acts as a diary for me to tell you what&apos;s in
+							my mind. Be it about games, personal experience, programming
+							tutorial, it will be catalogued here.
+						</p>
+						<p className="pt-2">
+							I hope you will find something useful here. Don&apos;t worry, this
+							site doesn&apos;t contain any ads, so you can read it without any
+							distraction.
+						</p>
+					</div>
 				</div>
 			</div>
 		</Layout>

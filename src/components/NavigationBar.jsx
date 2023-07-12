@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function NavigationBar() {
 	return (
-		<div className="navbar bg-viridian text-white font-medium ">
+		<div className="navbar bg-dark-slate-gray text-white font-semibold ">
 			<div className="navbar-start">
 				<div className="dropdown">
 					<label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -23,12 +23,12 @@ export default function NavigationBar() {
 					</label>
 					<ul
 						tabIndex={0}
-						className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-xl"
+						className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-dark-slate-gray rounded-box w-52 text-xl"
 					>
 						<li>
 							<Link
 								href={"/blogposts/all-post"}
-								className="active:bg-uranian-blue active:text-slate-800"
+								className="active:bg-amazon-green active:text-white"
 							>
 								Posts
 							</Link>
@@ -36,7 +36,7 @@ export default function NavigationBar() {
 						<li>
 							<Link
 								href={"/projects"}
-								className="active:bg-uranian-blue active:text-slate-800"
+								className="active:bg-amazon-green active:text-white"
 							>
 								Projects
 							</Link>
@@ -44,7 +44,7 @@ export default function NavigationBar() {
 						<li>
 							<Link
 								href={"/about"}
-								className="active:bg-uranian-blue active:text-slate-800"
+								className="active:bg-amazon-green active:text-white"
 							>
 								About
 							</Link>
@@ -56,11 +56,11 @@ export default function NavigationBar() {
 				</Link>
 			</div>
 			<div className="navbar-center hidden lg:flex">
-				<ul className="menu menu-horizontal px-1 text-2xl ">
+				<ul className="menu menu-horizontal px-1 text-2xl">
 					<li>
 						<Link
 							href={"/blogposts/all-post"}
-							className="active:bg-uranian-blue active:text-slate-800"
+							className="active:bg-amazon-green active:text-white"
 						>
 							Posts
 						</Link>
@@ -68,7 +68,7 @@ export default function NavigationBar() {
 					<li>
 						<Link
 							href={"/projects"}
-							className="active:bg-uranian-blue active:text-slate-800"
+							className="active:bg-amazon-green active:text-white"
 						>
 							Projects
 						</Link>
@@ -76,7 +76,7 @@ export default function NavigationBar() {
 					<li>
 						<Link
 							href={"/about"}
-							className="active:bg-uranian-blue active:text-slate-800"
+							className="active:bg-amazon-green active:text-white"
 						>
 							About
 						</Link>
