@@ -31,7 +31,7 @@ export default function ArticleCard({ allPost }) {
 				<div className="card-actions justify-end mt-3">
 					<Link
 						href={`/blogposts/${allPost.slug}`}
-						className="btn bg-jet-stream border-none shadow text-black w-full text-base font-medium normal-case"
+						className="btn bg-jet-stream hover:bg-cambridge-blue border-none shadow text-black w-full text-base font-medium normal-case"
 					>
 						Read full article
 					</Link>

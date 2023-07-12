@@ -1,6 +1,8 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function NavigationBar() {
+	const router = useRouter();
 	return (
 		<div className="navbar bg-dark-slate-gray text-white font-semibold ">
 			<div className="navbar-start">
@@ -57,10 +59,10 @@ export default function NavigationBar() {
 			</div>
 			<div className="navbar-center hidden lg:flex">
 				<ul className="menu menu-horizontal px-1 text-2xl">
-					<li>
+					<li className={router.pathname === "/blogposts/all-post" ? "" : ""}>
 						<Link
 							href={"/blogposts/all-post"}
-							className="active:bg-amazon-green active:text-white"
+							className={"active:bg-jet-stream active:text-black "}
 						>
 							Posts
 						</Link>
@@ -68,7 +70,7 @@ export default function NavigationBar() {
 					<li>
 						<Link
 							href={"/projects"}
-							className="active:bg-amazon-green active:text-white"
+							className={"active:bg-jet-stream active:text-black"}
 						>
 							Projects
 						</Link>
@@ -76,7 +78,7 @@ export default function NavigationBar() {
 					<li>
 						<Link
 							href={"/about"}
-							className="active:bg-amazon-green active:text-white"
+							className={"active:bg-jet-stream active:text-black"}
 						>
 							About
 						</Link>
