@@ -18,8 +18,6 @@ export default function Home({ posts }) {
 	);
 }
 export async function getStaticProps() {
-	const api =
-		"https://api-ap-southeast-2.hygraph.com/v2/cl7gawkjl7suf01uhdrd42szp/master";
 	const client = new GraphQLClient(process.env.HYGRAPH_HIPERF_API);
 	const { posts } = await client.request(`
 	{

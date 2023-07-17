@@ -26,7 +26,7 @@ export default function Projects({ projects }) {
 											</div>
 											{/*<!-- Vertical line (::before) ~ Date ~ Title ~ Circle marker (::after)*/}
 											<div className="flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden before:absolute before:left-2 sm:before:left-0 before:h-full before:px-px before:bg-slate-400 sm:before:ml-[6.5rem] before:self-start before:-translate-x-1/2 before:translate-y-3 after:absolute after:left-2 sm:after:left-0 after:w-2 after:h-2 after:bg-deep-aquamarine after:border-4 after:box-content after:border-slate-50 after:rounded-full sm:after:ml-[6.5rem] after:-translate-x-1/2 after:translate-y-1.5">
-												<time class="sm:absolute -left-14 translate-y-0.5 inline-flex items-center justify-center text-xs font-semibold uppercase w-36 h-6 mb-3 sm:mb-0 text-dark-slate-gray bg-emerald-100 rounded-full">
+												<time className="sm:absolute -left-14 translate-y-0.5 inline-flex items-center justify-center text-xs font-semibold uppercase w-36 h-6 mb-3 sm:mb-0 text-dark-slate-gray bg-emerald-100 rounded-full">
 													{format(
 														new Date(project.repositoryCreatedDate),
 														"MMMM dd, yyyy"
@@ -63,9 +63,7 @@ export default function Projects({ projects }) {
 }
 
 export async function getStaticProps() {
-	const client = new GraphQLClient(
-		"https://ap-southeast-2.cdn.hygraph.com/content/cl7gawkjl7suf01uhdrd42szp/master"
-	);
+	const client = new GraphQLClient(process.env.HYGRAPH_HIPERF_API);
 	const { projects } = await client.request(`
 	{
 		projects(orderBy: repositoryCreatedDate_ASC) {
