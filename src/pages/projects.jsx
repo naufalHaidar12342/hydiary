@@ -9,7 +9,7 @@ export default function Projects({ projects }) {
 		<Layout pageTitle="Projects">
 			<div className="relative antialiased">
 				<div className="relative min-h-screen flex flex-col justify-start overflow-hidden">
-					<div className="w-full max-w-6xl mx-auto px-4 md:px-6 py-24">
+					<div className="w-full max-w-2xl mx-auto px-5 lg:px-10 lg:max-w-7xl py-10">
 						<h2 className="text-center text-3xl">History of my projects</h2>
 						<div className="flex flex-col justify-center divide-y divide-slate-200 [&>*]:py-16">
 							<div className="w-full max-w-3xl mx-auto">
