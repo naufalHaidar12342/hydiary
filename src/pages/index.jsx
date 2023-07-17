@@ -18,9 +18,7 @@ export default function Home({ posts }) {
 	);
 }
 export async function getStaticProps() {
-	const client = new GraphQLClient(
-		"https://api-ap-southeast-2.hygraph.com/v2/cl7gawkjl7suf01uhdrd42szp/master"
-	);
+	const client = new GraphQLClient(process.env.HYGRAPH_HIPERF_API);
 	const { posts } = await client.request(`
 	{
 		posts(orderBy: createdAt_DESC, first:2) {

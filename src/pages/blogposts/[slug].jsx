@@ -84,7 +84,7 @@ export default function Posts({ post }) {
 			<div className="min-h-screen max-w-screen-lg mx-auto px-8">
 				<div className="flex flex-col justify-center items-center">
 					<h2 className="font-bold text-4xl p-5 text-center ">{post.title}</h2>
-					<div className="h-96 lg:h-[800px] min-w-full max-w-full relative">
+					<div className="h-96 lg:h-[600px] min-w-full max-w-full relative">
 						<Image
 							src={post.coverImage.url}
 							fill
@@ -189,9 +189,7 @@ export default function Posts({ post }) {
 	);
 }
 export async function getStaticPaths() {
-	const client = new GraphQLClient(
-		"https://api-ap-southeast-2.hygraph.com/v2/cl7gawkjl7suf01uhdrd42szp/master"
-	);
+	const client = new GraphQLClient(process.env.HYGRAPH_HIPERF_API);
 	const { posts } = await client.request(`{
 		posts(orderBy: id_ASC) {
 			slug

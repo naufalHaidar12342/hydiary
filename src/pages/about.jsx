@@ -68,9 +68,7 @@ export default function About({ authors, facts }) {
 }
 
 export async function getStaticProps() {
-	const client = new GraphQLClient(
-		"https://ap-southeast-2.cdn.hygraph.com/content/cl7gawkjl7suf01uhdrd42szp/master"
-	);
+	const client = new GraphQLClient(process.env.HYGRAPH_HIPERF_API);
 	const { authors } = await client.request(`
 		{
 			authors(where: {name: "Naufal Haidar Rauf"}) {
