@@ -44,7 +44,7 @@ export default function About({ authors, facts }) {
 							<a href="https://ardha.dev/" rel="noreferrer" target="_blank">
 								devardha
 							</a>
-							, serves as a diary for me to tell you what's on my mind. It will
+							, serves as a diary for me to tell you what is on my mind. It will
 							be cataloged here whether it is about games, personal experience,
 							or programming tutorials. I hope you find something helpful here.
 							Don&apos;t worry, this site is free of advertisements, so you may
