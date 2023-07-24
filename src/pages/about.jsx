@@ -2,11 +2,24 @@ import Layout from "@/components/Layout";
 import axios from "axios";
 import { GraphQLClient } from "graphql-request";
 import Image from "next/image";
+import useSWR from "swr";
+const fetcher = async (url) => {
+	const response = await axios.get(url, {
+		headers: {
+			"x-Api-Key": process.env.RANDOMFACTS_API_KEY,
+		},
+	});
+	return response.data;
+};
 
 export default function About({ authors, facts }) {
+	const { data, error } = useSWR(
+		"https://api.api-ninjas.com/v1/facts",
+		fetcher
+	);
 	return (
 		<Layout pageTitle="About">
-			<div className="hero min-h-screen dark:bg-base-200 dark:text-slate-200 text-black">
+			<div className="hero h-[500px] dark:bg-base-200 dark:text-slate-200 text-black">
 				<div className="hero-content flex-col lg:flex-row-reverse">
 					{authors.map((author, key) => (
 						<div key={key}>
@@ -53,11 +66,13 @@ export default function About({ authors, facts }) {
 					</div>
 				</div>
 			</div>
-			<div className="hero h-96 w-full dark:bg-base-200">
+			<div className="hero h-36 w-full dark:bg-base-200">
 				<div className="flex flex-col hero-content max-w-7xl lg:flex-row-reverse dark:text-slate-200 text-black">
 					<div className="text-2xl">
 						{facts.map((factGenerated, key) => (
-							<p key={key}>{factGenerated.fact}</p>
+							<p key={key} className="italic">
+								{factGenerated.fact}
+							</p>
 						))}
 					</div>
 					<h2 className="text-4xl font-semibold">random facts today</h2>
@@ -105,7 +120,23 @@ export async function getStaticProps() {
 		},
 	});
 	const facts = response.data;
-
+	// const fetcher = (url) =>
+	// 	axios
+	// 		.get(url, {
+	// 			headers: {
+	// 				"x-Api-Key": process.env.RANDOMFACTS_API_KEY,
+	// 			},
+	// 		})
+	// 		.then((res) => res.data);
+	// const { data, error } = useSWR(url, fetcher);
+	// if (error) {
+	// 	return {
+	// 		props: {
+	// 			facts: "Random facts unable to be fetched",
+	// 		},
+	// 	};
+	// }
+	const dataOfFacts = await fetcher(url);
 	return {
 		props: {
 			authors,
