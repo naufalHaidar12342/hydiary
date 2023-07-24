@@ -42,7 +42,7 @@ export default function Posts({ post }) {
 				}
 
 				.markdown-hygraph img {
-					height: 100%;
+					max-height: 100%;
 					margin-left: auto;
 					margin-right: auto;
 					min-width: 100%;
@@ -84,7 +84,7 @@ export default function Posts({ post }) {
 			<div className="min-h-screen max-w-screen-lg mx-auto px-8">
 				<div className="flex flex-col justify-center items-center">
 					<h2 className="font-bold text-4xl p-5 text-center ">{post.title}</h2>
-					<div className="h-96 lg:h-[600px] min-w-full max-w-full relative">
+					<div className="h-96 lg:h-[400px] min-w-full max-w-full relative">
 						<Image
 							src={post.coverImage.url}
 							fill
@@ -97,29 +97,36 @@ export default function Posts({ post }) {
 							blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPUMmCrBwABzQDh9QSszwAAAABJRU5ErkJggg=="
 						/>
 					</div>
+					{/* image credits section */}
 					<ReactMarkdown className="markdown-hygraph text-xl text-center p-2 italic">
 						{post.coverImageCredits}
 					</ReactMarkdown>
-					<div className="flex gap-4 py-4">
-						<div className="">
-							<div
-								className="w-24 h-24 relative"
-								aria-label="Photo of article writer"
-							>
-								<Image
-									src={post.author.picture.url}
-									className={"rounded-full"}
-									fill
-									style={{ objectFit: "cover" }}
-									alt="Photo of article writer"
-								/>
+					<div className="left-0 justify-start">
+						<div className="flex gap-4 py-4">
+							<div className="">
+								<div
+									className="w-24 h-24 relative"
+									aria-label="Photo of article writer"
+								>
+									<Image
+										src={post.author.picture.url}
+										className={"rounded-full"}
+										fill
+										style={{ objectFit: "cover" }}
+										alt="Photo of article writer"
+									/>
+								</div>
 							</div>
-						</div>
-						<div className="flex flex-col justify-center content-center">
-							<h3 className="font-light text-xl">{post.author.name}</h3>
-							<h3 className="font-light text-xl">
-								{format(new Date(post.createdAt), "MMMM dd, yyyy hh:mm")}
-							</h3>
+							<div className="flex flex-col justify-center content-center">
+								<h3 className="font-light text-xl font-mono">
+									Writer: {post.author.name}
+								</h3>
+								<h3 className="font-light text-xl font-mono">
+									{" "}
+									Posted at{" "}
+									{format(new Date(post.createdAt), "MMMM dd, yyyy hh:mm")}
+								</h3>
+							</div>
 						</div>
 					</div>
 					<ReactMarkdown className="markdown-hygraph p-4 ">
