@@ -38,7 +38,7 @@ export default function About({ authors, facts }) {
 						<div>
 							{authors.map((authorInfo, key) => (
 								<div key={key}>
-									<h2 className="text-4xl font-semibold ">
+									<h2 className="text-4xl font-semibold">
 										hi, I&apos;m Heydar!👋
 									</h2>
 									<p className="py-6 font-normal text-2xl ">
