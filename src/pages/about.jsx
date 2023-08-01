@@ -20,8 +20,7 @@ export default function About({ authors, facts }) {
 	return (
 		<Layout pageTitle="About">
 			<div className="flex flex-col justify-between items-center bg-base-200 p-4">
-
-				<div className="hero min-h-[250px] dark:bg-base-200 dark:text-slate-200 text-black" >
+				<div className="hero min-h-[250px] dark:bg-base-200 dark:text-slate-200 text-black">
 					<div className="hero-content flex-col lg:flex-row-reverse">
 						{authors.map((author, key) => (
 							<div key={key}>
@@ -50,7 +49,7 @@ export default function About({ authors, facts }) {
 					</div>
 				</div>
 				{/* section below talks about website */}
-				<div className=" hero min-h-[250px] dark:bg-base-200" >
+				<div className=" hero min-h-[250px] dark:bg-base-200">
 					<div className="hero-content flex-col lg:flex-row-reverse dark:text-slate-200 text-black">
 						<div className="text-4xl font-semibold ">about this website</div>
 						<div className="text-2xl">
@@ -59,20 +58,21 @@ export default function About({ authors, facts }) {
 								<a href="https://ardha.dev/" rel="noreferrer" target="_blank">
 									devardha
 								</a>
-								, serves as a diary for me to tell you what is on my mind. It will
-								be cataloged here whether it is about games, personal experience,
-								or programming tutorials. I hope you find something helpful here.
-								Don&apos;t worry, this site is free of advertisements, so you may
-								read it without interruption.
+								, serves as a diary for me to tell you what is on my mind. It
+								will be cataloged here whether it is about games, personal
+								experience, or programming tutorials. I hope you find something
+								helpful here. Don&apos;t worry, this site is free of
+								advertisements, so you may read it without interruption.
 							</p>
 						</div>
-
 					</div>
 				</div>
 				{/* section below talks about random facts */}
 				<div className="hero min-h-[250px] dark:bg-base-200">
-					<div className="hero-content flex-col  lg:flex-row-reverse dark:text-slate-200 text-black" >
-						<h2 className="text-4xl font-semibold lg:order-last">random facts today</h2>
+					<div className="hero-content flex-col  lg:flex-row-reverse dark:text-slate-200 text-black">
+						<h2 className="text-4xl font-semibold lg:order-last">
+							random facts today
+						</h2>
 						<div className="text-2xl">
 							{facts.map((factGenerated, key) => (
 								<p key={key} className="italic">
@@ -80,7 +80,6 @@ export default function About({ authors, facts }) {
 								</p>
 							))}
 						</div>
-
 					</div>
 				</div>
 			</div>
