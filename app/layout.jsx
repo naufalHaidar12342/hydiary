@@ -1,13 +1,28 @@
-export async function generateMetadata({}) {
-	return {
-		openGraph: {},
-	};
-}
+import { Akshar } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
+import Header from "@components/header";
+import Footer from "@components/footer";
+import "./globals.css";
+
+const akshar = Akshar({
+	subsets: ["latin"],
+	display: "swap",
+	weight: ["400", "500", "600"],
+});
+export const metadata = {
+	title: "naufalhaidar12342",
+	description: "Logging my stories, one at a time 📝",
+};
 
 export default function Layout({ children }) {
 	return (
-		<html lang="en">
-			<body>{children}</body>
+		<html lang="en" className={akshar.className}>
+			<body>
+				<Header />
+				{children}
+				<Analytics />
+				<Footer />
+			</body>
 		</html>
 	);
 }

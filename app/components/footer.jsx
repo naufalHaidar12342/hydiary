@@ -13,7 +13,7 @@ export default function Footer() {
 						target="_blank"
 						className="link link-hover"
 					>
-						{""}devardha
+						{""}devardha. Keep heaven bug-free, will you?
 					</a>
 				</p>
 			</div>
@@ -34,14 +34,6 @@ export default function Footer() {
 					target="_blank"
 				>
 					Telegram
-				</a>
-				<a
-					className="link link-hover opacity-100 py-7 lg:py-0"
-					href="mailto:naufalhaidar12342@gmail.com"
-					rel="noreferrer"
-					target="_blank"
-				>
-					E-mail
 				</a>
 			</div>
 			<div>
