@@ -1,13 +1,10 @@
 import { RANDOM_FACTS_URL } from "app/constants/random_facts_url";
 import Image from "next/image";
 
-export async function generateMetadata() {
-	const randomFacts = await getRandomFacts();
+export function metadata() {
 	return {
 		title: "About",
-		description: `Learn about authors and random facts of the day. Today fact is:  ${randomFacts.map(
-			(facts) => facts.fact
-		)}🤯`,
+		description: `Learn about authors and random facts of the day.`,
 	};
 }
 
