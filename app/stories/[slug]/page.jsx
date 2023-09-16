@@ -126,7 +126,6 @@ export default async function ReadStory({ params }) {
 					</div>
 					{/* cover image credits */}
 					<ReactMarkdown
-						children={story.coverImageCredits}
 						className="italic"
 						components={{
 							a: (link) => {
@@ -142,12 +141,15 @@ export default async function ReadStory({ params }) {
 								);
 							},
 						}}
-					/>
+					>
+						{story.coverImageCredits}
+					</ReactMarkdown>
 					<ReactMarkdown
-						children={story.content.markdown}
 						className="text-start"
 						components={CustomMarkdownComponents}
-					/>
+					>
+						{story.content.markdown}
+					</ReactMarkdown>
 				</div>
 			))}
 		</div>
