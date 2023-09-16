@@ -1,13 +1,18 @@
 "use client";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useSelectedLayoutSegment } from "next/navigation";
+// import { useEffect, useState } from "react";
+// import { MdOutlineWbSunny } from "react-icons/md";
+// import { RiMoonClearLine } from "react-icons/ri";
+
 export default function Header() {
-	// const router = useRouter();
+	const selectedLayoutSegment = useSelectedLayoutSegment();
+
 	return (
-		<div className="navbar bg-dark-slate-gray text-white font-semibold ">
+		<div className="navbar bg-base-100 text-white font-semibold ">
 			<div className="navbar-start">
 				<div className="dropdown">
-					<label tabIndex={0} className="btn btn-ghost lg:hidden">
+					<label tabIndex={0} className="btn dark:btn-ghost lg:hidden">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							className="h-5 w-5"
@@ -25,20 +30,28 @@ export default function Header() {
 					</label>
 					<ul
 						tabIndex={0}
-						className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-dark-slate-gray rounded-box w-52 text-xl"
+						className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-xl z-10 lg:z-0"
 					>
 						<li>
 							<Link
-								href={"/blogposts/all-post"}
-								className="active:bg-amazon-green active:text-white"
+								href={"/stories"}
+								className={
+									selectedLayoutSegment === "stories"
+										? "text-dark-slate-gray dark:text-jet-stream"
+										: "text-gray-900 dark:text-slate-200 hover:dark:text-slate-200"
+								}
 							>
-								Posts
+								Stories
 							</Link>
 						</li>
 						<li>
 							<Link
 								href={"/projects"}
-								className="active:bg-amazon-green active:text-white"
+								className={
+									selectedLayoutSegment === "projects"
+										? "text-dark-slate-gray dark:text-jet-stream"
+										: "text-gray-900 dark:text-slate-200 hover:dark:text-slate-200"
+								}
 							>
 								Projects
 							</Link>
@@ -46,14 +59,25 @@ export default function Header() {
 						<li>
 							<Link
 								href={"/about"}
-								className="active:bg-amazon-green active:text-white"
+								className={
+									selectedLayoutSegment === "abouts"
+										? "text-dark-slate-gray dark:text-jet-stream"
+										: "text-gray-900 dark:text-slate-200 hover:dark:text-slate-200"
+								}
 							>
 								About
 							</Link>
 						</li>
 					</ul>
 				</div>
-				<Link href={"/"} className="btn btn-ghost normal-case text-2xl">
+				<Link
+					href={"/"}
+					className={
+						selectedLayoutSegment === "/"
+							? "text-jet-stream"
+							: "text-gray-900 dark:text-slate-200 btn btn-ghost normal-case text-2xl"
+					}
+				>
 					naufalHaidar12342
 				</Link>
 			</div>
@@ -62,16 +86,24 @@ export default function Header() {
 					{/* task: add conditional rendering for each route to let user know on which page they're currently on */}
 					<li>
 						<Link
-							href={"/blogposts/all-post"}
-							className={"active:bg-jet-stream active:text-black "}
+							href={"/stories"}
+							className={
+								selectedLayoutSegment === "stories"
+									? "text-dark-slate-gray dark:text-jet-stream"
+									: "text-gray-900 dark:text-slate-200 hover:dark:text-slate-200"
+							}
 						>
-							Posts
+							Stories
 						</Link>
 					</li>
 					<li>
 						<Link
 							href={"/projects"}
-							className={"active:bg-jet-stream active:text-black"}
+							className={
+								selectedLayoutSegment === "projects"
+									? "text-dark-slate-gray dark:text-jet-stream"
+									: "text-gray-900 dark:text-slate-200 hover:dark:text-slate-200"
+							}
 						>
 							Projects
 						</Link>
@@ -79,7 +111,11 @@ export default function Header() {
 					<li>
 						<Link
 							href={"/about"}
-							className={"active:bg-jet-stream active:text-black"}
+							className={
+								selectedLayoutSegment === "about"
+									? "text-dark-slate-gray dark:text-jet-stream"
+									: "text-gray-900 dark:text-slate-200 hover:dark:text-slate-200"
+							}
 						>
 							About
 						</Link>

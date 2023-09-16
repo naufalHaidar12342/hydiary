@@ -3,8 +3,9 @@ import Link from "next/link";
 export default function Footer() {
 	return (
 		<footer className="footer p-10 bg-dark-slate-gray text-white">
-			<div>
-				<p>🗒️A blog by Naufal Haidar ©2023</p>
+			<div className="text-lg lg:text-base">
+				<p>Logging my stories, one at a time 📝 </p>
+				<p>©2023</p>
 				<p>
 					Special thanks to{" "}
 					<a
@@ -13,8 +14,9 @@ export default function Footer() {
 						target="_blank"
 						className="link link-hover"
 					>
-						{""}devardha. Keep heaven bug-free, will you?
+						devardha.{""}
 					</a>
+					{""} Keep heaven bug-free, will you?
 				</p>
 			</div>
 			<div>

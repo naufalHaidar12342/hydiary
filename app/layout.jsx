@@ -9,10 +9,6 @@ const akshar = Akshar({
 	display: "swap",
 	weight: ["400", "500", "600"],
 });
-export const metadata = {
-	title: "naufalhaidar12342",
-	description: "Logging my stories, one at a time 📝",
-};
 
 export default function Layout({ children }) {
 	return (

@@ -1,3 +1,3 @@
 export default function LegalPolicies(second) {
-	third;
+	return <div>Legal Policies</div>;
 }

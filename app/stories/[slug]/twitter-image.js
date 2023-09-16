@@ -38,7 +38,7 @@ export async function getPostsContent(slug) {
 // image generation function
 export default async function TwitterOGImage({ params }) {
 	const aksharRegular = fetch(
-		new URL("./Akshar-Regular.ttf", import.meta.url)
+		new URL("../../Akshar-Regular.ttf", import.meta.url)
 	).then((res) => res.arrayBuffer());
 	const postBySlug = await getPostsContent(params.slug);
 	return (
