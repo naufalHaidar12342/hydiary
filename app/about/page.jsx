@@ -28,6 +28,7 @@ export async function getAuthorsInfo() {
 		body: JSON.stringify({
 			query: `query AuthorsInfo{
                 authors {
+					id
                     name
                     biography
                     picture {
@@ -52,8 +53,8 @@ export default async function About() {
 			</h2>
 			<p className="text-lg mb-4">Meet the force behind naufalHaidar12342 !</p>
 			<div className="grid grid-cols-1 2xl:grid-cols-2 gap-6">
-				{authors.map((author, index) => (
-					<div className="flex flex-col max-w-md" key={index}>
+				{authors.map((author) => (
+					<div className="flex flex-col max-w-md" key={author.id}>
 						<div className="w-full h-48 2xl:h-[460px] relative">
 							<Image
 								src={author.picture.url}
@@ -82,7 +83,7 @@ export default async function About() {
 				Random facts of the day🤔🤯
 			</h4>
 			{randomFacts.map((factOfTheDay) => (
-				<p className="mt-3 text-xl italic" key={randomFacts}>
+				<p className="mt-3 text-xl italic" key={randomFacts.fact}>
 					{factOfTheDay.fact}
 				</p>
 			))}
