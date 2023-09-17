@@ -83,7 +83,7 @@ export default async function About() {
 				Random facts of the day🤔🤯
 			</h4>
 			{randomFacts.map((factOfTheDay) => (
-				<p className="mt-3 text-xl italic" key={randomFacts.fact}>
+				<p className="mt-3 text-xl italic" key={factOfTheDay.fact}>
 					{factOfTheDay.fact}
 				</p>
 			))}
