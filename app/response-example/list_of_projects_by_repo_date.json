@@ -1,0 +1,20 @@
+{
+	"data": {
+		"projects": [
+			{
+				"projectTitle": "Blog naufalHaidar12342",
+				"projectShortDescription": "Blog pribadi yang dikembangkan dengan Next.js, Tailwind CSS, Hygraph",
+				"projectPlatform": "Web",
+				"projectsRepositoryLink": "https://github.com/naufalHaidar12342/my-personal-blog-nextjs",
+				"repositoryCreatedDate": null
+			},
+			{
+				"projectTitle": "salat-kotasemarang",
+				"projectShortDescription": "Shows prayer time for Kota Semarang, in Next.js 13 App router",
+				"projectPlatform": "Web",
+				"projectsRepositoryLink": "https://github.com/naufalHaidar12342/jadwal-salat-kotasemarang",
+				"repositoryCreatedDate": "2023-08-17"
+			}
+		]
+	}
+}
