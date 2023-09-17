@@ -9,13 +9,19 @@ export function metadata() {
 }
 
 export async function getRandomFacts() {
+	const secondsInHour = 3600;
 	const res = await fetch(RANDOM_FACTS_URL, {
 		headers: {
+			method: "GET",
 			"X-Api-Key": process.env.PRIVATE_API_NINJAS,
+		},
+		next: {
+			revalidate: secondsInHour,
 		},
 	})
 		.then((res) => res.json())
 		.catch((err) => console.log(err));
+	console.log("respons dari api ninjas=", res);
 	return res;
 }
 
@@ -44,7 +50,8 @@ export async function getAuthorsInfo() {
 }
 
 export default async function About() {
-	const randomFacts = await getRandomFacts();
+	const [randomFacts] = await getRandomFacts();
+	console.log("random facts=", randomFacts);
 	const authors = await getAuthorsInfo();
 	return (
 		<div className="min-h-screen max-w-screen-lg mx-auto flex flex-col justify-center items-center p-4">
@@ -55,7 +62,7 @@ export default async function About() {
 			<div className="grid grid-cols-1 2xl:grid-cols-2 gap-6">
 				{authors.map((author) => (
 					<div className="flex flex-col max-w-md" key={author.id}>
-						<div className="w-full h-48 2xl:h-[460px] relative">
+						<div className="w-full h-48 2xl:h-[320px] relative">
 							<Image
 								src={author.picture.url}
 								alt={author.name}
@@ -79,14 +86,12 @@ export default async function About() {
 				))}
 			</div>
 			{/* random facts section */}
-			<h4 className="text-xl font-medium text-dark-slate-gray dark:text-jet-stream">
+			<h4 className="mt-5 text-xl font-medium text-dark-slate-gray dark:text-jet-stream">
 				Random facts of the day🤔🤯
 			</h4>
-			{randomFacts.map((factOfTheDay) => (
-				<p className="mt-3 text-xl italic" key={factOfTheDay.fact}>
-					{factOfTheDay.fact}
-				</p>
-			))}
+			<p className="mt-3 text-xl italic" key={randomFacts.fact}>
+				{randomFacts.fact}
+			</p>
 		</div>
 	);
 }
