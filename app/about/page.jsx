@@ -21,7 +21,7 @@ export async function getRandomFacts() {
 	})
 		.then((res) => res.json())
 		.catch((err) => console.log(err));
-	console.log("respons dari api ninjas=", res);
+	// console.log("respons dari api ninjas=", res);
 	return res;
 }
 
@@ -51,7 +51,7 @@ export async function getAuthorsInfo() {
 
 export default async function About() {
 	const [randomFacts] = await getRandomFacts();
-	console.log("random facts=", randomFacts);
+	// console.log("random facts=", randomFacts);
 	const authors = await getAuthorsInfo();
 	return (
 		<div className="min-h-screen max-w-screen-lg mx-auto flex flex-col justify-center items-center p-4">
