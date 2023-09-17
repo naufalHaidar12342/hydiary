@@ -13,9 +13,6 @@ export async function getRandomFacts() {
 		headers: {
 			"X-Api-Key": process.env.PRIVATE_API_NINJAS,
 		},
-		next: {
-			revalidate: 86400,
-		},
 	})
 		.then((res) => res.json())
 		.catch((err) => console.log(err));
@@ -84,8 +81,8 @@ export default async function About() {
 			<h4 className="text-xl font-medium text-dark-slate-gray dark:text-jet-stream">
 				Random facts of the day🤔🤯
 			</h4>
-			{randomFacts.map((factOfTheDay, index) => (
-				<p className="mt-3 text-xl italic" key={index}>
+			{randomFacts.map((factOfTheDay) => (
+				<p className="mt-3 text-xl italic" key={randomFacts}>
 					{factOfTheDay.fact}
 				</p>
 			))}
