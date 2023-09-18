@@ -92,6 +92,8 @@ export default async function About() {
 			<p className="mt-3 text-xl italic" key={randomFacts.fact}>
 				{randomFacts.fact}
 			</p>
+
+			{/* contact us */}
 		</div>
 	);
 }

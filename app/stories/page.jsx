@@ -1,3 +1,4 @@
+import HygraphDateToReadableDate from "@/utilities/hygraph_date_to_readable_date";
 import ISOTimeToHumanReadable from "@/utilities/iso_time_to_jakarta_timezone";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,9 +17,10 @@ export async function getStories(page = 1, limitContent = 6) {
 		},
 		body: JSON.stringify({
 			query: `query StoriesWithPagination{
-				posts(first: ${limitContent}, skip: ${skip}, orderBy: createdAt_DESC) {
+				posts(first: ${limitContent}, skip: ${skip}, orderBy: date_DESC) {
 					title
 					excerpt
+					date
 					createdAt
 					slug
 					coverImage {
@@ -77,6 +79,8 @@ export default async function Stories({ searchParams }) {
 								sizes="(max-width:768px) 100vw, (max-width:1280px) 50vw, 33vw"
 								style={{ objectFit: "cover" }}
 								priority={true}
+								placeholder="blur"
+								blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMMiI0tAgADjQF+ZG6tZQAAAABJRU5ErkJggg=="
 							/>
 						</div>
 						<div className="w-full 2xl:w-1/2 py-5 lg:pl-6 lg:py-0">
@@ -87,7 +91,7 @@ export default async function Stories({ searchParams }) {
 								{story.title}
 							</Link>
 							<p className="font-light">
-								{ISOTimeToHumanReadable(story.createdAt)}
+								{HygraphDateToReadableDate(story.date)}
 							</p>
 							<div className="flex flex-col">
 								{story.tags.map((tag) => (

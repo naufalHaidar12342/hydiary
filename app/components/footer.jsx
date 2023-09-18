@@ -5,7 +5,7 @@ export default function Footer() {
 		<footer className="footer p-10 bg-dark-slate-gray text-white">
 			<div className="text-lg lg:text-base">
 				<p>Logging my stories, one at a time 📝 </p>
-				<p>©2023</p>
+				<p className="italic">©2023</p>
 				<p>
 					Special thanks to{" "}
 					<a
@@ -40,12 +40,7 @@ export default function Footer() {
 			</div>
 			<div>
 				<span className="footer-title opacity-100 py-7 lg:py-0">Legal</span>
-				<Link
-					href={"/legals/privacy-policy"}
-					className="link link-hover"
-					target="_blank"
-					rel="noreferrer"
-				>
+				<Link href={"/privacy-policies"} className="link link-hover">
 					Privacy policy
 				</Link>
 			</div>
