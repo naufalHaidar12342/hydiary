@@ -1,6 +1,5 @@
 import { ImageResponse } from "next/server";
-import { OPENGRAPH_IMAGE_SIZE } from "./constants/ogimage_size";
-
+import Image from "next/image";
 // declare to vercel this function executed in edge runtime to load opengraph image
 export const runtime = "edge";
 
@@ -12,8 +11,12 @@ export const defaultImage =
 export const defaultImageCredits = "Photo by Desola Lanre-Ologun on Unsplash";
 export const defaultImageSource = "https://unsplash.com/photos/IgUR1iX0mqM";
 
+export const OPENGRAPH_IMAGE_SIZE = {
+	width: 1200,
+	height: 630,
+};
 // image generation function
-export default function Image() {
+export default function OGImage() {
 	const aksharRegular = fetch(
 		new URL("./Akshar-Regular.ttf", import.meta.url)
 	).then((res) => res.arrayBuffer());
@@ -43,8 +46,8 @@ export default function Image() {
 							justifyItems: "center",
 						}}
 					>
-						<img
-							src={defaultImage + "&w=600&h=500&auto=format"}
+						<Image
+							src={defaultImage}
 							alt={`${defaultImageCredits}`}
 							width={600}
 							height={500}
