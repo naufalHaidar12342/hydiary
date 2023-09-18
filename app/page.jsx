@@ -6,6 +6,12 @@ import HygraphDateToReadableDate from "./utilities/hygraph_date_to_readable_date
 export const metadata = {
 	title: "naufalHaidar12342",
 	description: "Logging my stories, one at a time 📝",
+	openGraph: {
+		title: "naufalHaidar12342",
+		description: "Logging my stories, one at a time 📝",
+		url: "https://naufalhaidar12342.cyou/",
+		siteName: "naufalHaidar12342",
+	},
 };
 
 export async function getLatestPost() {

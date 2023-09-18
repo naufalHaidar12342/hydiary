@@ -14,7 +14,7 @@ export const defaultImageCredits = "Photo by Desola Lanre-Ologun on Unsplash";
 export const defaultImageSource = "https://unsplash.com/photos/IgUR1iX0mqM";
 
 // image generation function
-export default async function OpenGraphImage() {
+export default function OpenGraphImage() {
 	const aksharRegular = fetch(
 		new URL("./Akshar-Regular.ttf", import.meta.url)
 	).then((res) => res.arrayBuffer());
@@ -74,7 +74,7 @@ export default async function OpenGraphImage() {
 			fonts: [
 				{
 					name: "Akshar",
-					data: await aksharRegular,
+					data: aksharRegular,
 					style: "normal",
 					weight: "400",
 				},
