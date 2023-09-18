@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { ImageResponse } from "next/server";
 import { OPENGRAPH_IMAGE_SIZE } from "./constants/ogimage_size";
 
@@ -14,7 +13,7 @@ export const defaultImageCredits = "Photo by Desola Lanre-Ologun on Unsplash";
 export const defaultImageSource = "https://unsplash.com/photos/IgUR1iX0mqM";
 
 // image generation function
-export default function OpenGraphImage() {
+export default function Image() {
 	const aksharRegular = fetch(
 		new URL("./Akshar-Regular.ttf", import.meta.url)
 	).then((res) => res.arrayBuffer());
@@ -44,7 +43,7 @@ export default function OpenGraphImage() {
 							justifyItems: "center",
 						}}
 					>
-						<Image
+						<img
 							src={defaultImage}
 							alt={`${defaultImageCredits}`}
 							width={600}
