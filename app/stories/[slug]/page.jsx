@@ -1,7 +1,10 @@
+import ISOTimeToHumanReadable from "@/utilities/iso_time_to_jakarta_timezone";
 import Image from "next/image";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
-
+import { MdOutlineAutoStories } from "react-icons/md";
+import HygraphDateToReadableDate from "@/utilities/hygraph_date_to_readable_date";
+import { BiLinkExternal } from "react-icons/bi";
 export async function generateMetadata({ params }) {
 	const fetchMetadatInfo = await getSelectedStory(params.slug);
 	const pageTitle = fetchMetadatInfo.map((story) => story.title);
@@ -29,6 +32,7 @@ export async function getSelectedStory(slug) {
 							url
 						}
 					}
+					date
 					createdAt
 					content{
 						markdown
@@ -70,18 +74,21 @@ const CustomMarkdownComponents = {
 				</div>
 			);
 		}
-		return <p className="text-2xl 2xl:text-lg mb-4">{paragraph.children}</p>;
+		return <p className="text-xl 2xl:text-lg mb-4">{paragraph.children}</p>;
 	},
 	h3: (heading) => {
-		return <h3 className="text-2xl font-medium">{heading.children}</h3>;
+		return <h3 className="text-2xl font-semibold">{heading.children}</h3>;
 	},
 	a: (link) => {
 		return (
 			<a
 				href={link.href}
 				className="link link-hover text-dark-slate-gray dark:text-jet-stream font-medium"
+				target="_blank"
+				referrerPolicy="no-referrer"
 			>
 				{link.children}
+				<BiLinkExternal className="inline-flex ml-1 dark:text-jet-stream text-dark-slate-gray" />
 			</a>
 		);
 	},
@@ -95,6 +102,7 @@ const CustomMarkdownComponents = {
 			</ul>
 		);
 	},
+	iframe: (iframe) => {},
 };
 
 export default async function ReadStory({ params }) {
@@ -144,6 +152,30 @@ export default async function ReadStory({ params }) {
 					>
 						{story.coverImageCredits}
 					</ReactMarkdown>
+					{/* author info */}
+					<div className="flex w-full flex-wrap text-start items-center my-5">
+						<div className="w-9 h-9 relative">
+							<Image
+								src={story.author.picture.url}
+								alt={`${story.author.name} photo`}
+								fill={true}
+								style={{ objectFit: "cover" }}
+								className="rounded-full"
+								priority={false}
+								sizes="(max-width: 1536px) 100vw, 75vw"
+								placeholder="blur"
+								blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMMiI0tAgADjQF+ZG6tZQAAAABJRU5ErkJggg=="
+							/>
+						</div>
+						<h3 className="text-xl font-medium ml-3">{story.author.name}</h3>
+						<p className="text-lg 2xl:text-base">
+							<MdOutlineAutoStories className="w-9 h-9 2xl:w-[18px] 2xl:h-[18px] inline-flex 2xl:ml-3" />
+							<span className="ml-3 2xl:ml-2 font-light">
+								Posted at {HygraphDateToReadableDate(story.date)}
+							</span>
+						</p>
+					</div>
+					{/* contents */}
 					<ReactMarkdown
 						className="text-start"
 						components={CustomMarkdownComponents}
@@ -152,6 +184,8 @@ export default async function ReadStory({ params }) {
 					</ReactMarkdown>
 				</div>
 			))}
+
+			{/* comment section powered by giscus */}
 		</div>
 	);
 }

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import ISOTimeToHumanReadable from "./utilities/iso_time_to_jakarta_timezone";
+import HygraphDateToReadableDate from "./utilities/hygraph_date_to_readable_date";
 
 export const metadata = {
 	title: "naufalHaidar12342",
@@ -15,9 +16,10 @@ export async function getLatestPost() {
 		},
 		body: JSON.stringify({
 			query: `query LatestPost{
-				posts(orderBy: createdAt_DESC, first:1) {
+				posts(orderBy: date_DESC, first:1) {
 					title
 					slug
+					date
 					createdAt
 					excerpt
 					coverImage {
@@ -65,7 +67,7 @@ export default async function Home() {
 									Latest story: {post.title}
 								</Link>
 								<p className="pt-4 font-normal text-2xl ">
-									{ISOTimeToHumanReadable(post.createdAt)}
+									{HygraphDateToReadableDate(post.date)}
 								</p>
 								<p className=" font-normal text-2xl ">{post.excerpt}</p>
 							</div>
