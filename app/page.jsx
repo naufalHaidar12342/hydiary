@@ -11,6 +11,14 @@ export const metadata = {
 		description: "Logging my stories, one at a time 📝",
 		url: "https://naufalhaidar12342.cyou/",
 		siteName: "naufalHaidar12342",
+		images: [
+			{
+				url: "https://naufalhaidar12342.cyou/opengraph-image.png",
+				width: 1200,
+				height: 630,
+				alt: "naufalHaidar12342",
+			},
+		],
 	},
 };
 
