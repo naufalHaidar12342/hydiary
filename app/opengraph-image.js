@@ -44,7 +44,7 @@ export default function Image() {
 						}}
 					>
 						<img
-							src={defaultImage + "&w=1200&h=630&auto=format"}
+							src={defaultImage + "&w=600&h=500&auto=format"}
 							alt={`${defaultImageCredits}`}
 							width={600}
 							height={500}
