@@ -7,7 +7,7 @@ export const runtime = "edge";
 
 // image metadata
 export const alt = "Cover image for naufalhaidar12342";
-export const contentType = "image/png";
+export const contentType = "image/webp";
 export const defaultImage =
 	"https://media.graphassets.com/8CG98OfRYiL1D5MsnO8g";
 export const defaultImageCredits = "Photo by Desola Lanre-Ologun on Unsplash";
