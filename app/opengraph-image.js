@@ -11,7 +11,7 @@ export const defaultImage =
 export const defaultImageCredits = "Photo by Desola Lanre-Ologun on Unsplash";
 export const defaultImageSource = "https://unsplash.com/photos/IgUR1iX0mqM";
 
-export const OPENGRAPH_IMAGE_SIZE = {
+export const size = {
 	width: 1200,
 	height: 630,
 };
@@ -72,7 +72,7 @@ export default function OGImage() {
 			)
 		),
 		{
-			...OPENGRAPH_IMAGE_SIZE,
+			...size,
 			fonts: [
 				{
 					name: "Akshar",
