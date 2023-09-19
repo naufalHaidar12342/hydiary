@@ -1,9 +1,49 @@
+import {
+	PROJCETS_OGIMAGE,
+	PROJECTS_OGIMAGE_CREDITS,
+} from "@/constants/projects_ogimage";
 import { BiLinkExternal } from "react-icons/bi";
-export const metadata = {
-	title: "Projects",
-	description:
-		"Compiled list of projects I have worked on and hosted on GitHub.",
-};
+
+export async function generateMetadata() {
+	const latestProject = await getLatestProject();
+	const [projectTitle] = latestProject.map((project) => project.projectTitle);
+	return {
+		title: "Projects",
+		description: `My latest project, ${projectTitle} ,along with other projects that I've done.`,
+		openGraph: {
+			title: "Projects of nh12342",
+			description: `My latest project, ${projectTitle} ,along with other projects that I've done.`,
+			url: `https://naufalhaidar12342.cyou/projects`,
+			images: [
+				{
+					url: PROJCETS_OGIMAGE,
+					width: 1200,
+					height: 630,
+					alt: PROJECTS_OGIMAGE_CREDITS,
+				},
+			],
+		},
+	};
+}
+
+export async function getLatestProject() {
+	const fetchProjects = await fetch(process.env.HYGRAPH_HIPERF_API, {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({
+			query: `query ListOfProjects{
+				projects(orderBy: createdAt_DESC, first:1){
+					projectTitle
+				}
+			}`,
+		}),
+	})
+		.then((res) => res.json())
+		.catch((err) => console.error(err));
+	return fetchProjects.data.projects;
+}
 
 export async function getListOfProjects() {
 	const fetchProjects = await fetch(process.env.HYGRAPH_HIPERF_API, {
