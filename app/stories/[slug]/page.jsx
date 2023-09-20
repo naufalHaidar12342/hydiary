@@ -5,6 +5,7 @@ import ReactMarkdown from "react-markdown";
 import { MdOutlineAutoStories } from "react-icons/md";
 import HygraphDateToReadableDate from "@/utilities/hygraph_date_to_readable_date";
 import { BiLinkExternal } from "react-icons/bi";
+
 export async function generateMetadata({ params }) {
 	const fetchMetadatInfo = await getSelectedStory(params.slug);
 	const [storyTitle] = fetchMetadatInfo.map((story) => story.title);
@@ -13,13 +14,14 @@ export async function generateMetadata({ params }) {
 	const [storyCoverImage] = fetchMetadatInfo.map(
 		(story) => story.coverImage.url
 	);
-
+	// console.log("story title=", storyTitle);
+	// console.log("story desc=", storyDescription);
 	return {
 		title: `${storyTitle}`,
 		description: `${storyDescription}`,
 		openGraph: {
-			title: `${storyTitle}`,
-			description: `${storyDescription}`,
+			title: storyTitle,
+			description: storyDescription,
 			url: `https://naufalhaidar12342.cyou/stories/${storySlug}`,
 			images: [
 				{
@@ -44,6 +46,7 @@ export async function getSelectedStory(slug) {
 				posts(where: {slug: "${slug}"}) {
 					title
 					slug
+					excerpt
 					tags
 					author {
 						name
