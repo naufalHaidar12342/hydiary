@@ -7,11 +7,29 @@ import HygraphDateToReadableDate from "@/utilities/hygraph_date_to_readable_date
 import { BiLinkExternal } from "react-icons/bi";
 export async function generateMetadata({ params }) {
 	const fetchMetadatInfo = await getSelectedStory(params.slug);
-	const pageTitle = fetchMetadatInfo.map((story) => story.title);
-	const pageDescription = fetchMetadatInfo.map((story) => story.excerpt);
+	const [storyTitle] = fetchMetadatInfo.map((story) => story.title);
+	const [storyDescription] = fetchMetadatInfo.map((story) => story.excerpt);
+	const [storySlug] = fetchMetadatInfo.map((story) => story.slug);
+	const [storyCoverImage] = fetchMetadatInfo.map(
+		(story) => story.coverImage.url
+	);
+
 	return {
-		title: `${pageTitle}`,
-		description: `${pageDescription}`,
+		title: `${storyTitle}`,
+		description: `${storyDescription}`,
+		openGraph: {
+			title: `${storyTitle}`,
+			description: `${storyDescription}`,
+			url: `https://naufalhaidar12342.cyou/stories/${storySlug}`,
+			images: [
+				{
+					url: storyCoverImage,
+					width: 1200,
+					height: 630,
+					alt: `${storyTitle} cover image`,
+				},
+			],
+		},
 	};
 }
 
@@ -25,6 +43,7 @@ export async function getSelectedStory(slug) {
 			query: `query SelectedStory{
 				posts(where: {slug: "${slug}"}) {
 					title
+					slug
 					tags
 					author {
 						name
@@ -110,15 +129,17 @@ export default async function ReadStory({ params }) {
 	return (
 		<div className="min-h-screen max-w-screen-lg flex flex-col justify-center items-center mx-auto px-8 text-center">
 			{storyContents.map((story) => (
-				<div key={story.title} className="">
+				<div key={story.title}>
 					<h2 className="text-4xl">{story.title}</h2>
 					{story.tags.map((storyGenre) => (
-						<span
-							className="dark:text-jet-stream text-dark-slate-gray font-medium flex flex-col justify-center items-center text-lg"
+						<div
 							key={storyGenre}
+							className="flex flex-col lg:flex-row justify-center items-center"
 						>
-							{storyGenre}
-						</span>
+							<span className="dark:text-jet-stream text-dark-slate-gray font-medium text-lg">
+								{storyGenre}
+							</span>
+						</div>
 					))}
 					{/* cover image of the story */}
 					<div className="w-full h-60 2xl:h-96 relative ">

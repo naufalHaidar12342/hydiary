@@ -10,7 +10,6 @@ import {
 export async function generateMetadata() {
 	const latestStory = await getLatestPost();
 	const [storyTitle] = latestStory.map((post) => post.title);
-	const [slugOfStory] = latestStory.map((post) => post.slug);
 	// console.log("isi title=", storyTitle);
 	return {
 		title: "naufalHaidar12342",
@@ -18,7 +17,7 @@ export async function generateMetadata() {
 		openGraph: {
 			title: "Story of nh12342 📝",
 			description: `Read my latest story: ${storyTitle}`,
-			url: `https://naufalhaidar12342.cyou/stories/${slugOfStory}`,
+			url: `https://naufalhaidar12342.cyou/`,
 			siteName: "naufalHaidar12342",
 			images: [
 				{
