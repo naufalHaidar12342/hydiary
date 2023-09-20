@@ -1,3 +1,7 @@
+import {
+	ABOUT_OGIMAGE,
+	ABOUT_OGIMAGE_CREDITS,
+} from "@/constants/about_ogimage";
 import { RANDOM_FACTS_URL } from "app/constants/random_facts_url";
 import Image from "next/image";
 
@@ -5,6 +9,19 @@ export function metadata() {
 	return {
 		title: "About",
 		description: `Learn about authors and random facts of the day.`,
+		openGraph: {
+			title: "About",
+			description: `Learn about authors and random facts of the day.`,
+			url: `https://naufalhaidar12342.cyou/about`,
+			images: [
+				{
+					url: ABOUT_OGIMAGE,
+					width: 1200,
+					height: 630,
+					alt: ABOUT_OGIMAGE_CREDITS,
+				},
+			],
+		},
 	};
 }
 

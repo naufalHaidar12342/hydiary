@@ -2,11 +2,34 @@ import Image from "next/image";
 import Link from "next/link";
 import ISOTimeToHumanReadable from "./utilities/iso_time_to_jakarta_timezone";
 import HygraphDateToReadableDate from "./utilities/hygraph_date_to_readable_date";
+import {
+	DEFAULT_OGIMAGE_CREDITS,
+	DEFAULT_OG_IMAGE,
+} from "./constants/default_ogimage";
 
-export const metadata = {
-	title: "naufalHaidar12342",
-	description: "Logging my stories, one at a time 📝",
-};
+export async function generateMetadata() {
+	const latestStory = await getLatestPost();
+	const [storyTitle] = latestStory.map((post) => post.title);
+	// console.log("isi title=", storyTitle);
+	return {
+		title: "naufalHaidar12342",
+		description: "Logging my stories, one at a time 📝",
+		openGraph: {
+			title: "Story of nh12342 📝",
+			description: `Read my latest story: ${storyTitle}`,
+			url: `https://naufalhaidar12342.cyou/`,
+			siteName: "naufalHaidar12342",
+			images: [
+				{
+					url: DEFAULT_OG_IMAGE,
+					width: 1200,
+					height: 630,
+					alt: `${DEFAULT_OGIMAGE_CREDITS}`,
+				},
+			],
+		},
+	};
+}
 
 export async function getLatestPost() {
 	const latestPost = await fetch(process.env.HYGRAPH_HIPERF_API, {
