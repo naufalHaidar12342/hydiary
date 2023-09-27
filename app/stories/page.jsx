@@ -43,8 +43,11 @@ export async function getStories(page = 1, limitContent = 6) {
 					date
 					createdAt
 					slug
-					coverImage {
-						url
+					postAttribution {
+						attributionMarkdown
+						attributionImage {
+							url
+						}
 					}
 					tags
 				}
@@ -93,7 +96,7 @@ export default async function Stories({ searchParams }) {
 						<div className="w-full h-48 2xl:h-60 relative">
 							<Image
 								className="rounded-xl"
-								src={story.coverImage.url}
+								src={story.postAttribution.attributionImage.url}
 								alt={`Cover image of ${story.title}`}
 								fill
 								sizes="(max-width:768px) 100vw, (max-width:1280px) 50vw, 33vw"
