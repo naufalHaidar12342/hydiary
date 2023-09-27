@@ -1,4 +1,3 @@
-import ISOTimeToHumanReadable from "@/utilities/iso_time_to_jakarta_timezone";
 import Image from "next/image";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
@@ -124,7 +123,6 @@ const CustomMarkdownComponents = {
 			</ul>
 		);
 	},
-	iframe: (iframe) => {},
 };
 
 export default async function ReadStory({ params }) {
