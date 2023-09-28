@@ -6,12 +6,12 @@ import HygraphDateToReadableDate from "@/utilities/hygraph_date_to_readable_date
 import { BiLinkExternal } from "react-icons/bi";
 
 export async function generateMetadata({ params }) {
-	const fetchMetadatInfo = await getSelectedStory(params.slug);
-	const [storyTitle] = fetchMetadatInfo.map((story) => story.title);
-	const [storyDescription] = fetchMetadatInfo.map((story) => story.excerpt);
-	const [storySlug] = fetchMetadatInfo.map((story) => story.slug);
-	const [storyCoverImage] = fetchMetadatInfo.map(
-		(story) => story.coverImage.url
+	const fetchMetadataInfo = await getSelectedStory(params.slug);
+	const [storyTitle] = fetchMetadataInfo.map((story) => story.title);
+	const [storyDescription] = fetchMetadataInfo.map((story) => story.excerpt);
+	const [storySlug] = fetchMetadataInfo.map((story) => story.slug);
+	const [storyCoverImage] = fetchMetadataInfo.map(
+		(story) => story.postAttribution.attributionImage.url
 	);
 	// console.log("story title=", storyTitle);
 	// console.log("story desc=", storyDescription);
@@ -47,6 +47,9 @@ export async function getSelectedStory(slug) {
 					slug
 					excerpt
 					tags
+					coverImage {
+						url
+					}
 					author {
 						name
 						picture {
@@ -58,10 +61,12 @@ export async function getSelectedStory(slug) {
 					content{
 						markdown
 					}
-					coverImage{
-						url
+					postAttribution {
+						attributionMarkdown
+						attributionImage {
+							url
+						}
 					}
-					coverImageCredits
 				}
 			}`,
 		}),
@@ -145,7 +150,11 @@ export default async function ReadStory({ params }) {
 					{/* cover image of the story */}
 					<div className="w-full h-60 2xl:h-96 relative ">
 						<Image
-							src={story.coverImage.url}
+							src={
+								story.postAttribution.attributionImage.url !== null
+									? story.postAttribution.attributionImage.url
+									: story.coverImage.url
+							}
 							alt={`${story.title} cover image`}
 							fill={true}
 							style={{ objectFit: "cover" }}
@@ -172,7 +181,7 @@ export default async function ReadStory({ params }) {
 							},
 						}}
 					>
-						{story.coverImageCredits}
+						{story.postAttribution.attributionMarkdown}
 					</ReactMarkdown>
 					{/* author info */}
 					<div className="flex w-full flex-wrap text-start items-center my-5">
