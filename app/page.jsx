@@ -73,7 +73,11 @@ export default async function Home() {
 						<div key={key} className="">
 							<div className="w-72 h-80 md:w-[512px] md:h-[400px] relative">
 								<Image
-									src={post.postAttribution.attributionImage?.url}
+									src={
+										post.postAttribution.attributionImage.url !== null
+											? post.postAttribution.attributionImage.url
+											: post.coverImage.url
+									}
 									className="rounded-lg shadow-2xl lg:mx-3 "
 									style={{ objectFit: "cover" }}
 									fill

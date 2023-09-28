@@ -47,6 +47,9 @@ export async function getSelectedStory(slug) {
 					slug
 					excerpt
 					tags
+					coverImage {
+						url
+					}
 					author {
 						name
 						picture {
@@ -58,7 +61,6 @@ export async function getSelectedStory(slug) {
 					content{
 						markdown
 					}
-					coverImageCredits
 					postAttribution {
 						attributionMarkdown
 						attributionImage {
@@ -148,7 +150,11 @@ export default async function ReadStory({ params }) {
 					{/* cover image of the story */}
 					<div className="w-full h-60 2xl:h-96 relative ">
 						<Image
-							src={story.postAttribution.attributionImage.url}
+							src={
+								story.postAttribution.attributionImage.url !== null
+									? story.postAttribution.attributionImage.url
+									: story.coverImage.url
+							}
 							alt={`${story.title} cover image`}
 							fill={true}
 							style={{ objectFit: "cover" }}
