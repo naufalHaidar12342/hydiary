@@ -35,6 +35,7 @@ export async function getStories(page = 1, limitContent = 6) {
 		headers: {
 			"Content-Type": "application/json",
 		},
+		next: { revalidate: 120 },
 		body: JSON.stringify({
 			query: `query StoriesWithPagination{
 				posts(first: ${limitContent}, skip: ${skip}, orderBy: date_DESC) {

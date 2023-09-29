@@ -1,4 +1,10 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<!-- This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). -->
+
+# naufalHaidar12342
+
+Place to share my stories
+
+[![CodeFactor](https://www.codefactor.io/repository/github/naufalhaidar12342/blog-naufalhaidar12342/badge)](https://www.codefactor.io/repository/github/naufalhaidar12342/blog-naufalhaidar12342)
 
 ## Getting Started
 

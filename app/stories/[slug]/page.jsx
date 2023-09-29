@@ -161,6 +161,8 @@ export default async function ReadStory({ params }) {
 							className="rounded-xl"
 							priority={true}
 							sizes="(max-width: 1536px) 100vw, 75vw"
+							placeholder="blur"
+							blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMMiI0tAgADjQF+ZG6tZQAAAABJRU5ErkJggg=="
 						/>
 					</div>
 					{/* cover image credits */}

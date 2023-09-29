@@ -37,7 +37,7 @@ export async function getLatestPost() {
 		headers: {
 			"Content-Type": "application/json",
 		},
-		next: { revalidate: 300 },
+		next: { revalidate: 100 },
 		body: JSON.stringify({
 			query: `query LatestPost{
 				posts(orderBy: date_DESC, first:1) {
