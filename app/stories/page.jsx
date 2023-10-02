@@ -1,3 +1,4 @@
+import Search from "@/components/search";
 import {
 	DEFAULT_OGIMAGE_CREDITS,
 	DEFAULT_OG_IMAGE,
@@ -68,6 +69,8 @@ export default async function Stories({ searchParams }) {
 		typeof searchParams.page === "string" ? Number(searchParams.page) : 1;
 	const limit =
 		typeof searchParams.limit === "string" ? Number(searchParams.limit) : 6;
+	// const searchTitle=
+	// 	typeof searchParams.search === "string" ? searchParams.search : undefined;
 	const stories = await getStories(page, limit);
 	return (
 		<div className="min-h-screen flex flex-col justify-center items-center p-6">
@@ -75,6 +78,10 @@ export default async function Stories({ searchParams }) {
 				<GiNotebook className="inline-flex mr-2 dark:text-jet-stream text-dark-slate-gray" />
 				Stories
 			</h2>
+			{/* search stories */}
+			{/* <div className="w-full flex justify-center mb-3">
+				<Search />
+			</div> */}
 
 			{/* pagination (using prev and next button) */}
 			<div className="join">
