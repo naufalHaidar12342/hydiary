@@ -1,24 +1,27 @@
 import Image from "next/image";
 import Link from "next/link";
-import ISOTimeToHumanReadable from "./utilities/iso_time_to_jakarta_timezone";
-import HygraphDateToReadableDate from "./utilities/hygraph_date_to_readable_date";
+import HygraphDateToReadableDate from "@/libraries/date-converter";
 import {
 	DEFAULT_OGIMAGE_CREDITS,
 	DEFAULT_OG_IMAGE,
-} from "./constants/default_ogimage";
+} from "@/constants/default_ogimage";
+import { Divider } from "@nextui-org/divider";
 
 export async function generateMetadata() {
+	// next step: use the already fetched title, slug, and coverimage in Home
+	// to avoid redundant fetch request
 	const latestStory = await getLatestPost();
 	const [storyTitle] = latestStory.map((post) => post.title);
 	// console.log("isi title=", storyTitle);
 	return {
-		title: "naufalHaidar12342",
-		description: "Logging my stories, one at a time 📝",
+		title: "Hydiary",
+		description: "Heydar's diary (hey that's me!) ✍️",
+		metadataBase: "https://naufalhaidar12342.cyou/",
 		openGraph: {
-			title: "Story of nh12342 📝",
-			description: `Read my latest story: ${storyTitle}`,
+			title: "Hydiary ✍️",
+			description: `Latest entry in my diary: ${storyTitle}`,
 			url: `https://naufalhaidar12342.cyou/`,
-			siteName: "naufalHaidar12342",
+			siteName: "Hydiary ✍️",
 			images: [
 				{
 					url: DEFAULT_OG_IMAGE,
@@ -63,47 +66,78 @@ export async function getLatestPost() {
 export async function getPostsByTag() {}
 
 export default async function Home() {
-	const latestPostContent = await getLatestPost();
-
+	const [latestPostContent] = await getLatestPost();
+	const entryImage = latestPostContent.postAttribution.attributionImage.url;
+	const entryTitle = latestPostContent.title;
+	const entrySlug = latestPostContent.slug;
+	const entryDate = latestPostContent.date;
+	const entryExcerpt = latestPostContent.excerpt;
 	return (
-		<div className="flex flex-col justify-center items-center lg:px-[120px] px-6">
-			<div className="hero min-h-screen bg-base-100 dark:text-slate-200 text-black">
-				<div className="hero-content flex-col lg:flex-row-reverse">
-					{latestPostContent.map((post, key) => (
-						<div key={key} className="">
-							<div className="w-72 h-80 md:w-[512px] md:h-[400px] relative">
-								<Image
-									src={
-										post.postAttribution.attributionImage.url !== null
-											? post.postAttribution.attributionImage.url
-											: post.coverImage.url
-									}
-									className="rounded-lg shadow-2xl lg:mx-3 "
-									style={{ objectFit: "cover" }}
-									fill
-									sizes="(max-width:768px) 100vw, (max-width:1280px) 50vw, 33vw"
-									alt={`Cover image for "${post.title}"`}
-									priority
-								/>
-							</div>
+		<div className="w-full min-h-screen isolate z-10">
+			<div className="w-full h-full z-20">
+				<Image
+					src={entryImage}
+					alt={`Cover image for one of Hydiary's entries, titled "${entryTitle}"`}
+					style={{ objectFit: "cover" }}
+					fill
+					className="mix-blend-screen opacity-5 "
+					priority={true}
+				/>
+			</div>
+
+			<div className="flex max-w-[1100px] mx-auto py-16 md:py-32 items-center z-30 px-6">
+				<div className="flex flex-col lg:flex-row-reverse items-center gap-3 lg:gap-10 z-40">
+					{/* entry title, written date, and excerpt/summary */}
+					<div className="flex flex-col z-50">
+						<Link
+							href={`/entries/${entrySlug}`}
+							className="text-lime-300 text-4xl font-medium "
+						>
+							<span className="underline-link-animation">{entryTitle}</span>
+						</Link>
+						<div className="flex items-center gap-2">
+							<span className="pt-5 pb-4 font-light text-xl">
+								{HygraphDateToReadableDate(entryDate)}
+							</span>
+							<Divider className="h-1 w-1/2 bg-zinc-100 rounded-xl" />
 						</div>
-					))}
-					<div>
-						{latestPostContent.map((post, key) => (
-							<div key={key}>
-								<Link
-									href={`/stories/${post.slug}`}
-									className="text-4xl font-semibold link link-hover text-dark-slate-gray dark:text-jet-stream"
-								>
-									Latest story: {post.title}
-								</Link>
-								<p className="pt-4 font-normal text-2xl ">
-									{HygraphDateToReadableDate(post.date)}
-								</p>
-								<p className=" font-normal text-2xl ">{post.excerpt}</p>
-							</div>
-						))}
+						<p className="text-neutral-50 text-2xl font-normal">
+							{entryExcerpt}
+						</p>
 					</div>
+					{/* smaller cover image with zinc border */}
+					<div className="z-50 rounded-xl bg-gradient-to-r from-sand to-sand">
+						<div className="h-64 w-80 relative">
+							<Image
+								src={entryImage}
+								alt={`Cover image for one of Hydiary's entries, titled "${entryTitle}"`}
+								style={{ objectFit: "cover" }}
+								fill
+								className="rounded-xl overflow-hidden"
+								priority={true}
+							/>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div className="flex max-w-5xl mx-auto z-30 px-6 bg-dark-gradient rounded-xl">
+				<div className="flex flex-col z-40">
+					<h3 className="text-lime-300 text-2xl font-medium">
+						naufalhaidar12342 now become Hydiary 🎊
+					</h3>
+					<p className="pt-4">
+						After going back to drawing board and implement the design together
+						with strijunk, soon this website's domain will be redirected to the
+						new domain,
+						<span className="underline-link-animation">hydiary.my.id</span>
+					</p>
+					<p className="pt-3">
+						The current domain,
+						<span className="underline-link-animation">
+							naufalhaidar12342.cyou
+						</span>
+						, will stay as a redirect to the new domain.
+					</p>
 				</div>
 			</div>
 		</div>

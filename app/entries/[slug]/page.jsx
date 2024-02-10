@@ -2,9 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import { MdOutlineAutoStories } from "react-icons/md";
-import HygraphDateToReadableDate from "@/utilities/hygraph_date_to_readable_date";
+import HygraphDateToReadableDate from "@/libraries/date-converter";
 import { BiLinkExternal } from "react-icons/bi";
 import { FALLBACK_HYGRAPH_HIPERF_API } from "@/constants/fallback_hygraph";
+import { metadataBaseUrl } from "@/libraries/metadata-base";
 
 export async function generateMetadata({ params }) {
 	const fetchMetadataInfo = await getSelectedStory(params.slug);
@@ -19,6 +20,7 @@ export async function generateMetadata({ params }) {
 	return {
 		title: `${storyTitle}`,
 		description: `${storyDescription}`,
+		...metadataBaseUrl,
 		openGraph: {
 			title: storyTitle,
 			description: storyDescription,
@@ -139,41 +141,29 @@ const CustomMarkdownComponents = {
 };
 
 export default async function ReadStory({ params }) {
-	const storyContents = await getSelectedStory(params.slug);
+	const [entriesContents] = await getSelectedStory(params.slug);
+	const entryImage = entriesContents.postAttribution.attributionImage.url;
+	const entryTitle = entriesContents.title;
+	const entryDate = HygraphDateToReadableDate(entriesContents.date);
+	const entryImageCredit = entriesContents.postAttribution.attributionMarkdown;
+	const entryContent = entriesContents.content.markdown;
 	return (
-		<div className="min-h-screen max-w-screen-xl flex flex-col justify-center items-center mx-auto px-8 text-center">
-			{storyContents.map((story) => (
-				<div key={story.title}>
-					<h2 className="text-4xl">{story.title}</h2>
-					<div className="flex flex-col lg:flex-row justify-center gap-1">
-						{story.tags.map((storyGenre) => (
-							<div key={storyGenre} className="">
-								<span className="col-span-12 dark:text-jet-stream text-dark-slate-gray font-medium text-lg">
-									{storyGenre}
-								</span>
-							</div>
-						))}
-					</div>
-					{/* cover image of the story */}
-					<div className="w-full h-60 2xl:h-96 relative ">
-						<Image
-							src={
-								story.postAttribution.attributionImage.url !== null
-									? story.postAttribution.attributionImage.url
-									: story.coverImage.url
-							}
-							alt={`${story.title} cover image`}
-							fill={true}
-							style={{ objectFit: "cover" }}
-							className="rounded-xl"
-							priority={true}
-							sizes="(max-width: 1536px) 100vw, 75vw"
-							placeholder="blur"
-							blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMMiI0tAgADjQF+ZG6tZQAAAABJRU5ErkJggg=="
-						/>
-					</div>
-					{/* cover image credits */}
+		<div className="w-full min-h-screen isolate relative z-10">
+			<div className="w-full h-[65vh] relative z-20 ">
+				<Image
+					src={entryImage}
+					alt={`Cover image of ${entryTitle}`}
+					style={{ objectFit: "cover" }}
+					fill
+					priority={true}
+					className="mix-blend-overlay opacity-35"
+				/>
+				<div className="w-full h-full flex flex-col items-center justify-end ">
+					<h2 className="text-5xl font-medium text-lime-300 pt-2">
+						{entryTitle}
+					</h2>
 					<ReactMarkdown
+						ReactMarkdown
 						className="italic pt-2"
 						components={{
 							a: (link) => {
@@ -182,7 +172,7 @@ export default async function ReadStory({ params }) {
 										href={link.href}
 										referrerPolicy="no-referrer"
 										target="_blank"
-										className="link link-hover text-dark-slate-gray dark:text-jet-stream font-medium"
+										className="font-medium underline-link-animation"
 									>
 										{link.children}
 									</a>
@@ -190,45 +180,18 @@ export default async function ReadStory({ params }) {
 							},
 						}}
 					>
-						{story.postAttribution.attributionMarkdown}
-					</ReactMarkdown>
-					{/* author info */}
-					<div className="flex flex-col xl:flex-row items-center p-3">
-						<div className="flex flex-col">
-							<div className="w-24 h-24 relative">
-								<Image
-									src={story.author.picture.url}
-									alt={`${story.author.name} photo`}
-									fill={true}
-									style={{ objectFit: "cover" }}
-									className="rounded-full"
-									priority={false}
-									sizes="(max-width: 1536px) 100vw, 75vw"
-									placeholder="blur"
-									blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMMiI0tAgADjQF+ZG6tZQAAAABJRU5ErkJggg=="
-								/>
-							</div>
-						</div>
-						<div className="flex flex-col xl:items-start xl:px-3">
-							<h3 className="text-xl font-medium">{story.author.name}</h3>
-							<p className="text-lg 2xl:text-base">
-								<span className="font-light">
-									Posted at {HygraphDateToReadableDate(story.date)}
-								</span>
-							</p>
-						</div>
-					</div>
-					{/* contents */}
-					<ReactMarkdown
-						className="text-start"
-						components={CustomMarkdownComponents}
-					>
-						{story.content.markdown}
+						{entryImageCredit}
 					</ReactMarkdown>
 				</div>
-			))}
-
-			{/* comment section powered by giscus (abandon giscus since it does not support server component) */}
+			</div>
+			<div className="max-w-screen-xl min-h-full flex mx-auto relative z-20">
+				<ReactMarkdown
+					className="text-start pt-10"
+					components={CustomMarkdownComponents}
+				>
+					{entryContent}
+				</ReactMarkdown>
+			</div>
 		</div>
 	);
 }
