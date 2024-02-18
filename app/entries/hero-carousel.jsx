@@ -60,10 +60,10 @@ export default function HeroCarousel({ heroDatas }) {
 		<div className="h-[55vh] w-full">
 			<div className="w-full h-full bg-gradient-to-b from-darkblue-gradient via-indigo-950 to-inherit">
 				<Swiper
-					// autoplay={{
-					// 	delay: 3400,
-					// 	disableOnInteraction: false,
-					// }}
+					autoplay={{
+						delay: 3400,
+						disableOnInteraction: false,
+					}}
 					pagination={{
 						clickable: true,
 					}}

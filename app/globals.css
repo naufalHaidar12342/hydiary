@@ -20,7 +20,7 @@
 		background-position: 0 100%;
 	}
 	.active-page {
-		@apply flex relative h-full items-end data-[active=true]:after:content-[''] data-[active=true]:after:absolute data-[active=true]:after:bottom-0 data-[active=true]:left-0 data-[active=true]:right-0 data-[active=true]:h-[3px] data-[active=true]:rounded-sm data-[active=true]:bg-[#c6fb6f];
+		@apply flex relative h-full items-end data-[active=true]:after:content-[''] data-[active=true]:after:absolute data-[active=true]:after:bottom-0 data-[active=true]:left-0 data-[active=true]:right-0 data-[active=true]:h-[3px] data-[active=true]:bg-[#c6fb6f];
 	}
 	.custom-active-page {
 		@apply underline underline-offset-8 decoration-lime-300 decoration-4;

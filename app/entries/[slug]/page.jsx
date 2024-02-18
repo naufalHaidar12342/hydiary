@@ -8,13 +8,13 @@ import { FALLBACK_HYGRAPH_HIPERF_API } from "@/constants/fallback_hygraph";
 import { metadataBaseUrl } from "@/libraries/metadata-base";
 
 export async function generateMetadata({ params }) {
-	const fetchMetadataInfo = await getSelectedStory(params.slug);
-	const [storyTitle] = fetchMetadataInfo.map((story) => story.title);
-	const [storyDescription] = fetchMetadataInfo.map((story) => story.excerpt);
-	const [storySlug] = fetchMetadataInfo.map((story) => story.slug);
-	const [storyCoverImage] = fetchMetadataInfo.map(
-		(story) => story.postAttribution.attributionImage.url
-	);
+	const [fetchMetadataInfo] = await getSelectedStory(params.slug);
+	const storyTitle = fetchMetadataInfo.title;
+	const storyDescription = fetchMetadataInfo.excerpt;
+	const storySlug = fetchMetadataInfo.slug;
+	const storyCoverImage =
+		fetchMetadataInfo.postAttribution.attributionImage.url;
+
 	// console.log("story title=", storyTitle);
 	// console.log("story desc=", storyDescription);
 	return {
@@ -149,7 +149,7 @@ export default async function ReadStory({ params }) {
 	const entryContent = entriesContents.content.markdown;
 	return (
 		<div className="w-full min-h-screen isolate relative z-10">
-			<div className="w-full h-[65vh] relative z-20 ">
+			<div className="w-full h-[45vh] relative">
 				<Image
 					src={entryImage}
 					alt={`Cover image of ${entryTitle}`}
@@ -158,7 +158,7 @@ export default async function ReadStory({ params }) {
 					priority={true}
 					className="mix-blend-overlay opacity-35"
 				/>
-				<div className="w-full h-full flex flex-col items-center justify-end ">
+				<div className="w-full h-full flex flex-col items-center justify-end p-5">
 					<h2 className="text-5xl font-medium text-lime-300 pt-2">
 						{entryTitle}
 					</h2>
@@ -184,7 +184,7 @@ export default async function ReadStory({ params }) {
 					</ReactMarkdown>
 				</div>
 			</div>
-			<div className="max-w-screen-xl min-h-full flex mx-auto relative z-20">
+			<div className="max-w-screen-xl min-h-full flex mx-auto relative z-20 p-5">
 				<ReactMarkdown
 					className="text-start pt-10"
 					components={CustomMarkdownComponents}
