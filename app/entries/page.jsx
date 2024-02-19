@@ -1,7 +1,3 @@
-import {
-	DEFAULT_OGIMAGE_CREDITS,
-	DEFAULT_OG_IMAGE,
-} from "@/constants/default_ogimage";
 import { metadataBaseUrl } from "@/libraries/metadata-base";
 import { metadataRobotsRule } from "@/libraries/metadata-robots";
 import { Button } from "@nextui-org/button";
@@ -9,31 +5,65 @@ import Image from "next/image";
 import Link from "next/link";
 import HeroCarousel from "./hero-carousel";
 import CustomPagination from "./custom-pagination";
+import { BASE_URL } from "@/libraries/base-url";
 
 export async function generateMetadata() {
+	const [latestEntryForMetadata] = await getLatestEntry();
+	const latestEntryTitle = latestEntryForMetadata.title;
+	const latestEntryCoverImage =
+		latestEntryForMetadata.postAttribution.attributionImage.url;
+
 	return {
 		title: "Hydiary's Entries",
-		description: "Heydar's diary (hey that's me!) ✍️",
+		description: `My latest entries in this diary is "${latestEntryTitle}". You could also check other entries in this page.`,
 		...metadataBaseUrl,
 		...metadataRobotsRule,
 		openGraph: {
 			title: "Hydiary's Entries 📃",
-			description: `Feel free to read all entries of my diary~`,
-			url: `https://naufalhaidar12342.cyou/entries`,
+			description: `My latest entries in this diary is "${latestEntryTitle}". You could also check other entries in this page.`,
+			url: `${BASE_URL}entries`,
 			siteName: "Hydiary",
 			images: [
 				{
-					url: DEFAULT_OG_IMAGE,
+					url: latestEntryCoverImage,
 					width: 1200,
 					height: 630,
-					alt: `${DEFAULT_OGIMAGE_CREDITS}`,
+					alt: `${latestEntryTitle} cover image`,
 				},
 			],
 		},
 	};
 }
-
-export async function getStories(page = 1, limitContent = 2) {
+export async function getLatestEntry() {
+	const latestPost = await fetch(process.env.HYGRAPH_HIPERF_API, {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		cache: "no-cache",
+		body: JSON.stringify({
+			query: `query LatestPost{
+				posts(orderBy: date_DESC, first:1) {
+					title
+					slug
+					date
+					createdAt
+					excerpt
+					postAttribution{
+						attributionMarkdown
+						attributionImage{
+							url
+						}
+					}
+				}
+			}`,
+		}),
+	})
+		.then((res) => res.json())
+		.catch((errors) => console.error(errors));
+	return latestPost.data.posts;
+}
+export async function getEntries(page = 1, limitContent = 2) {
 	const skip = (page - 1) * limitContent;
 	const fetchStories = await fetch(process.env.HYGRAPH_HIPERF_API, {
 		method: "POST",
@@ -78,9 +108,9 @@ export default async function Stories({ searchParams }) {
 
 	/* stories and heroImages are fetched in parallel, each will have array value.
 	also benefit us since this technique will reduce waterfall */
-	const [stories, heroItems] = await Promise.all([
-		getStories(page, limit),
-		getStories(1, 3),
+	const [entries, heroItems] = await Promise.all([
+		getEntries(page, limit),
+		getEntries(1, 3),
 	]);
 	// console.log("isi heroItems", heroItems);
 	return (
@@ -91,8 +121,8 @@ export default async function Stories({ searchParams }) {
 
 			{/* looping/mapping/get all member of array */}
 			<div className="flex flex-col max-w-screen-lg gap-4 px-5 py-10 mx-auto z-20">
-				{stories.map((story) => (
-					<div key={story.title} className="flex flex-col lg:flex-row gap-16">
+				{entries.map((story) => (
+					<div key={story.title} className="flex flex-col lg:flex-row gap-8">
 						<div className="w-full h-[305px] relative">
 							<Image
 								className="rounded-xl"

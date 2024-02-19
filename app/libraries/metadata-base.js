@@ -1,3 +1,8 @@
+import { BASE_URL } from "./base-url";
+
 export const metadataBaseUrl = {
-	metadataBase: `https://naufalhaidar12342.cyou/`,
+	metadataBase: new URL(`${BASE_URL}`),
+	alternate: {
+		canonical: "/",
+	},
 };

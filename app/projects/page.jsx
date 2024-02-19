@@ -2,18 +2,19 @@ import {
 	PROJCETS_OGIMAGE,
 	PROJECTS_OGIMAGE_CREDITS,
 } from "@/constants/projects_ogimage";
+import { BASE_URL } from "@/libraries/base-url";
 import { BiLinkExternal } from "react-icons/bi";
 
 export async function generateMetadata() {
-	const latestProject = await getLatestProject();
-	const [projectTitle] = latestProject.map((project) => project.projectTitle);
+	const [latestProject] = await getLatestProject();
+	const latestProjectTitle = latestProject.projectTitle;
 	return {
 		title: "Projects",
-		description: `My latest project, ${projectTitle} ,along with other projects that I've done.`,
+		description: `Check out ${latestProjectTitle}, my latest project. Oh and also check other projects in this page.`,
 		openGraph: {
 			title: "Projects of nh12342",
-			description: `My latest project, ${projectTitle} ,along with other projects that I've done.`,
-			url: `https://naufalhaidar12342.cyou/projects`,
+			description: `Check out ${latestProjectTitle}, my latest project. Oh and also check other projects in this page`,
+			url: `${BASE_URL}projects`,
 			images: [
 				{
 					url: PROJCETS_OGIMAGE,

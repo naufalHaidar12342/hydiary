@@ -6,22 +6,29 @@ import {
 	DEFAULT_OG_IMAGE,
 } from "@/constants/default_ogimage";
 import { Divider } from "@nextui-org/divider";
+import { metadataBaseUrl } from "./libraries/metadata-base";
+import { metadataRobotsRule } from "./libraries/metadata-robots";
+import { BASE_URL } from "./libraries/base-url";
+import { metadataSiteName } from "./libraries/metadata-sitename";
 
 export async function generateMetadata() {
 	// next step: use the already fetched title, slug, and coverimage in Home
 	// to avoid redundant fetch request
 	const latestStory = await getLatestPost();
 	const [storyTitle] = latestStory.map((post) => post.title);
+	console.log("isi metadatabaseurl=", metadataBaseUrl.metadataBase);
+
 	// console.log("isi title=", storyTitle);
 	return {
 		title: "Hydiary",
 		description: "Heydar's diary (hey that's me!) ✍️",
-		metadataBase: "https://naufalhaidar12342.cyou/",
+		...metadataBaseUrl,
+		...metadataRobotsRule,
 		openGraph: {
 			title: "Hydiary ✍️",
 			description: `Latest entry in my diary: ${storyTitle}`,
-			url: `https://naufalhaidar12342.cyou/`,
-			siteName: "Hydiary ✍️",
+			url: `${BASE_URL}`,
+			...metadataSiteName,
 			images: [
 				{
 					url: DEFAULT_OG_IMAGE,
@@ -63,7 +70,6 @@ export async function getLatestPost() {
 		.catch((errors) => console.error(errors));
 	return latestPost.data.posts;
 }
-export async function getPostsByTag() {}
 
 export default async function Home() {
 	const [latestPostContent] = await getLatestPost();

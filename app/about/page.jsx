@@ -16,16 +16,18 @@ import {
 	FaGooglePlay,
 	FaDesktop,
 } from "react-icons/fa6";
-
+import { SiNextdotjs, SiTailwindcss } from "react-icons/si";
+import { IoLogoFigma } from "react-icons/io5";
+import { GiSkills } from "react-icons/gi";
 export async function generateMetadata() {
 	return {
 		title: "About",
-		description: `Learn about authors and random facts of the day.`,
+		description: `More info about me`,
 		...metadataBaseUrl,
 		...metadataRobotsRule,
 		openGraph: {
 			title: "About",
-			description: `Learn about authors and random facts of the day.`,
+			description: `More info about me`,
 			url: `https://naufalhaidar12342.cyou/about`,
 			images: [
 				{
@@ -68,8 +70,8 @@ export default async function About() {
 	const authorName = fetchedAuthorInfo.name;
 	const authorProfileImage = fetchedAuthorInfo.picture.url;
 	return (
-		<div className="h-screen w-full flex flex-col md:flex-row mx-auto gap-4 p-4">
-			<div className="flex flex-col w-full h-fit border-2 border-sand rounded-xl items-center md:items-start p-5">
+		<div className="min-h-screen w-full max-w-screen-lg flex flex-col md:flex-row mx-auto gap-4 p-4 isolate z-10">
+			<div className="flex flex-col w-full h-fit  border-2 border-sand rounded-xl items-center md:items-start p-5 relative z-20">
 				<div className="w-60 h-60 relative bg-gradient-to-b from-darkblue-gradient to-lime-300 rounded-full">
 					<Image
 						src={authorProfileImage}
@@ -78,6 +80,7 @@ export default async function About() {
 						fill={true}
 						priority={true}
 						className="rounded-full p-1"
+						sizes="(max-width:1280px) 100vw, 70vw"
 					/>
 				</div>
 				<h2 className={`text-4xl font-semibold ${caveat.className}`}>
@@ -112,7 +115,7 @@ export default async function About() {
 					</Tooltip>
 				</div>
 
-				<div className="flex flex-col pt-6 gap-4">
+				<div className="flex flex-col pt-5 gap-4">
 					<div className="flex items-center gap-2">
 						<FaSteam className="text-2xl" />
 						<span>Steam ID: 1144957646</span>
@@ -127,7 +130,7 @@ export default async function About() {
 					</div>
 				</div>
 			</div>
-			<div className="flex flex-col w-full h-full gap-4 p-5 border-2 border-sand rounded-xl">
+			<div className="flex flex-col w-full h-full gap-4 p-5 border-4 border-sand rounded-xl relative z-20">
 				<div className="flex flex-col gap-2">
 					<span className="text-xl font-medium">More about me</span>
 					<p>
@@ -147,24 +150,35 @@ export default async function About() {
 						(ICITISEE) in Purwokerto, Indonesia.
 					</p>
 				</div>
+				<Divider className="bg-lime-300 rounded-xl h-1 my-1" />
 				<div className="flex flex-col gap-2">
 					<span className="text-xl font-medium">Skills</span>
-					<p>
-						Amateur web programmer previously interned as graphical user
-						interface programmer and researcher for website-based chatbot. This
-						project is also part of{" "}
-						<a
-							href="https://ieeexplore.ieee.org/document/10405316"
-							target="_blank"
-							className="underline underline-offset-1 decoration-lime-300"
-						>
-							"Human-Robot Interaction on Elderly Companion Robot using Dual
-							Intent Entity Transformer"
-						</a>{" "}
-						presented at 2023 7th International Conference on Information
-						Technology, Information Systems and Electrical Engineering
-						(ICITISEE) in Purwokerto, Indonesia.
-					</p>
+					<div className="flex flex-col gap-2">
+						<div className="flex gap-2 items-center">
+							<SiNextdotjs className="text-2xl" />
+							<span>Next.js : Beginner</span>
+						</div>
+						<div className="flex gap-2 items-center">
+							<SiTailwindcss className="text-2xl" />
+							<span>Tailwind CSS : Beginner</span>
+						</div>
+						<div className="flex gap-2 items-center">
+							<IoLogoFigma className="text-2xl" />
+							<span>Figma : Beginner</span>
+						</div>
+					</div>
+				</div>
+				<Divider className="bg-lime-300 rounded-xl h-1 my-1" />
+				<div className="flex flex-col gap-2">
+					<span className="text-xl font-medium">Language</span>
+					<div className="flex flex-col gap-2">
+						<div className="flex gap-2 items-center">
+							<span>Indonesia : Native</span>
+						</div>
+						<div className="flex gap-2 items-center">
+							<span>English : Conversational</span>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

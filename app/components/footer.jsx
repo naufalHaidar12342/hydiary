@@ -3,28 +3,26 @@ import { Link } from "@nextui-org/link";
 export default function Footer() {
 	return (
 		<footer
-			className={`${caveat.className} flex flex-col justify-center items-center text-3xl gap-2 p-10 bottom-0 left-0 right-0 isolate z-10`}
+			className={`${caveat.className} flex flex-col justify-end items-center text-3xl gap-2 p-10 z-0`}
 		>
 			<span>@2023.</span>
 			<div>
-				made by{" "}
-				<a
-					href="https://github.com/naufalHaidar12342"
+				co-authored by{" "}
+				<Link
+					href="/about/co-authors/strijunk"
 					target="_blank"
-					rel="noopener noreferrer"
-					className="underline-link-animation"
-				>
-					me
-				</a>
-				, co-authored by{" "}
-				<a
-					href="https://github.com/strijunk"
-					target="_blank"
-					rel="noopener noreferrer"
-					className="underline-link-animation"
+					className="underline-link-animation text-3xl text-white"
 				>
 					strijunk
-				</a>
+				</Link>{" "}
+				and{" "}
+				<Link
+					href="/about/co-authors/devardha"
+					target="_blank"
+					className="underline-link-animation text-3xl text-white"
+				>
+					devardha
+				</Link>
 			</div>
 		</footer>
 	);

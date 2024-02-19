@@ -6,6 +6,8 @@ import HygraphDateToReadableDate from "@/libraries/date-converter";
 import { BiLinkExternal } from "react-icons/bi";
 import { FALLBACK_HYGRAPH_HIPERF_API } from "@/constants/fallback_hygraph";
 import { metadataBaseUrl } from "@/libraries/metadata-base";
+import { metadataRobotsRule } from "@/libraries/metadata-robots";
+import { BASE_URL } from "@/libraries/base-url";
 
 export async function generateMetadata({ params }) {
 	const [fetchMetadataInfo] = await getSelectedStory(params.slug);
@@ -21,10 +23,11 @@ export async function generateMetadata({ params }) {
 		title: `${storyTitle}`,
 		description: `${storyDescription}`,
 		...metadataBaseUrl,
+		...metadataRobotsRule,
 		openGraph: {
 			title: storyTitle,
 			description: storyDescription,
-			url: `https://naufalhaidar12342.cyou/stories/${storySlug}`,
+			url: `${BASE_URL}entries/${storySlug}`,
 			images: [
 				{
 					url: storyCoverImage,
