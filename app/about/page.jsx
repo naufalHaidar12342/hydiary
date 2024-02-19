@@ -142,8 +142,8 @@ export default async function About() {
 							target="_blank"
 							className="underline underline-offset-1 decoration-lime-300"
 						>
-							"Human-Robot Interaction on Elderly Companion Robot using Dual
-							Intent Entity Transformer"
+							&quot;Human-Robot Interaction on Elderly Companion Robot using
+							Dual Intent Entity Transformer&quot;
 						</a>{" "}
 						presented at 2023 7th International Conference on Information
 						Technology, Information Systems and Electrical Engineering

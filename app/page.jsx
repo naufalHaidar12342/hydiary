@@ -133,8 +133,8 @@ export default async function Home() {
 					</h3>
 					<p className="pt-4">
 						After going back to drawing board and implement the design together
-						with strijunk, soon this website's domain will be redirected to the
-						new domain,
+						with strijunk, soon the domain of this website will be redirected to
+						the new domain,
 						<span className="underline-link-animation">hydiary.my.id</span>
 					</p>
 					<p className="pt-3">
