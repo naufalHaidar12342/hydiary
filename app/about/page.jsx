@@ -50,7 +50,7 @@ export async function getAuthorsInfo() {
 		},
 		body: JSON.stringify({
 			query: `query AuthorsInfo{
-                authors (where: {name: "Naufal Haidar Rauf"}) {
+                authors(where: {name_contains: "Naufal Haidar Rauf"}) {
                     name
                     biography
                     picture {
