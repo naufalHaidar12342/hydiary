@@ -45,7 +45,7 @@ export async function getAuthorsInfo() {
 	const authors = await fetch(process.env.HYGRAPH_HIPERF_API, {
 		method: "POST",
 		headers: {
-			Authorization: `Bearer ${process.env.HYGRAPH_TOKEN}`,
+			// Authorization: `Bearer ${process.env.HYGRAPH_TOKEN}`,
 			"Content-Type": "application/json",
 		},
 		body: JSON.stringify({
