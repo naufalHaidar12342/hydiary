@@ -1,10 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import HygraphDateToReadableDate from "@/libraries/date-converter";
-import {
-	DEFAULT_OGIMAGE_CREDITS,
-	DEFAULT_OG_IMAGE,
-} from "@/constants/default_ogimage";
 import { Divider } from "@nextui-org/divider";
 import { metadataBaseUrl } from "./libraries/metadata-base";
 import { metadataRobotsRule } from "./libraries/metadata-robots";
@@ -12,29 +8,28 @@ import { BASE_URL } from "./libraries/base-url";
 import { metadataSiteName } from "./libraries/metadata-sitename";
 
 export async function generateMetadata() {
-	// next step: use the already fetched title, slug, and coverimage in Home
-	// to avoid redundant fetch request
-	const latestStory = await getLatestPost();
-	const [storyTitle] = latestStory.map((post) => post.title);
-	console.log("isi metadatabaseurl=", metadataBaseUrl.metadataBase);
-
-	// console.log("isi title=", storyTitle);
+	const [latestEntry] = await getLatestPost();
+	const latestEntryTitle = latestEntry.title;
+	// console.log("isi metadatabaseurl=", metadataBaseUrl.metadataBase);
+	// console.log("isi title=", latestEntryTitle);
+	const latestEntryCoverImage =
+		latestEntry.postAttribution.attributionImage.url;
 	return {
 		title: "Hydiary",
-		description: "Heydar's diary (hey that's me!) ✍️",
+		description: "Hydiary, Heydar's (thats me hehe) diary.",
 		...metadataBaseUrl,
 		...metadataRobotsRule,
 		openGraph: {
 			title: "Hydiary ✍️",
-			description: `Latest entry in my diary: ${storyTitle}`,
+			description: `Latest entry in my diary: ${latestEntryTitle}`,
 			url: `${BASE_URL}`,
 			...metadataSiteName,
 			images: [
 				{
-					url: DEFAULT_OG_IMAGE,
+					url: latestEntryCoverImage,
 					width: 1200,
 					height: 630,
-					alt: `${DEFAULT_OGIMAGE_CREDITS}`,
+					alt: `The cover image for my latest entry${latestEntryTitle}`,
 				},
 			],
 		},

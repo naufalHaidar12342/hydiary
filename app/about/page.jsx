@@ -19,6 +19,9 @@ import {
 import { SiNextdotjs, SiTailwindcss } from "react-icons/si";
 import { IoLogoFigma } from "react-icons/io5";
 import { GiSkills } from "react-icons/gi";
+import { BASE_URL } from "@/libraries/base-url";
+import { metadataSiteName } from "@/libraries/metadata-sitename";
+
 export async function generateMetadata() {
 	return {
 		title: "About",
@@ -28,7 +31,8 @@ export async function generateMetadata() {
 		openGraph: {
 			title: "About",
 			description: `More info about me`,
-			url: `https://naufalhaidar12342.cyou/about`,
+			url: `${BASE_URL}about`,
+			...metadataSiteName,
 			images: [
 				{
 					url: ABOUT_OGIMAGE,

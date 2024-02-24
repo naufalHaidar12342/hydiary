@@ -19,7 +19,7 @@ export async function generateMetadata() {
 				{
 					url: PROJCETS_OGIMAGE,
 					width: 1200,
-					height: 630,
+					height: 630,  
 					alt: PROJECTS_OGIMAGE_CREDITS,
 				},
 			],

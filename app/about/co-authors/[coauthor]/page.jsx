@@ -4,11 +4,13 @@ import {
 } from "@/constants/about_ogimage";
 import { metadataBaseUrl } from "@/libraries/metadata-base";
 import { metadataRobotsRule } from "@/libraries/metadata-robots";
+import { metadataSiteName } from "@/libraries/metadata-sitename";
 import { Divider } from "@nextui-org/react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { FaGithub } from "react-icons/fa6";
 import { TfiInstagram } from "react-icons/tfi";
+
 export async function getCoauthorsInfo(coauthorName) {
 	if (coauthorName === "devardha") {
 		return [
@@ -60,6 +62,7 @@ export async function generateMetadata({ params }) {
 			title: `About ${coauthorAlias} | Hydiary`,
 			description: `Dedicated page about Hydiary co-author, ${coauthorDescription}`,
 			url: `https://naufalhaidar12342.cyou/about/co-authors/${coauthorAlias}`,
+			...metadataSiteName,
 			images: [
 				{
 					url: `${ABOUT_OGIMAGE}`,
