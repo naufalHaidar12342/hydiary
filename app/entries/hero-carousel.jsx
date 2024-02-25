@@ -2,7 +2,6 @@
 
 import HygraphDateToReadableDate from "@/libraries/date-converter";
 import "keen-slider/keen-slider.min.css";
-import { useKeenSlider } from "keen-slider/react";
 import Image from "next/image";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";

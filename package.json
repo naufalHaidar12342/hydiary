@@ -15,7 +15,6 @@
     "eslint-config-next": "^14.0.2",
     "framer-motion": "^10.18.0",
     "html-react-parser": "^4.0.0",
-    "keen-slider": "^6.8.6",
     "luxon": "^3.4.3",
     "next": "^14.1.0",
     "next-themes": "^0.2.1",
