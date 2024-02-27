@@ -1,7 +1,6 @@
 "use client";
 
 import HygraphDateToReadableDate from "@/libraries/date-converter";
-import "keen-slider/keen-slider.min.css";
 import Image from "next/image";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -9,8 +8,8 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { Divider } from "@nextui-org/divider";
 import { RxDividerHorizontal } from "react-icons/rx";
+
 export default function HeroCarousel({ heroDatas }) {
 	console.log("herodatas", heroDatas);
 	// const [heroDataDeconstructed] = heroDatas;
