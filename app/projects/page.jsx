@@ -90,8 +90,10 @@ export async function getListOfProjects() {
 export default async function Projects() {
 	const fetchedProjects = await getListOfProjects();
 	return (
-		<div className="min-h-screen flex flex-col justify-center items-center p-6">
-			<ProjectsGallery listOfProjects={fetchedProjects} />
+		<div className="w-full max-w-screen-xl mx-auto min-h-screen flex flex-col p-6">
+			<div className="h-full w-full">
+				<ProjectsGallery listOfProjects={fetchedProjects} />
+			</div>
 		</div>
 	);
 }
