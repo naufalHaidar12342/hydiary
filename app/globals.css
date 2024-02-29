@@ -1,9 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@media (prefers-color-scheme: dark) {
-	html {
-		color-scheme: dark;
+@layer components {
+	.underline-link-animation {
+		border-bottom-width: 0;
+		background-image: linear-gradient(transparent, transparent),
+			linear-gradient(#c6fb6f, #c6fb6f);
+		background-size: 0 3px;
+		background-position: 0 100%;
+		background-repeat: no-repeat;
+		transition: background-size 0.3s ease-in-out;
+	}
+	/* .underline-link-animation-secondary {
+		background-image: linear-gradient(transparent, transparent),
+			linear-gradient(#c6fb6f, #c6fb6f);
+	} */
+	.underline-link-animation:hover {
+		background-size: 100% 3px;
+		background-position: 0 100%;
+	}
+	.active-page {
+		@apply flex relative h-full items-end data-[active=true]:after:content-[''] data-[active=true]:after:absolute data-[active=true]:after:bottom-0 data-[active=true]:left-0 data-[active=true]:right-0 data-[active=true]:h-[3px] data-[active=true]:bg-[#c6fb6f];
+	}
+	.custom-active-page {
+		@apply underline underline-offset-8 decoration-lime-300 decoration-4;
 	}
 }

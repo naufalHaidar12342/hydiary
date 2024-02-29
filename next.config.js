@@ -9,7 +9,24 @@ const nextConfig = {
 				port: "",
 				pathname: "/**",
 			},
+			{
+				protocol: "https",
+				hostname: "avatars.githubusercontent.com",
+				port: "",
+				pathname: "/u/59217768",
+			},
+			{
+				protocol: "https",
+				hostname: "avatars.githubusercontent.com",
+				port: "",
+				pathname: "/u/63136988",
+			},
 		],
+	},
+	logging: {
+		fetches: {
+			fullUrl: true,
+		},
 	},
 };
 const ContentSecurityPolicy = ``;

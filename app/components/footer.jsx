@@ -1,47 +1,27 @@
-import Link from "next/link";
-
+import { caveat } from "@/libraries/fonts";
+import { Link } from "@nextui-org/link";
 export default function Footer() {
 	return (
-		<footer className="footer p-10 bg-dark-slate-gray text-white">
-			<div className="text-lg lg:text-base">
-				<p>Logging my stories, one at a time 📝 </p>
-				<p className="italic">©2023</p>
-				<p>
-					Special thanks to{" "}
-					<a
-						href="https://github.com/devardha"
-						rel="noreferrer"
-						target="_blank"
-						className="link link-hover"
-					>
-						devardha.{""}
-					</a>
-					{""} Keep heaven bug-free, will you?
-				</p>
-			</div>
+		<footer
+			className={`${caveat.className} flex flex-col justify-end items-center text-3xl gap-2 p-10 z-0`}
+		>
+			<span>@2023.</span>
 			<div>
-				<span className="footer-title opacity-100">Contacts</span>
-				<a
-					className="link link-hover py-7 lg:py-0"
-					href="https://naufalhaidarr-qit1952.slack.com/team/U055EA48N6A"
-					rel={"noreferrer"}
+				co-authored by{" "}
+				<Link
+					href="/about/co-authors/strijunk"
 					target="_blank"
+					className="underline-link-animation text-3xl text-white"
 				>
-					Slack
-				</a>
-				<a
-					className="link link-hover opacity-100 py-7 lg:py-0"
-					href="https://t.me/heydar12342"
-					rel="noreferrer"
+					strijunk
+				</Link>{" "}
+				and{" "}
+				<Link
+					href="/about/co-authors/devardha"
 					target="_blank"
+					className="underline-link-animation text-3xl text-white"
 				>
-					Telegram
-				</a>
-			</div>
-			<div>
-				<span className="footer-title opacity-100 py-7 lg:py-0">Legal</span>
-				<Link href={"/privacy-policies"} className="link link-hover">
-					Privacy policy
+					devardha
 				</Link>
 			</div>
 		</footer>

@@ -2,18 +2,27 @@ import {
 	PROJCETS_OGIMAGE,
 	PROJECTS_OGIMAGE_CREDITS,
 } from "@/constants/projects_ogimage";
+import { BASE_URL } from "@/libraries/base-url";
+import { metadataBaseUrl } from "@/libraries/metadata-base";
+import { metadataRobotsRule } from "@/libraries/metadata-robots";
+import { metadataSiteName } from "@/libraries/metadata-sitename";
 import { BiLinkExternal } from "react-icons/bi";
+import ProjectsGallery from "./projects-gallery";
 
 export async function generateMetadata() {
-	const latestProject = await getLatestProject();
-	const [projectTitle] = latestProject.map((project) => project.projectTitle);
+	const [latestProject] = await getLatestProject();
+	const latestProjectTitle = latestProject.projectTitle;
 	return {
 		title: "Projects",
-		description: `My latest project, ${projectTitle} ,along with other projects that I've done.`,
+		description: `Check out ${latestProjectTitle}, my latest project. Oh and also check other projects in this page.`,
+		...metadataBaseUrl,
+		...metadataRobotsRule,
+
 		openGraph: {
 			title: "Projects of nh12342",
-			description: `My latest project, ${projectTitle} ,along with other projects that I've done.`,
-			url: `https://naufalhaidar12342.cyou/projects`,
+			description: `Check out ${latestProjectTitle}, my latest project. Oh and also check other projects in this page`,
+			url: `${BASE_URL}projects`,
+			...metadataSiteName,
 			images: [
 				{
 					url: PROJCETS_OGIMAGE,
@@ -36,6 +45,13 @@ export async function getLatestProject() {
 			query: `query ListOfProjects{
 				projects(orderBy: createdAt_DESC, first:1){
 					projectTitle
+					projectShortDescription
+					projectsRepositoryLink
+					projectCoverImageAttribution{
+						attributionImage{
+							url
+						}
+					}
 				}
 			}`,
 		}),
@@ -53,11 +69,16 @@ export async function getListOfProjects() {
 		},
 		body: JSON.stringify({
 			query: `query ListOfProjects{
-				projects(orderBy: createdAt_DESC){
+				projects(orderBy: createdAt_DESC, where:{projectPlatform: Web}){
 					projectTitle
 					projectShortDescription
 					projectPlatform
 					projectsRepositoryLink
+					projectCoverImageAttribution{
+						attributionImage{
+							url
+						}
+					}
 				}
 			}`,
 		}),
@@ -67,28 +88,11 @@ export async function getListOfProjects() {
 	return fetchProjects.data.projects;
 }
 export default async function Projects() {
-	const projects = await getListOfProjects();
+	const fetchedProjects = await getListOfProjects();
 	return (
-		<div className="min-h-screen flex flex-col justify-center items-center p-6">
-			<h2 className="text-3xl my-4 p-4">List of projects</h2>
-			<div className="grid grid-cols-1 2xl:grid-cols-2 col-span-2 gap-3 2xl:gap-5 p-6">
-				{projects.map((project) => (
-					<div className="flex flex-col" key={project.projectTitle}>
-						<div className="w-full py-2">
-							<a
-								href={project.projectsRepositoryLink}
-								className="font-medium text-lg link link-hover text-dark-slate-gray dark:text-jet-stream"
-							>
-								{project.projectTitle}
-								<BiLinkExternal className="inline-flex ml-1 dark:text-jet-stream text-dark-slate-gray" />
-							</a>
-							<p className="">{project.projectShortDescription}</p>
-							<div className="badge badge-md badge-info">
-								{project.projectPlatform}
-							</div>
-						</div>
-					</div>
-				))}
+		<div className="w-full max-w-screen-xl mx-auto min-h-screen flex flex-col p-6">
+			<div className="h-full w-full">
+				<ProjectsGallery listOfProjects={fetchedProjects} />
 			</div>
 		</div>
 	);

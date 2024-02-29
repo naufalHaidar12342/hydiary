@@ -1,22 +1,15 @@
-import { Akshar } from "next/font/google";
-import { Analytics } from "@vercel/analytics/react";
 import Header from "@components/header";
 import Footer from "@components/footer";
 import "./globals.css";
-
-const akshar = Akshar({
-	subsets: ["latin"],
-	display: "swap",
-	weight: ["400", "500", "600"],
-});
+import { playpenSans } from "./libraries/fonts";
+import { ThemeProvider } from "./libraries/theme-provider";
 
 export default function Layout({ children }) {
 	return (
-		<html lang="en" className={akshar.className}>
-			<body>
+		<html lang="en" className={`${playpenSans.className} `}>
+			<body className="w-full min-h-screen bg-gray-950 bg-gradient-to-b from-darkblue-gradient to-dark-gradient relative z-0">
 				<Header />
-				{children}
-				<Analytics />
+				<ThemeProvider>{children}</ThemeProvider>
 				<Footer />
 			</body>
 		</html>
