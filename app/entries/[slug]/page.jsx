@@ -166,7 +166,6 @@ export default async function ReadStory({ params }) {
 						{entryTitle}
 					</h2>
 					<ReactMarkdown
-						ReactMarkdown
 						className="italic pt-2"
 						components={{
 							a: (link) => {
