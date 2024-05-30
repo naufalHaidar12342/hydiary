@@ -4,7 +4,8 @@
 
 Place to share my stories
 
-[![CodeFactor](https://www.codefactor.io/repository/github/naufalhaidar12342/blog-naufalhaidar12342/badge)](https://www.codefactor.io/repository/github/naufalhaidar12342/blog-naufalhaidar12342)
+<!--- [![CodeFactor](https://www.codefactor.io/repository/github/naufalhaidar12342/blog-naufalhaidar12342/badge)](https://www.codefactor.io/repository/github/naufalhaidar12342/blog-naufalhaidar12342) -->
+[![CodeFactor](https://www.codefactor.io/repository/github/naufalhaidar12342/hydiary/badge)](https://www.codefactor.io/repository/github/naufalhaidar12342/hydiary)
 
 ## Getting Started
 
