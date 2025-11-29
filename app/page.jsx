@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import HygraphDateToReadableDate from "@/libraries/date-converter";
-import { Divider } from "@nextui-org/divider";
 import { metadataBaseUrl } from "./libraries/metadata-base";
 import { metadataRobotsRule } from "./libraries/metadata-robots";
 import { BASE_URL } from "./libraries/base-url";
@@ -100,7 +99,7 @@ export default async function Home() {
 							<span className="pt-5 pb-4 font-light text-xl">
 								{HygraphDateToReadableDate(entryDate)}
 							</span>
-							<Divider className="h-1 w-1/2 bg-zinc-100 rounded-xl" />
+							<hr className="h-1 w-1/2 bg-zinc-100 rounded-xl" />
 						</div>
 						<p className="text-neutral-50 text-2xl font-normal">
 							{entryExcerpt}

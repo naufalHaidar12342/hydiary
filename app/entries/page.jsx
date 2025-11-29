@@ -1,6 +1,6 @@
 import { metadataBaseUrl } from "@/libraries/metadata-base";
 import { metadataRobotsRule } from "@/libraries/metadata-robots";
-import { Button } from "@nextui-org/button";
+
 import Image from "next/image";
 import Link from "next/link";
 import HeroCarousel from "./hero-carousel";
@@ -151,13 +151,13 @@ export default async function Stories({ searchParams }) {
 							<div className="flex flex-col gap-2 md:flex-row">
 								{story.tags.map((tag) => (
 									<div className="py-1" key={tag}>
-										<Button
+										<button
 											size="lg"
 											radius="sm"
 											className="font-normal text-base bg-indigo-800"
 										>
 											{tag}
-										</Button>
+										</button>
 									</div>
 								))}
 							</div>

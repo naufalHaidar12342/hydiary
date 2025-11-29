@@ -1,5 +1,6 @@
 import { caveat } from "@/libraries/fonts";
-import { Link } from "@nextui-org/link";
+import Link from "next/link";
+
 export default function Footer() {
 	return (
 		<footer

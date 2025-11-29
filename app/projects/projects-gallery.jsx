@@ -14,10 +14,9 @@ import "swiper/css/pagination";
 import "swiper/css/free-mode";
 import "swiper/css/thumbs";
 import Image from "next/image";
-import { Button } from "@nextui-org/button";
 import { useState } from "react";
 import { LuArrowUpRight } from "react-icons/lu";
-import { Link } from "@nextui-org/link";
+import Link from "next/link";
 
 export default function ProjectsGallery({ listOfProjects }) {
 	const [thumbnailSwipers, setThumbnailSwipers] = useState(null);
@@ -55,16 +54,15 @@ export default function ProjectsGallery({ listOfProjects }) {
 								<p className="text-2xl font-light">
 									{project.projectShortDescription}
 								</p>
-								<Button
+								<button
 									as={Link}
 									className="bg-sand text-xl font-medium mt-4"
-									color="success"
 									href={project.projectsRepositoryLink}
 									endContent={<LuArrowUpRight />}
 									target="_blank"
 								>
 									Visit project
-								</Button>
+								</button>
 							</div>
 						</div>
 					</SwiperSlide>

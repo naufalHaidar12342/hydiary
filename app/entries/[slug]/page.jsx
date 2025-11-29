@@ -165,25 +165,26 @@ export default async function ReadStory({ params }) {
 					<h2 className="text-5xl font-medium text-lime-300 pt-2">
 						{entryTitle}
 					</h2>
-					<ReactMarkdown
-						className="italic pt-2"
-						components={{
-							a: (link) => {
-								return (
-									<a
-										href={link.href}
-										referrerPolicy="no-referrer"
-										target="_blank"
-										className="font-medium underline-link-animation"
-									>
-										{link.children}
-									</a>
-								);
-							},
-						}}
-					>
-						{entryImageCredit}
-					</ReactMarkdown>
+					<div className="italic pt-2">
+						<ReactMarkdown
+							components={{
+								a: (link) => {
+									return (
+										<a
+											href={link.href}
+											referrerPolicy="no-referrer"
+											target="_blank"
+											className="font-medium underline-link-animation"
+										>
+											{link.children}
+										</a>
+									);
+								},
+							}}
+						>
+							{entryImageCredit}
+						</ReactMarkdown>
+					</div>
 				</div>
 			</div>
 			<div className="max-w-screen-xl min-h-full flex mx-auto relative z-20 p-5">

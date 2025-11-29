@@ -1,13 +1,12 @@
 "use client";
 import Link from "next/link";
-import { Button } from "@nextui-org/button";
-import { Pagination } from "@nextui-org/pagination";
+
 import BackToTopButton from "@/components/backtotop-button";
 export default function CustomPagination({ page }) {
 	return (
 		<div className="flex flex-col w-full md:items-center md:flex-row gap-3 z-30">
 			<BackToTopButton />
-			<Button
+			<button
 				as={Link}
 				variant="bordered"
 				href={`/entries?page=${page > 1 ? page - 1 : 1}`}
@@ -15,8 +14,8 @@ export default function CustomPagination({ page }) {
 				size="lg"
 			>
 				Previous page
-			</Button>
-			<Pagination
+			</button>
+			<div
 				size="lg"
 				total={8}
 				page={page}
@@ -25,7 +24,7 @@ export default function CustomPagination({ page }) {
 					cursor: "bg-lime-200 text-darkblue-gradient font-medium",
 				}}
 			/>
-			<Button
+			<button
 				as={Link}
 				variant="bordered"
 				href={`/entries?page=${page + 1}`}
@@ -33,7 +32,7 @@ export default function CustomPagination({ page }) {
 				size="lg"
 			>
 				Next page
-			</Button>
+			</button>
 		</div>
 	);
 }
