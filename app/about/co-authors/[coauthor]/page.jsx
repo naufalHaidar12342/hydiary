@@ -87,7 +87,7 @@ export default async function CoAuthors({ params }) {
 	const coauthorInstagramAlias =
 		fetchedCoauthorsInfo.coauthorSocials.instagramAlias;
 	return (
-		<div className="w-full max-w-screen-lg mx-auto min-h-screen isolate z-10">
+		<div className="w-full max-w-(--breakpoint-lg) mx-auto min-h-screen isolate z-10">
 			<div className="flex flex-col items-center w-full h-full gap-4 p-5">
 				<div className="flex flex-col items-center">
 					<div className="w-60 h-60 relative">

@@ -187,7 +187,7 @@ export default async function ReadStory({ params }) {
 					</div>
 				</div>
 			</div>
-			<div className="max-w-screen-xl min-h-full flex mx-auto relative z-20 p-5">
+			<div className="max-w-(--breakpoint-xl) min-h-full flex mx-auto relative z-20 p-5">
 				<ReactMarkdown
 					className="text-start pt-10"
 					components={CustomMarkdownComponents}

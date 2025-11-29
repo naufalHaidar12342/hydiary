@@ -1,28 +1,52 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-@layer components {
-	.underline-link-animation {
-		border-bottom-width: 0;
-		background-image: linear-gradient(transparent, transparent),
-			linear-gradient(#c6fb6f, #c6fb6f);
-		background-size: 0 3px;
-		background-position: 0 100%;
-		background-repeat: no-repeat;
-		transition: background-size 0.3s ease-in-out;
-	}
-	/* .underline-link-animation-secondary {
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-darkblue-gradient: #12184e;
+  --color-dark-gradient: #0a0b1a12;
+  --color-sand: #e4e0d5;
+  --color-purple-gradient: #6d6dcf00;
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility underline-link-animation {
+  border-bottom-width: 0;
+  background-image:
+    linear-gradient(transparent, transparent), linear-gradient(#c6fb6f, #c6fb6f);
+  background-size: 0 3px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s ease-in-out;
+  /* .underline-link-animation-secondary {
 		background-image: linear-gradient(transparent, transparent),
 			linear-gradient(#c6fb6f, #c6fb6f);
 	} */
-	.underline-link-animation:hover {
-		background-size: 100% 3px;
-		background-position: 0 100%;
-	}
-	.active-page {
-		@apply flex relative h-full items-end data-[active=true]:after:content-[''] data-[active=true]:after:absolute data-[active=true]:after:bottom-0 data-[active=true]:left-0 data-[active=true]:right-0 data-[active=true]:h-[3px] data-[active=true]:bg-[#c6fb6f];
-	}
-	.custom-active-page {
-		@apply underline underline-offset-8 decoration-lime-300 decoration-4;
-	}
+  &:hover {
+    background-size: 100% 3px;
+    background-position: 0 100%;
+  }
+}
+@utility active-page {
+  @apply flex relative h-full items-end data-[active=true]:after:content-[''] data-[active=true]:after:absolute data-[active=true]:after:bottom-0 data-[active=true]:left-0 data-[active=true]:right-0 data-[active=true]:h-[3px] data-[active=true]:bg-[#c6fb6f];
+}
+@utility custom-active-page {
+  @apply underline underline-offset-8 decoration-lime-300 decoration-4;
 }

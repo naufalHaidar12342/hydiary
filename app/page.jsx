@@ -106,7 +106,7 @@ export default async function Home() {
 						</p>
 					</div>
 					{/* smaller cover image with zinc border */}
-					<div className="z-50 rounded-xl bg-gradient-to-r from-sand to-sand">
+					<div className="z-50 rounded-xl bg-linear-to-r from-sand to-sand">
 						<div className="h-64 w-80 relative">
 							<Image
 								src={entryImage}

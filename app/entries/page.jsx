@@ -120,7 +120,7 @@ export default async function Stories({ searchParams }) {
 			<HeroCarousel heroDatas={heroItems} />
 
 			{/* looping/mapping/get all member of array */}
-			<div className="flex flex-col max-w-screen-lg gap-4 px-5 py-10 mx-auto z-20">
+			<div className="flex flex-col max-w-(--breakpoint-lg) gap-4 px-5 py-10 mx-auto z-20">
 				{entries.map((story) => (
 					<div key={story.title} className="flex flex-col lg:flex-row gap-8">
 						<div className="w-full h-[305px] relative">

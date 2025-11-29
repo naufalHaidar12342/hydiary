@@ -72,9 +72,9 @@ export default async function About() {
 	const authorName = fetchedAuthorInfo.name;
 	const authorProfileImage = fetchedAuthorInfo.picture.url;
 	return (
-		<div className="min-h-screen w-full max-w-screen-lg flex flex-col md:flex-row mx-auto gap-4 p-4 isolate z-10">
+		<div className="min-h-screen w-full max-w-(--breakpoint-lg) flex flex-col md:flex-row mx-auto gap-4 p-4 isolate z-10">
 			<div className="flex flex-col w-full h-fit  border-2 border-sand rounded-xl items-center md:items-start p-5 relative z-20">
-				<div className="w-60 h-60 relative bg-gradient-to-b from-darkblue-gradient to-lime-300 rounded-full">
+				<div className="w-60 h-60 relative bg-linear-to-b from-darkblue-gradient to-lime-300 rounded-full">
 					<Image
 						src={authorProfileImage}
 						alt={authorName}
