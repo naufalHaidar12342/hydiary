@@ -1,6 +1,6 @@
 import { metadataBaseUrl } from "@/libraries/metadata-base";
 import { metadataRobotsRule } from "@/libraries/metadata-robots";
-import { Button } from "@nextui-org/button";
+
 import Image from "next/image";
 import Link from "next/link";
 import HeroCarousel from "./hero-carousel";
@@ -120,7 +120,7 @@ export default async function Stories({ searchParams }) {
 			<HeroCarousel heroDatas={heroItems} />
 
 			{/* looping/mapping/get all member of array */}
-			<div className="flex flex-col max-w-screen-lg gap-4 px-5 py-10 mx-auto z-20">
+			<div className="flex flex-col max-w-(--breakpoint-lg) gap-4 px-5 py-10 mx-auto z-20">
 				{entries.map((story) => (
 					<div key={story.title} className="flex flex-col lg:flex-row gap-8">
 						<div className="w-full h-[305px] relative">
@@ -151,13 +151,13 @@ export default async function Stories({ searchParams }) {
 							<div className="flex flex-col gap-2 md:flex-row">
 								{story.tags.map((tag) => (
 									<div className="py-1" key={tag}>
-										<Button
+										<button
 											size="lg"
 											radius="sm"
 											className="font-normal text-base bg-indigo-800"
 										>
 											{tag}
-										</Button>
+										</button>
 									</div>
 								))}
 							</div>

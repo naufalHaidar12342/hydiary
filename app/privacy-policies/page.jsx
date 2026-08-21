@@ -5,7 +5,7 @@ export const metadata = {
 
 export default function PrivacyPolicies() {
 	return (
-		<div className="min-h-screen max-w-screen-md mx-auto flex flex-col justify-center items-center px-4">
+		<div className="min-h-screen max-w-(--breakpoint-md) mx-auto flex flex-col justify-center items-center px-4">
 			<h2 className="text-2xl">Privacy Policies</h2>
 			<div className="my-4" aria-label="Policies">
 				<div className="mb-10">

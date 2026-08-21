@@ -5,7 +5,7 @@ import {
 import { metadataBaseUrl } from "@/libraries/metadata-base";
 import { metadataRobotsRule } from "@/libraries/metadata-robots";
 import { metadataSiteName } from "@/libraries/metadata-sitename";
-import { Divider } from "@nextui-org/react";
+
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { FaGithub } from "react-icons/fa6";
@@ -87,7 +87,7 @@ export default async function CoAuthors({ params }) {
 	const coauthorInstagramAlias =
 		fetchedCoauthorsInfo.coauthorSocials.instagramAlias;
 	return (
-		<div className="w-full max-w-screen-lg mx-auto min-h-screen isolate z-10">
+		<div className="w-full max-w-(--breakpoint-lg) mx-auto min-h-screen isolate z-10">
 			<div className="flex flex-col items-center w-full h-full gap-4 p-5">
 				<div className="flex flex-col items-center">
 					<div className="w-60 h-60 relative">
@@ -109,7 +109,7 @@ export default async function CoAuthors({ params }) {
 				<div className="flex flex-col w-full h-full items-start border-3 border-sand rounded-xl p-4">
 					<span className="font-medium text-xl">About {coauthorAlias}</span>
 					<p className="pt-2 text-lg">{coauthorDescription}</p>
-					<Divider className="bg-lime-300 my-4 py-[2px] rounded-xl" />
+					
 					<span className="font-medium text-xl">Socials</span>
 					<div className="flex flex-col gap-2 pt-3">
 						<div className="flex items-center gap-2">
