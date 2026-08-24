@@ -1,12 +1,29 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-darkblue-gradient: #12184e;
-  --color-dark-gradient: #0a0b1a12;
-  --color-sand: #e4e0d5;
-  --color-purple-gradient: #6d6dcf00;
+    --color-darkblue-gradient: oklch(
+        0.2444 0.0984 271.95
+    ); /* hex color #12184e*/
+    --color-dark-gradient: oklch(
+        0.1577 0.0317 279.21 / 7.1%
+    ); /* hsl color #0a0b1a12*/
+    --color-sand: oklch(0.9068 0.0154 90.24);
+    /* hex color #e4e0d5*/
+    --color-purple-gradient: oklch(
+        0.5819 0.1472 280.81 / 0%
+    ); /* hsl color #6d6dcf00*/
+
+    /* declaring custom colors with
+  * "hydiary" prefix*/
+
+    --color-hydiary-accent: oklch(0.9236 0.1774 126.93);
+    /*Hex color #C6FB6F*/
+    --color-hydiary-primary: oklch(0.2444 0.0984 271.95);
+    /*Hex color #12184E*/
+    --color-hydiary-secondary: oklch(0.9851 0 0);
+    /*Hex color #FAFAFA*/
 }
 
 /*
@@ -18,35 +35,36 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
-  }
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentcolor);
+    }
 }
 
 @utility underline-link-animation {
-  border-bottom-width: 0;
-  background-image:
-    linear-gradient(transparent, transparent), linear-gradient(#c6fb6f, #c6fb6f);
-  background-size: 0 3px;
-  background-position: 0 100%;
-  background-repeat: no-repeat;
-  transition: background-size 0.3s ease-in-out;
-  /* .underline-link-animation-secondary {
+    border-bottom-width: 0;
+    background-image:
+        linear-gradient(transparent, transparent),
+        linear-gradient(#c6fb6f, #c6fb6f);
+    background-size: 0 3px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.3s ease-in-out;
+    /* .underline-link-animation-secondary {
 		background-image: linear-gradient(transparent, transparent),
 			linear-gradient(#c6fb6f, #c6fb6f);
 	} */
-  &:hover {
-    background-size: 100% 3px;
-    background-position: 0 100%;
-  }
+    &:hover {
+        background-size: 100% 3px;
+        background-position: 0 100%;
+    }
 }
 @utility active-page {
-  @apply flex relative h-full items-end data-[active=true]:after:content-[''] data-[active=true]:after:absolute data-[active=true]:after:bottom-0 data-[active=true]:left-0 data-[active=true]:right-0 data-[active=true]:h-[3px] data-[active=true]:bg-[#c6fb6f];
+    @apply flex relative h-full items-end data-[active=true]:after:content-[''] data-[active=true]:after:absolute data-[active=true]:after:bottom-0 data-[active=true]:left-0 data-[active=true]:right-0 data-[active=true]:h-[3px] data-[active=true]:bg-[#c6fb6f];
 }
 @utility custom-active-page {
-  @apply underline underline-offset-8 decoration-lime-300 decoration-4;
+    @apply underline underline-offset-8 decoration-lime-300 decoration-4;
 }
