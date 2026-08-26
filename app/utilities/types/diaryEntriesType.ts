@@ -1,15 +1,115 @@
 /**
  * @interface
- * Entry of diary
+ * Interface declaration for diary entry.
+ * Each query can have different property
+ * or elements from this interface,
+ * depending on the need of query
+ *
+ * (**Optional**) means that each query
+ * might not request the specific element.
+ *
+ * for example, {@link LatestDiaryEntryResponse}
+ * did not request for `author`, but other
+ * query request for `author`
+ *
+ * @property
+ * `title` -- name of the post.
+ * return as `string`.
+ *
+ * `slug` -- title of the post,
+ * but in lower case and
+ * written in kebab case naming system.
+ * returns as `string`.
+ *
+ * `date` -- date in YYYY-mm-dd format.
+ * indicating the release date of
+ * the post. returns as `string`.
+ *
+ * `createdAt` -- Hygraph auto-generated
+ * date (ISO 8601) when a post/entry
+ * is created. return as `string`
+ *
+ * `excerpt` -- short sentences
+ * to explain a little bit about
+ * the post. returns as `string`
+ *
+ * `tags` -- (**Optional**).
+ * category for a post.
+ * one (1) post can have more
+ * than one category.
+ * default value is empty array
+ * (`[]`).
+ *
+ * `coverImage` -- (**Optional**).
+ * meant to replace `attributionImage` field
+ * for much descriptive field.
+ * returns image url as `string`.
+ *
+ * `attributionMarkdown` is
+ * planned to be replaced with
+ * regular text field instead of
+ * markdown field.
+ *
+ * as for the URL to actual image,
+ * it is planned to have same
+ * format as `attributionImage.url`
+ *
+ *
+ * `author` -- (**Optional**).
+ * writer for the post. as of now,
+ * its just me (naufalHaidar)
+ *
+ * including:
+ * writer name `name`,
+ * return as `string`
+ *
+ * profile picture `image.url`,
+ * return as `string`
+ *
+ * `content` -- body of the post.
+ * using markdown field (`markdown`)
+ * to format the post.
+ *
+ * @example
+ * `title` -- "Lorem Ipsum 2018"
+ *
+ * `slug` -- "lorem-ipsum-2018"
+ *
+ * `date` -- "2024-03-23"
+ *
+ * `createdAt` -- "2024-03-22T18:27:11.65822+00:00"
+ *
+ * `excerpt` -- "These are the screenshots I took during Arknights 4th Anniversary. I assume these artists have to manually draw on the event's \"post cards\", most likely using their drawing tablet."
+ *
+ * `tags` -- [] (for empty tags),
+ * ["#games", "#deeprockgalactic"] (for non-empty tags)
+ *
+ * `coverImage` -- "https://ap-southeast-2.graphassets.com/AnOOT8xyMQSqFEzJHOhwdz/ojjriFNwTJuFmTdnejnM" (post with cover image),
+ * null (post without coverImage)
+ *
+ * `postAttribution` --
+ * "attributionMarkdown": "Wallpaper by [Official Website of Deep Rock Galactic](https://www.deeprockgalactic.com/wallpapers/keoo55ri5k01xlufnj4dxkh1iyb26h)",
+ * "attributionImage": {
+ *    "url": "https://ap-southeast-2.graphassets.com/AnOOT8xyMQSqFEzJHOhwdz/ojjriFNwTJuFmTdnejnM"
+ * }
+ *
+ * `author` --
+ * "name": "Naufal Haidar Rauf",
+ * "picture": {
+ * "url": "https://ap-southeast-2.graphassets.com/AnOOT8xyMQSqFEzJHOhwdz/IBMqDrET4NQ7MI2KiPhw"
+ * }
+ *
+ * `content` --
+ * "markdown": "lorem ipsum dolor sit amet\n\n"
+ *
  */
-
 export interface DiaryEntry {
   title: string;
   slug: string;
   date: string;
   createdAt: string;
   excerpt: string;
-  tags?: string[];
+  tags?: string[] | [];
   coverImage?: DiaryEntryCoverImage | null;
   postAttribution: DiaryEntryAttribution;
   author?: DiaryEntryAuthor;
@@ -33,7 +133,6 @@ export interface DiaryEntryCoverImage {
  * Interface for `postAttribution` property
  * in Hygraph API response
  *
- *
  * @property
  *
  * `attributionMarkdown` - Where the photo/image
@@ -41,12 +140,6 @@ export interface DiaryEntryCoverImage {
  *
  * `attributionImage` - schema name
  * `url` - The Hygraph Assets link for the image/photo
- *
- * @example
- *
- * `attributionMarkdown` - "\"Photo of Person Taking Down Notes\". Photo by [cottonbro studio](https://www.pexels.com/photo/photo-of-person-taking-down-notes-7319070/)"
- *
- * `url` - "https://ap-southeast-2.graphassets.com/AnOOT8xyMQSqFEzJHOhwdz/u6ndGAbTKCaQGdOqMc2f"
  */
 export interface DiaryEntryAttribution {
   attributionMarkdown: string;
@@ -62,10 +155,6 @@ export interface DiaryEntryAttribution {
  * @prop
  * `markdown` - body of the post/content
  * that is formatted in Markdown. returned as `string`
- *
- *
- * @example
- * "\"Photo of Person Taking Down Notes\". Photo by [cottonbro studio](https://www.pexels.com/photo/photo-of-person-taking-down-notes-7319070/)"
  */
 export interface DiaryEntryContent {
   markdown: string;
@@ -76,16 +165,7 @@ export interface DiaryEntryContent {
  * Declaring the structure for author
  *
  * @property
- *
- * `name` - name of the author, returns in `string`
- *
- * `url` - link to image set as profile picture for
- * the author. returns in `string`
- *
- * @example
- * `name` - "JohnHelldivers"
- *
- * `url` - "https://ap-southeast-2.graphassets.com/AnOOT8xyMQSqFEzJHOhwdz/u6ndGAbTKCaQGdOqMc2f"
+ * `name`, `picture.url`
  */
 export interface DiaryEntryAuthor {
   name?: string | null;
@@ -131,28 +211,17 @@ export interface DiaryEntryResponse<TItem = DiaryEntry> {
 
 /**
  * @type
- *
- * Type declaration to dictate what are
- * the elements/properties/members of the array, as part of
- * the API response
- *
- * Since one (1) latest/newest post only require these properties,
- * there is no need to request all properties from the Post schema
- * (in Hygraph)
+ * Type declaration to dictate elements of array
+ * for latest new post
  *
  * @property
- * `title` = title of the post. returns in `string` value.
+ * `title`, `slug`, `date`, `createdAt`, `excerpt`,
+ * `postAttribution`
  *
- * `slug` = unique identifier for each title. returns in `string` value
+ * @see
+ * {@linkcode DiaryEntry} for detailed explanation
+ * of each property
  *
- * `date` = when the post supposed to be "released",
- * Formatted in ISO 8601. returned in `string` value
- *
- * `createdAt`= date and time in IS0 8601 format, automatically
- * generated by Hygraph. return in `string` value
- *
- * `excerpt` - paragraphs that shortly explain about the specific
- * diary entry/post
  */
 export type LatestDiaryEntry = Pick<
   DiaryEntry,
@@ -165,30 +234,12 @@ export type LatestDiaryEntry = Pick<
  * that return one (1) latest/newest post
  *
  * @property
+ * `title`, `slug`, `date`, `createdAt`,
+ * `excerpt`, `postAttribution`, `tags`
  *
- * `title` - title of the post (`string` value)
- *
- * `slug` - unique identifier, Hygraph
- * generated this automatically from post title
- *
- * `date` - when the post supposed to be "released",
- * Formatted in ISO 8601, returned as string
- *
- * `createdAt` - date and time in IS0 8601 format.
- * Automatically generated by Hygraph every time
- * we create new entries in Hygraph
- *
- * `excerpt` - similar to summary, short paragraphs
- * that quickly explains about the specific
- * diary entry/post
- *
- * `postAttribution` - will return
- * `attributionMarkdown` in `string` value and
- * `url` of `attributionImage` in `string` value
- *
- * `tags` - short phrase to quickly categorize
- * post. return in `string[]` value. Default value
- * is empty array `[]`
+ * @see {@linkcode DiaryEntry} for
+ * more detailed explanation of each
+ * property
  */
 export type LatestDiaryEntryResponse = DiaryEntryResponse<LatestDiaryEntry>;
 
@@ -197,7 +248,11 @@ export type LatestDiaryEntryResponse = DiaryEntryResponse<LatestDiaryEntry>;
  * Type declaration for paginated post query
  *
  * @property
+ * `title`, `excerpt`, `date`, `createdAt`,
+ * `slug`, `coverImage`, `postAttribution`,
+ * `tags`
  *
+ * @see {@linkcode DiaryEntry}
  */
 export type DiaryEntriesPaginated = Pick<
   DiaryEntry,

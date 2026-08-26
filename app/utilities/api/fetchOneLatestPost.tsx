@@ -5,9 +5,19 @@ import {
 } from "../types/diaryEntriesType";
 
 /**
+ * @async
+ * Async function to fetch one (1) newest/latest post
+ * from Hygraph. Only "Published" status will be
+ * returned.
+ *
+ * @
  *
  * @returns
- * array with @type LatestDiaryResponse
+ * string array using LatestDiaryEntryResponse type
+ *
+ * @see
+ * {@link LatestDiaryEntryResponse} for detailed
+ * description of each property
  */
 
 export default async function fetchOneLatestPost(): Promise<LatestDiaryEntryResponse> {
