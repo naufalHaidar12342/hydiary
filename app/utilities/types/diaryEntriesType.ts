@@ -261,7 +261,10 @@ export type DiaryEntriesPaginated = Pick<
   | "date"
   | "createdAt"
   | "slug"
+  | "tags"
   | "coverImage"
   | "postAttribution"
-  | "tags"
 >;
+
+export type DiaryEntriesPaginatedResponse =
+  DiaryEntryResponse<DiaryEntriesPaginated>;

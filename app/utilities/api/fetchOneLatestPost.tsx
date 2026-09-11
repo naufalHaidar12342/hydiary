@@ -7,10 +7,11 @@ import {
 /**
  * @async
  * Async function to fetch one (1) newest/latest post
- * from Hygraph. Only "Published" status will be
- * returned.
+ * from Hygraph. Only returns post marked as "Published"
  *
- * @
+ * API endpoints/url for the API will use environment
+ * variable first. If this return undefined,
+ * fetch function will use {@linkcode FALLBACK_HYGRAPH_API}
  *
  * @returns
  * string array using LatestDiaryEntryResponse type
