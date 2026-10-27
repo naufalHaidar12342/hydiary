@@ -24,6 +24,15 @@
     /*Hex color #12184E*/
     --color-hydiary-secondary: oklch(0.9851 0 0);
     /*Hex color #FAFAFA*/
+
+
+}
+
+@utility text-shadow-highlighter{
+    /* pen higlighter effect, using text-shadow
+    * reference: https://stackoverflow.com/questions/33451683/pen-highlighter-effect-in-css#62484130
+    */
+    text-shadow: 3px 0px 3px #C6FB6F, -3px 0px 3px #C6FB6F, 6px 0px 6px #C6FB6F, -6px 0px 6px #C6FB6F,
 }
 
 /*
@@ -67,4 +76,27 @@
 }
 @utility custom-active-page {
     @apply underline underline-offset-8 decoration-lime-300 decoration-4;
+}
+
+*{
+    /*
+    Source - https://stackoverflow.com/a/64127605
+    Posted by Max Hoffmann, modified by community. See post 'Timeline' for change history
+    Retrieved 2026-09-18, License - CC BY-SA 4.0
+    */
+
+    mark {
+      margin: 0 -0.4em;
+      padding: 0.1em 0.4em;
+      /*border-radius: 0.8em 0.3em;*/
+      background: transparent;
+      background-image: linear-gradient(
+        to right,
+        oklch(0.9851 0 0),
+        oklch(0.9236 0.1774 126.93),
+        oklch(0.9851 0 0)
+      );
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+    }
 }

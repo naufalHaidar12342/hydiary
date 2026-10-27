@@ -42,10 +42,6 @@ export default async function fetchPostsWithPagination({
             date
             createdAt
             slug
-            tags
-            coverImage{
-              url
-            }
             postAttribution{
               attributionMarkdown
               attributionImage{

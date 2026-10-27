@@ -6,7 +6,9 @@ import {
   playpenSans,
   caveat,
   ibmPlexMono,
+  openSans,
 } from "./utilities/fonts/next-google-fonts";
+import StandingNavigation from "./components/StandingNavigation";
 
 export const metadata: Metadata = {
   title: {
@@ -52,10 +54,18 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playpenSans.variable} ${caveat.variable} ${ibmPlexMono.variable} antialiased`}
+      className={`${playpenSans.variable} ${caveat.variable} ${ibmPlexMono.variable} ${openSans.variable} antialiased`}
     >
-      <body className="font-(family-name:--font-playpen-sans) w-full min-h-screen bg-gray-950 bg-linear-to-b from-darkblue-gradient to-dark-gradient p-6">
-        <ThemeProvider>{children}</ThemeProvider>
+      <body className="font-(family-name:--font-playpen-sans) w-full max-w-7xl min-h-screen flex flex-col  mx-auto bg-gray-950 bg-linear-to-b from-darkblue-gradient to-dark-gradient p-6 my-10">
+        <div className="flex flex-row-reverse p-4">
+          <section className="hidden lg:ml-4 lg:flex lg:flex-row-reverse lg:justify-center">
+            <StandingNavigation />
+            <div className="mr-10 w-2 bg-linear-to-b from-10% from-hydiary-primary/0  via-hydiary-accent to-70% to-hydiary-primary/0 rounded-sm" />
+          </section>
+          <ThemeProvider>
+            {children}
+          </ThemeProvider>
+        </div>
         <Footer />
       </body>
     </html>

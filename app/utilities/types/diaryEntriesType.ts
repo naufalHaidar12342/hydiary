@@ -33,17 +33,12 @@
  * to explain a little bit about
  * the post. returns as `string`
  *
- * `tags` -- (**Optional**).
+ *
+ * `postCategories` -- (**Optional**).
  * category for a post.
  * one (1) post can have more
  * than one category.
- * default value is empty array
- * (`[]`).
- *
- * `coverImage` -- (**Optional**).
- * meant to replace `attributionImage` field
- * for much descriptive field.
- * returns image url as `string`.
+ * default value is "My stories" * (`["My stories"]`).
  *
  * `attributionMarkdown` is
  * planned to be replaced with
@@ -81,11 +76,8 @@
  *
  * `excerpt` -- "These are the screenshots I took during Arknights 4th Anniversary. I assume these artists have to manually draw on the event's \"post cards\", most likely using their drawing tablet."
  *
- * `tags` -- [] (for empty tags),
- * ["#games", "#deeprockgalactic"] (for non-empty tags)
+ * `postCategories` -- ["myStories", "gaming"]
  *
- * `coverImage` -- "https://ap-southeast-2.graphassets.com/AnOOT8xyMQSqFEzJHOhwdz/ojjriFNwTJuFmTdnejnM" (post with cover image),
- * null (post without coverImage)
  *
  * `postAttribution` --
  * "attributionMarkdown": "Wallpaper by [Official Website of Deep Rock Galactic](https://www.deeprockgalactic.com/wallpapers/keoo55ri5k01xlufnj4dxkh1iyb26h)",
@@ -109,24 +101,38 @@ export interface DiaryEntry {
   date: string;
   createdAt: string;
   excerpt: string;
-  tags?: string[] | [];
-  coverImage?: DiaryEntryCoverImage | null;
+  postCategories?: string[] | ["My stories"];
   postAttribution: DiaryEntryAttribution;
   author?: DiaryEntryAuthor;
   content?: DiaryEntryContent;
 }
 
-/**
- * @interface
- * Cover image for each post.
- *
- * As of now, this is optional since existing
- * post only use image from `postAttribution.attributionImage.url`
+/**@type
+ * API ID of each category
+ * from Hygraph Enumeration
  */
+export type DiaryCategory =
+  "gaming" |
+  "mysteries" |
+  "myStories" |
+  "programmingTips" |
+  "randomThoughts" |
+  "unsolvedQuestions" |
+  "videoEditingTips"
 
-export interface DiaryEntryCoverImage {
-  url?: string | null;
+/**@constant
+ * Human-readable label for each category
+ */
+export const CategoryLabels: Record<DiaryCategory, string> = {
+  gaming: "Gaming",
+  mysteries: "Mysteries",
+  myStories: "My stories",
+  programmingTips: "Programming tips",
+  randomThoughts: "Random thoughts",
+  unsolvedQuestions: "Unsolved questions",
+  videoEditingTips: "Video editing tips"
 }
+
 
 /**
  * @interface
@@ -257,12 +263,11 @@ export type LatestDiaryEntryResponse = DiaryEntryResponse<LatestDiaryEntry>;
 export type DiaryEntriesPaginated = Pick<
   DiaryEntry,
   | "title"
-  | "excerpt"
-  | "date"
-  | "createdAt"
   | "slug"
-  | "tags"
-  | "coverImage"
+  | "createdAt"
+  | "date"
+  | "postCategories"
+  | "excerpt"
   | "postAttribution"
 >;
 

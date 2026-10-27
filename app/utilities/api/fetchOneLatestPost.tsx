@@ -39,6 +39,7 @@ export default async function fetchOneLatestPost(): Promise<LatestDiaryEntryResp
             slug
             date
             createdAt
+            postCategories
             excerpt
             postAttribution{
               attributionMarkdown
