@@ -30,7 +30,9 @@ const nextConfig = {
     fetches: {
       fullUrl: true,
     },
+    serverFunctions: true
   },
+
 };
 const ContentSecurityPolicy = ``;
 module.exports = nextConfig;

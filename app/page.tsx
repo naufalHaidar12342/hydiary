@@ -41,11 +41,11 @@ export default async function Home() {
    * to store response from
    * {@linkcode fetchPostsWithPagination}.
    * supply the arguments "page" with 1,
-   * and "limitContent" with 3
+   * and "limitEntries" with 3
    */
   const recentEntries = await fetchPostsWithPagination({
     page: 1,
-    limitContent: 3,
+    limitEntries: 3,
   });
 
   return (
@@ -111,6 +111,7 @@ export default async function Home() {
                   style={{ objectFit: "cover" }}
                   fill
                   sizes="(max-width: 1280px)50vw, 20vw"
+                  loading="eager"
                 />
               </section>
               <section className="mt-4 flex flex-col w-68">

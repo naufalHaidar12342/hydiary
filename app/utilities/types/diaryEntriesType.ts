@@ -101,15 +101,15 @@ export interface DiaryEntry {
   date: string;
   createdAt: string;
   excerpt: string;
-  postCategories?: string[] | ["My stories"];
+  postCategories?: DiaryCategory[]
   postAttribution: DiaryEntryAttribution;
   author?: DiaryEntryAuthor;
   content?: DiaryEntryContent;
 }
 
-/**@type
- * API ID of each category
- * from Hygraph Enumeration
+/**
+ * The category IDs returned by Hygraph. These values are also used as keys
+ * in CategoryLabels to look up the labels displayed to visitors.
  */
 export type DiaryCategory =
   "gaming" |
@@ -120,8 +120,13 @@ export type DiaryCategory =
   "unsolvedQuestions" |
   "videoEditingTips"
 
-/**@constant
- * Human-readable label for each category
+/**
+ * Map each Hygraph category ID to its visitor-facing label. Record ensures
+ * that every DiaryCategory has a label.
+ *
+ * @example
+ * gaming -> Gaming
+ * myStories -> My stories
  */
 export const CategoryLabels: Record<DiaryCategory, string> = {
   gaming: "Gaming",
@@ -132,6 +137,12 @@ export const CategoryLabels: Record<DiaryCategory, string> = {
   unsolvedQuestions: "Unsolved questions",
   videoEditingTips: "Video editing tips"
 }
+
+/**
+ * Placeholder for a future type that may connect URL category parameters,
+ * Hygraph category IDs, and display labels. It is currently unused.
+ */
+export type CategoryGrouping = {}
 
 
 /**
@@ -180,85 +191,37 @@ export interface DiaryEntryAuthor {
   };
 }
 
-/*
- * Recommended: make the generic represent the item type and always
- * return an array for `posts`. Usage:
- *   DiaryEntryResponse<DiaryEntry>  -> data.posts: DiaryEntry[]
- */
-
 /**
- * @interface .Generic interface that use
- * properties of @interface `DiaryEntry`
- *
- *
- * @property
- * `data` - the wrapper of API contents that will be shown
- *
- * `posts` - Array that returns elements such as
- * `title`, `date`, `slug`, etc.
- *
- * `Complexity-Cost-Left` - the remaining "points" or "token"
- * to perform complex GraphQL request.
- *
- * `Effective-Complexity-Limit` - the hard limit for how complex
- * GraphQL requests are before being refused, if I remember
+ * Common shape of a Hygraph response containing posts. `TItem` describes
+ * which fields each post has, allowing different queries to use narrower
+ * post types (for example, DiaryEntryResponse<LatestDiaryEntry>).
  */
 export interface DiaryEntryResponse<TItem = DiaryEntry> {
+  /** The query result, including the list of requested posts. */
   data: {
     posts: TItem[];
   };
+  /** Hygraph query-complexity information returned alongside the data. */
   extensions: {
     "Complexity-Cost-Left": number;
     "Effective-Complexity-Limit": number;
   };
 }
 
-/* type declaration but specific to each queries */
-
 /**
- * @type
- * Type declaration to dictate elements of array
- * for latest new post
- *
- * @property
- * `title`, `slug`, `date`, `createdAt`, `excerpt`,
- * `postAttribution`
- *
- * @see
- * {@linkcode DiaryEntry} for detailed explanation
- * of each property
- *
+ * Only the fields requested by the latest-entry query, selected from the
+ * full DiaryEntry shape.
  */
 export type LatestDiaryEntry = Pick<
   DiaryEntry,
   "title" | "slug" | "date" | "createdAt" | "excerpt" | "postAttribution"
 >;
 
-/**
- * @type
- * Type declaration for function
- * that return one (1) latest/newest post
- *
- * @property
- * `title`, `slug`, `date`, `createdAt`,
- * `excerpt`, `postAttribution`, `tags`
- *
- * @see {@linkcode DiaryEntry} for
- * more detailed explanation of each
- * property
- */
+/** Response type for the query that fetches the latest diary entry. */
 export type LatestDiaryEntryResponse = DiaryEntryResponse<LatestDiaryEntry>;
 
 /**
- * @type
- * Type declaration for paginated post query
- *
- * @property
- * `title`, `excerpt`, `date`, `createdAt`,
- * `slug`, `coverImage`, `postAttribution`,
- * `tags`
- *
- * @see {@linkcode DiaryEntry}
+ * Only the fields requested for each post in the paginated entries query.
  */
 export type DiaryEntriesPaginated = Pick<
   DiaryEntry,
@@ -271,5 +234,19 @@ export type DiaryEntriesPaginated = Pick<
   | "postAttribution"
 >;
 
-export type DiaryEntriesPaginatedResponse =
-  DiaryEntryResponse<DiaryEntriesPaginated>;
+/**
+ * Response shape for the paginated query. `postsConnection.aggregate.count`
+ * is the total number of matching entries (before pagination), used to
+ * calculate how many result pages are available.
+ */
+export type DiaryEntriesPaginatedResponse = Omit<
+  DiaryEntryResponse<DiaryEntriesPaginated>, "data"> & {
+    data: {
+      posts: DiaryEntriesPaginated[]
+      postsConnection: {
+        aggregate: {
+          count: number
+        }
+      }
+    }
+  };
