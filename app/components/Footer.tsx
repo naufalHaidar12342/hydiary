@@ -4,23 +4,24 @@ import { caveat } from "../utilities/fonts/next-google-fonts";
 export default function Footer() {
   return (
     <footer
-      className={`${caveat.className} flex flex-col justify-end items-center text-3xl gap-2 p-10 z-0`}
+      className={`font-(family-name:--font-caveat) flex flex-col justify-end items-center text-3xl gap-2 p-10 z-0`}
     >
       <span>@2023.</span>
       <div>
         co-authored by{" "}
         <Link
-          href="/about/co-authors/strijunk"
+          href="#"
           target="_blank"
           className="underline-link-animation text-3xl text-white"
         >
           strijunk
         </Link>{" "}
-        and our late friend, mentor{";"} {" "}
+        and our late friend, my mentor{";"} {" "}
         <Link
-          href="/about/co-authors/devardha"
+          href="#"
           target="_blank"
-          className="underline-link-animation text-xl text-white font-(family-name:--font-ibm-plex-mono)"
+          scroll={false}
+          className="underline-link-animation text-3xl text-white"
         >
           devardha
         </Link>
