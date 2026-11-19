@@ -1,10 +1,3 @@
-import {
-	ABOUT_OGIMAGE,
-	ABOUT_OGIMAGE_CREDITS,
-} from "@/constants/about_ogimage";
-import { caveat } from "@/libraries/fonts";
-import { metadataBaseUrl } from "@/libraries/metadata-base";
-import { metadataRobotsRule } from "@/libraries/metadata-robots";
 import Image from "next/image";
 import {
 	FaMastodon,
@@ -17,34 +10,25 @@ import {
 import { SiNextdotjs, SiTailwindcss } from "react-icons/si";
 import { IoLogoFigma } from "react-icons/io5";
 import { GiSkills } from "react-icons/gi";
-import { BASE_URL } from "@/libraries/base-url";
-import { metadataSiteName } from "@/libraries/metadata-sitename";
 
-export async function generateMetadata() {
+import { FALLBACK_HYGRAPH_API } from "../utilities/constants/apiHygraphConfigs";
+import { Metadata, ResolvingMetadata } from "next";
+
+export async function generateMetadata(parents:ResolvingMetadata):Promise<Metadata> {
 	return {
 		title: "About",
 		description: `More info about me`,
-		...metadataBaseUrl,
-		...metadataRobotsRule,
+
 		openGraph: {
 			title: "About",
 			description: `More info about me`,
-			url: `${BASE_URL}about`,
-			...metadataSiteName,
-			images: [
-				{
-					url: ABOUT_OGIMAGE,
-					width: 1200,
-					height: 630,
-					alt: ABOUT_OGIMAGE_CREDITS,
-				},
-			],
+
 		},
 	};
 }
 
 export async function getAuthorsInfo() {
-	const authors = await fetch(process.env.HYGRAPH_HIPERF_API, {
+	const authors = await fetch(process.env.HYGRAPH_HIPERF_API || FALLBACK_HYGRAPH_API, {
 		method: "POST",
 		headers: {
 			Authorization: `Bearer ${process.env.HYGRAPH_TOKEN}`,
@@ -85,7 +69,7 @@ export default async function About() {
 						sizes="(max-width:1280px) 100vw, 70vw"
 					/>
 				</div>
-				<h2 className={`text-4xl font-semibold ${caveat.className}`}>
+				<h2 className={`text-4xl font-semibold font-(family-name:--font-caveat)`}>
 					{authorName}
 				</h2>
 				<span>
@@ -98,21 +82,18 @@ export default async function About() {
 				<div className="flex flex-col pt-5 gap-4">
 					<div className="flex items-center gap-2">
 						<FaSteam className="text-2xl" />
-						<span>Steam ID: 1144957646</span>
+						<span className="font-(family-name:--font-ibm-plex-mono)">Steam ID: 1144957646</span>
 					</div>
 					<div className="flex items-center gap-2">
 						<FaGooglePlay className="text-2xl" />
-						<span>Arknights: Dr. Heydar#4458</span>
+						<span className="font-(family-name:--font-ibm-plex-mono)">Arknights: Dr. Heydar#4458</span>
 					</div>
-					<div className="flex items-center gap-2">
-						<FaDesktop className="text-2xl" />
-						<span>Honkai Star Rail</span>
-					</div>
+
 				</div>
 			</div>
-			<div className="flex flex-col w-full h-full gap-4 p-5 border-4 border-sand rounded-xl relative z-20">
+			<div className="flex flex-col w-full h-fit gap-4 p-5 border-4 border-sand rounded-xl relative z-20">
 				<div className="flex flex-col gap-2">
-					<span className="text-xl font-medium">More about me</span>
+					<span className="text-xl font-medium font-(family-name:--font-ibm-plex-mono)">More about me</span>
 					<p>
 						Amateur web programmer previously interned as graphical user
 						interface programmer and researcher for website-based chatbot. This
@@ -132,7 +113,7 @@ export default async function About() {
 				</div>
 
 				<div className="flex flex-col gap-2">
-					<span className="text-xl font-medium">Skills</span>
+					<span className="text-xl font-medium font-(family-name:--font-ibm-plex-mono)">Skills</span>
 					<div className="flex flex-col gap-2">
 						<div className="flex gap-2 items-center">
 							<SiNextdotjs className="text-2xl" />
@@ -150,7 +131,7 @@ export default async function About() {
 				</div>
 
 				<div className="flex flex-col gap-2">
-					<span className="text-xl font-medium">Language</span>
+					<span className="text-xl font-medium font-(family-name:--font-ibm-plex-mono)">Language</span>
 					<div className="flex flex-col gap-2">
 						<div className="flex gap-2 items-center">
 							<span>Indonesia : Native</span>

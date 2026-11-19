@@ -1,0 +1,82 @@
+.thumbnailButton {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+
+.imageFrame {
+  position: relative;
+  overflow: hidden;
+  background: #e5e5e5;
+}
+
+.thumbnail {
+  width: min(100%, 280px);
+  height: 180px;
+}
+
+.large {
+  width: min(90vw, 1000px);
+  height: min(70vh, 700px);
+}
+
+.cover {
+  object-fit: cover;
+}
+
+.contain {
+  object-fit: contain;
+}
+
+.skeleton {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #e5e5e5 25%, #f5f5f5 50%, #e5e5e5 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s infinite;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgb(0 0 0 / 75%);
+}
+
+.modal {
+  position: relative;
+  max-width: 100%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background: white;
+}
+
+.closeButton {
+  position: absolute;
+  top: -1rem;
+  right: -4rem;
+  z-index: 1;
+  font-size: 1.75rem;
+  cursor: pointer;
+}
+
+.error {
+  padding: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+  }
+}

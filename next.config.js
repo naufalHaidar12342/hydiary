@@ -22,12 +22,17 @@ const nextConfig = {
         pathname: "/u/63136988",
       },
     ],
+    dangerouslyAllowSVG: true,
+    contentDispositionType: 'attachment',
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   logging: {
     fetches: {
       fullUrl: true,
     },
+    serverFunctions: true
   },
+
 };
 const ContentSecurityPolicy = ``;
 module.exports = nextConfig;
