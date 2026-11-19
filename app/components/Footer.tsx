@@ -16,11 +16,11 @@ export default function Footer() {
         >
           strijunk
         </Link>{" "}
-        and{" "}
+        and our late friend, mentor{";"} {" "}
         <Link
           href="/about/co-authors/devardha"
           target="_blank"
-          className="underline-link-animation text-3xl text-white"
+          className="underline-link-animation text-xl text-white font-(family-name:--font-ibm-plex-mono)"
         >
           devardha
         </Link>

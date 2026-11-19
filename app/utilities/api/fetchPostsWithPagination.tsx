@@ -119,6 +119,6 @@ export default async function fetchPostsWithPagination({
         err,
       ),
     );
-  console.log(JSON.stringify(postsWithPaginationResponse, null, 2))
+  // console.log(JSON.stringify(postsWithPaginationResponse, null, 2))
   return postsWithPaginationResponse as DiaryEntriesPaginatedResponse;
 }

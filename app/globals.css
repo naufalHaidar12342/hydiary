@@ -81,20 +81,36 @@
 
 * {
     /*
-    Source - https://stackoverflow.com/a/64127605
-    Posted by Max Hoffmann, modified by community. See post 'Timeline' for change history
-    Retrieved 2026-09-18, License - CC BY-SA 4.0
+    https://stackoverflow.com/a/79637802
     */
 
     mark {
-        margin: 0 -0.4em;
+        /*margin: 0 -0.4em;
         padding: 0.1em 0.4em;
-        /*border-radius: 0.8em 0.3em;*/
+        border-radius: 0.8em 0.3em;
         background: transparent;
         background-image: linear-gradient(to right,
                 oklch(0.9851 0 0),
                 oklch(0.9236 0.1774 126.93),
                 oklch(0.9851 0 0));
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;*/
+        /*margin: 0 -0.4em;
+        padding: 0.1em 0.4em;
+        border-radius: 0.8em 0.3em;
+        background: transparent;
+        background-image: linear-gradient(to right,
+                rgba(255, 225, 0, 0.1),
+                rgba(255, 225, 0, 0.7) 4%,
+                rgba(255, 225, 0, 0.3));
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;*/
+        border-image-source: url("https://i.sstatic.net/itcIJoj8.png");
+        border-image-slice: 0 27 0 29 fill;
+        border-image-width: 0px 1ch 0px 1ch;
+        border-image-outset: 0px 1ch 0px 1ch;
+        border-image-repeat: round stretch;
+        background-color: transparent;
         -webkit-box-decoration-break: clone;
         box-decoration-break: clone;
     }

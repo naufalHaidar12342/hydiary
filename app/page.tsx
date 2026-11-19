@@ -1,13 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import HygraphDateToReadableDate from "./libraries/date-converter";
-import { metadataBaseUrl } from "./libraries/metadata-base";
-import { metadataRobotsRule } from "./libraries/metadata-robots";
-import { BASE_URL } from "./libraries/base-url";
-import { metadataSiteName } from "./libraries/metadata-sitename";
 import { Metadata, ResolvingMetadata } from "next";
 import fetchOneLatestPost from "./utilities/api/fetchOneLatestPost";
-import { DiaryEntry } from "./utilities/types/diaryEntriesType";
 import fetchPostsWithPagination from "./utilities/api/fetchPostsWithPagination";
 
 export async function generateMetadata(
@@ -115,7 +109,7 @@ export default async function Home() {
                 />
               </section>
               <section className="mt-4 flex flex-col w-68">
-                <h4 className="z-10 font-(family-name:--font-ibm-plex-mono) text-shadow-highlighter text-xl line-clamp-1 md:line-clamp-2">
+                <h4 className=" font-(family-name:--font-ibm-plex-mono) text-shadow-highlighter text-xl line-clamp-1 md:line-clamp-2">
                   {item.title}
                 </h4>
 

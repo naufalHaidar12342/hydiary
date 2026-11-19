@@ -8,6 +8,9 @@ import fetchPostsWithPagination from "../utilities/api/fetchPostsWithPagination"
 import Image from "next/image";
 import Link from "next/link";
 import { CategoryLabels } from "../utilities/types/diaryEntriesType";
+import EntryImageSkeleton from "../components/entries-page/EntryImageSkeleton";
+import HighlighterVisual from "../components/decoration/HighlighterVisual";
+import { DuctTapeVisualEffect } from "../components/decoration/DuctTapeVisual";
 
 /**
  * Build this page's title, description, and social-sharing preview.
@@ -177,7 +180,7 @@ export default async function AllEntry({ searchParams }: { searchParams: Promise
         <Suspense fallback={
           <div>Opening entries that should be shown here, please wait...</div>
         }>
-          <div className="grid lg:grid-cols-3 gap-4">
+          <div className="grid lg:grid-cols-3 gap-6">
             {entriesResponse.data.posts.length === 0 ? (
               <p className="col-span-full py-8 text-center">
                 Looks like I have not written anything in this category yet.
@@ -187,24 +190,33 @@ export default async function AllEntry({ searchParams }: { searchParams: Promise
               /* Render one image-and-title card for each entry returned by Hygraph. */
               entriesResponse.data.posts.map((diaryEntry) => (
                 <div key={diaryEntry.slug} className="h-full w-full flex flex-col">
-                  <section className="h-40 w-full relative">
-                    <Image
-                      src={`${diaryEntry.postAttribution.attributionImage.url}`}
-                      alt={`${diaryEntry.postAttribution.attributionMarkdown}`}
-                      style={{ objectFit: "cover" }}
-                      fill
-                      sizes="(max-width:768px)75vw, 100vw"
-                    />
+                  <section className="flex items-center isolate z-0" aria-label="image">
+                    <div className="relative flex flex-col w-full h-full">
+                      <div className="w-full h-full">
+                        <EntryImageSkeleton
+                          imageSource={diaryEntry.postAttribution.attributionImage.url}
+                          imageAlternateText={diaryEntry.postAttribution.attributionMarkdown}
+                        />
+                      </div>
+                      <DuctTapeVisualEffect className="absolute -top-3 -right-3 grid w-20 h-10 rotate-5 " />
+                      <DuctTapeVisualEffect className="absolute -bottom-0.5 -left-4 grid w-20 h-10 rotate-5 " />
+                    </div>
                   </section>
-                  <section>
-                    <span>{diaryEntry.title}</span>
-                    <ul>
+                  <section className="mt-4" aria-label="category">
+                    <h3 className="text-xl font-(family-name:--font-ibm-plex-mono)">{diaryEntry.title}</h3>
+                    <ul className="flex flex-row flex-wrap gap-3 my-2">
                       {diaryEntry.postCategories?.map((entryCategory) => (
                         // The Hygraph category ID is the key in CategoryLabels;
                         // indexing with it returns the visitor-friendly label.
-                        <li key={entryCategory}>{CategoryLabels[entryCategory]}</li>
+                        <li key={entryCategory} className="p-1 relative inline-flex z-10 text-2xl text-hydiary-secondary font-(family-name:--font-caveat)">
+                          {CategoryLabels[entryCategory]}
+                          <HighlighterVisual className="w-full h-full absolute -bottom-6" />
+                        </li>
                       ))}
                     </ul>
+                  </section>
+                  <section className="mt-3">
+                    <Link href={`/entries/${diaryEntry.slug}`} className="text-lg font-semibold font-(family-name:--font-ibm-plex-mono)">Read this</Link>
                   </section>
                 </div>
               ))
@@ -213,21 +225,26 @@ export default async function AllEntry({ searchParams }: { searchParams: Promise
         </Suspense>
       </section>
 
-      {/* In JSX, `condition && <Element />` renders the element only when
+
+      <section className="flex mt-6 h-16">
+
+        {/* In JSX, `condition && <Element />` renders the element only when
           the condition is true. So this nav appears only when there is more
           than one page. Its links change the page query while retaining the
           selected category, and the text shows visitors where they are. */}
-      {totalPages > 1 && (
-        <nav aria-label="Entry pages" className="flex items-center justify-center gap-4 py-6">
-          {/* `page > 1 && <Link />` shows Previous only after page 1, preventing
+        {totalPages > 1 && (
+          <nav aria-label="Entry pages" className="flex items-center justify-center gap-4 py-6">
+            {/* `page > 1 && <Link />` shows Previous only after page 1, preventing
               navigation to page 0. */}
-          {page > 1 && <Link href={pageHref(page - 1)}>Previous</Link>}
-          <span>Page {page} of {totalPages}</span>
-          {/* `page < totalPages && <Link />` shows Next only before the last
+            {page > 1 && <Link href={pageHref(page - 1)}>Previous</Link>}
+            <span>Page {page} of {totalPages}</span>
+            {/* `page < totalPages && <Link />` shows Next only before the last
               page, preventing navigation beyond the available results. */}
-          {page < totalPages && <Link href={pageHref(page + 1)}>Next</Link>}
-        </nav>
-      )}
+            {page < totalPages && <Link href={pageHref(page + 1)}>Next</Link>}
+          </nav>
+        )}
+      </section>
+
     </div>
   );
 }

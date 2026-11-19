@@ -249,4 +249,22 @@ export type DiaryEntriesPaginatedResponse = Omit<
         }
       }
     }
-  };
+};
+
+/**
+ * @type
+ *
+ * Specify fields that are
+ * required for dynamic route (/entries/[slug])
+ *
+ *
+*/
+export type SelectedEntry = Pick<DiaryEntry,
+  "title" | "excerpt" | "createdAt" | "date" | "postAttribution" | "postCategories" | "content"
+  >;
+
+/**
+ * @type
+ * SelectedEntry response
+  */
+export type SelectedEntryResponse=DiaryEntryResponse<SelectedEntry>
