@@ -9,6 +9,7 @@ import {
   openSans,
 } from "./utilities/fonts/next-google-fonts";
 import StandingNavigation from "./components/StandingNavigation";
+import BottomNavigation from "./components/BottomNavigation";
 
 export const metadata: Metadata = {
   title: {
@@ -64,6 +65,7 @@ export default function RootLayout({
           </section>
           {children}
         </div>
+        <BottomNavigation/>
         <Footer />
       </body>
     </html>

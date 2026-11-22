@@ -208,7 +208,7 @@ export default async function AllEntry({ searchParams }: { searchParams: Promise
                       {diaryEntry.postCategories?.map((entryCategory) => (
                         // The Hygraph category ID is the key in CategoryLabels;
                         // indexing with it returns the visitor-friendly label.
-                        <li key={entryCategory} className="p-1 relative inline-flex z-10 text-2xl text-hydiary-secondary font-(family-name:--font-caveat)">
+                        <li key={entryCategory} className="py-1 relative inline-flex z-10 text-2xl text-hydiary-secondary font-(family-name:--font-caveat)">
                           {CategoryLabels[entryCategory]}
                           <HighlighterVisual className="w-full h-full absolute -bottom-6" />
                         </li>
