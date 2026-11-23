@@ -4,7 +4,7 @@ import Link from "next/link"
 import { usePathname, useSearchParams } from "next/navigation"
 
 
-export default function CategoryChoices() {
+export default function CategoryFilter() {
   const listOfCategory = [
     {
       categoryName: "Show all",
@@ -43,8 +43,9 @@ export default function CategoryChoices() {
   const categoryParams = useSearchParams()
   const currentCategory = categoryParams.get("category") || undefined
 
+  /* Keep the button-based filter for desktop widths; smaller screens use the dropdown. */
   return (
-    <div className="flex flex-row flex-wrap gap-2">
+    <div className="hidden lg:flex lg:flex-row lg:flex-wrap lg:gap-2">
       {listOfCategory.map((category) => {
         let isActiveCategory = false;
         if (category.categorySlug === "/entries") {

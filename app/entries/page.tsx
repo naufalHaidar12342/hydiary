@@ -3,7 +3,7 @@ import fetchOneLatestPost from "../utilities/api/fetchOneLatestPost";
 import convertIsoDateToHumanDate from "../helpers/isodate-to-humandate-converter";
 import { Suspense } from "react";
 import { categoryFromSlug } from "../utilities/types/categoriesValidation";
-import CategoryChoices from "../components/entries-page/CategoryChoices";
+import CategoryFilter from "../components/entries-page/CategoryFilter";
 import fetchPostsWithPagination from "../utilities/api/fetchPostsWithPagination";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,6 +11,7 @@ import { CategoryLabels } from "../utilities/types/diaryEntriesType";
 import EntryImageSkeleton from "../components/entries-page/EntryImageSkeleton";
 import HighlighterVisual from "../components/decoration/HighlighterVisual";
 import { DuctTapeVisualEffect } from "../components/decoration/DuctTapeVisual";
+import MobileCategoryFilter from "../components/entries-page/MobileCategoryFilter";
 
 /**
  * Build this page's title, description, and social-sharing preview.
@@ -173,7 +174,8 @@ export default async function AllEntry({ searchParams }: { searchParams: Promise
         </h2>
       </section>
       <Suspense fallback={<div>Loading all categories, please wait...</div>}>
-        <CategoryChoices />
+        <CategoryFilter />
+        <MobileCategoryFilter/>
       </Suspense>
 
       <section className="flex flex-col">
@@ -208,7 +210,7 @@ export default async function AllEntry({ searchParams }: { searchParams: Promise
                       {diaryEntry.postCategories?.map((entryCategory) => (
                         // The Hygraph category ID is the key in CategoryLabels;
                         // indexing with it returns the visitor-friendly label.
-                        <li key={entryCategory} className="p-1 relative inline-flex z-10 text-2xl text-hydiary-secondary font-(family-name:--font-caveat)">
+                        <li key={entryCategory} className="py-1 relative inline-flex z-10 text-2xl text-hydiary-secondary font-(family-name:--font-caveat)">
                           {CategoryLabels[entryCategory]}
                           <HighlighterVisual className="w-full h-full absolute -bottom-6" />
                         </li>
